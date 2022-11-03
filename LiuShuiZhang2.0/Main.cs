@@ -209,6 +209,24 @@ namespace LiuShuiZhang2._0
             }
         }
 
+        private void ChangeWorkingMode(int mode)
+        {
+            if (mode == 1) // Working mode
+            {
+                groupBox_CashStatus.Enabled = true;
+                groupBox_Transaction.Enabled = true;
+                groupBox_CashCounting.Enabled = true;
+                groupBox_LiuShui.Enabled = true;
+            }
+            else if (mode == 2) // viewing mode
+            {
+                groupBox_CashStatus.Enabled = false;
+                groupBox_Transaction.Enabled = false;
+                groupBox_CashCounting.Enabled = false;
+                groupBox_LiuShui.Enabled = true;
+            }
+        }
+
         private void FillDataToForm()
         {
             #region Load Cash Details
@@ -225,6 +243,7 @@ namespace LiuShuiZhang2._0
                 //Working mode
                 if (gg == 0)
                 {
+                    ChangeWorkingMode(1);
                     numericUpDown_PreValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["QIANE"].ToString().Trim());
                     numericUpDown_CurValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["XIANE"].ToString().Trim());
                     numericUpDown_DeltaValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["XIANGCHA"].ToString().Trim());
@@ -238,6 +257,7 @@ namespace LiuShuiZhang2._0
                 //view data mode
                 else if (gg > 0)
                 {
+                    ChangeWorkingMode(2);
                     DataTable dt_PreviousLiuShui = DAL_main.GetRecordByDate(dateTimePicker.Value.Date);
 
                     if (dt_PreviousLiuShui.Rows.Count > 0)
@@ -252,6 +272,7 @@ namespace LiuShuiZhang2._0
                 //create new day data for using
                 else
                 {
+                    ChangeWorkingMode(1);
                     numericUpDown_PreValue.Value = 
                     numericUpDown_CurValue.Value = 
                     numericUpDown_CountValue.Value = 
@@ -278,6 +299,7 @@ namespace LiuShuiZhang2._0
             }
             else // the frist time using
             {
+                ChangeWorkingMode(1);
                 foreach (DataGridViewColumn i in dataGridView_CashDetails.Columns)
                 {
                     dataGridView_CashDetails.Rows[0].Cells[i.Name].Value = 0;
