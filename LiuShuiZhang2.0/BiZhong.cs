@@ -14,25 +14,24 @@ namespace LiuShuiZhang2._0
     public partial class BiZhong : Form
     {
         
-        DAL.DAL_User DAL_User;
+        DAL.DAL_BiZhong DAL_BiZhong;
        
         public BiZhong()
         {
             InitializeComponent();
-            DAL_User = new DAL.DAL_User();
+            DAL_BiZhong = new DAL.DAL_BiZhong();
         }
 
-        private void User_Load(object sender, EventArgs e)
+        private void BiZhong_Load(object sender, EventArgs e)
         {
-            dataGridView_User.DataSource = DAL_User.GetAllUser();
-            dataGridView_User.Columns["RENYUANID"].HeaderText = "人员码";
-            dataGridView_User.Columns["YONGHU"].HeaderText = "用户";
-            dataGridView_User.Columns["MIMA"].HeaderText = "密码";
-            dataGridView_User.Columns["QUAN"].HeaderText = "职位";
-            dataGridView_User.Columns["TINGYONG"].HeaderText = "停用";
+            dataGridView_BiZhong.DataSource = DAL_BiZhong.GetAllBiZhong();
+            dataGridView_BiZhong.Columns["BIZHONGID"].HeaderText = "币种码";
+            dataGridView_BiZhong.Columns["BIZHONG"].HeaderText = "币种";
+            dataGridView_BiZhong.Columns["LEI"].HeaderText = "類";
+            dataGridView_BiZhong.Columns["TINGYONG"].HeaderText = "停用";
 
-            dataGridView_User.Tag = false;
-            ChangeMode((bool)dataGridView_User.Tag);
+            dataGridView_BiZhong.Tag = false;
+            ChangeMode((bool)dataGridView_BiZhong.Tag);
 
         }
 
@@ -40,20 +39,22 @@ namespace LiuShuiZhang2._0
         {
             if (CheckData(false))
             {
-                if (MessageBox.Show("请确认是否要添加人员？","温卿提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("请确认是否要添加币种？","温卿提示",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-                        DAL_User.AddNewUser(new BLL_User
+                        DAL_BiZhong.AddBiZhong(new BLL_BiZhong
                         {
-                            UserName = textBox_UserName.Text,
-                            PassWord = Common.EncodePasswordToBase64(textBox_PassWord.Text),
-                            Permission = int.Parse(((RadioButton)panel_User.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked)).Tag.ToString()),
+                            BiZhong = textBox_BiZhong.Text,
+                            Quantity = 0,
+                            AveragePrice = 0,
+                            TotalValue = 0,
+                            Type = int.Parse(((RadioButton)panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked)).Tag.ToString()),
                             Disable = checkBox_Disable.Checked
                         }) ;
-                        MessageBox.Show("添加人员成功", "温卿提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        MessageBox.Show("添加币种成功", "温卿提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
                         ClearForm();
-                        User_Load(sender, e);
+                        BiZhong_Load(sender, e);
                     }
                     catch (Exception ex)
                     {
@@ -67,21 +68,20 @@ namespace LiuShuiZhang2._0
         {
             if (CheckData(true))
             {
-                if (MessageBox.Show("请确认是否要更改人员信息？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("请确认是否要更改币种信息？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
-                        DAL_User.EditNewUser(new BLL_User
+                        DAL_BiZhong.EditBiZhong(new BLL_BiZhong
                         {
-                            UserID = long.Parse(textBox_UserName.Tag.ToString()),
-                            PassWord = Common.EncodePasswordToBase64(textBox_PassWord.Text),
-                            Permission = int.Parse(((RadioButton)panel_User.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked)).Tag.ToString()),
+                            BiZhongID = long.Parse(textBox_BiZhong.Tag.ToString()),
+                            Type = int.Parse(((RadioButton)panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked)).Tag.ToString()),
                             Disable = checkBox_Disable.Checked
                         });
 
                         MessageBox.Show("更改人员信息成功", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ClearForm();
-                        User_Load(sender, e);
+                        BiZhong_Load(sender, e);
                     }
                     catch (Exception ex)
                     {
@@ -93,73 +93,56 @@ namespace LiuShuiZhang2._0
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
-            User_Load(sender, e);
+            BiZhong_Load(sender, e);
             ClearForm();
         }
 
         private void dataGridView_User_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView_User.Tag = true;
-            ChangeMode((bool)dataGridView_User.Tag);
+            dataGridView_BiZhong.Tag = true;
+            ChangeMode((bool)dataGridView_BiZhong.Tag);
 
-            textBox_UserName.Tag = dataGridView_User.CurrentRow.Cells["RENYUANID"].Value.ToString();
-            textBox_UserName.Text = dataGridView_User.CurrentRow.Cells["YONGHU"].Value.ToString();
-            textBox_PassWord.Text = dataGridView_User.CurrentRow.Cells["MIMA"].Value.ToString();
-            textBox_RePassWord.Text = dataGridView_User.CurrentRow.Cells["MIMA"].Value.ToString();
-            ((RadioButton)panel_User.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Tag.ToString()==dataGridView_User.CurrentRow.Cells["QUAN"].Value.ToString())).Checked = true;
-            checkBox_Disable.Checked = ((Boolean)dataGridView_User.CurrentRow.Cells["TINGYONG"].Value);
+            textBox_BiZhong.Tag = dataGridView_BiZhong.CurrentRow.Cells["BIZHONGID"].Value.ToString();
+            textBox_BiZhong.Text = dataGridView_BiZhong.CurrentRow.Cells["BIZHONG"].Value.ToString();
+            ((RadioButton)panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Tag.ToString()==dataGridView_BiZhong.CurrentRow.Cells["LEI"].Value.ToString())).Checked = true;
+            checkBox_Disable.Checked = ((Boolean)dataGridView_BiZhong.CurrentRow.Cells["TINGYONG"].Value);
         }
 
         private bool CheckData(bool isEdit)
         {
             bool rs = false;
-            if (!Common.IsNumber(textBox_UserName.Text) && 
-                Common.NotInludeSpecialChar(textBox_UserName.Text) &&
-                textBox_UserName.Text.Length >= 4 && textBox_UserName.Text.Length <= 16)
+            if (!(textBox_BiZhong.Text == string.Empty) &&
+                textBox_BiZhong.Text.Length >= 3 &&
+                textBox_BiZhong.Text.Length <=12)
                 rs = true;
             else
             {
-                MessageBox.Show("用户名不能是数字或存在特别码或存在大写，长度要在4-16码之间，请重新输入");
-                textBox_UserName.Focus();
-                textBox_UserName.SelectAll();
+                MessageBox.Show("币种不能留空，长度要在3-12码内，请重新输入");
+                textBox_BiZhong.Focus();
+                textBox_BiZhong.SelectAll();
                 return false;
             }
 
             if (!isEdit)
             {
-                if (!DAL_User.UserNameExisted(textBox_UserName.Text))
+                if (!DAL_BiZhong.BiZhongExisted(textBox_BiZhong.Text))
                     rs = true;
                 else
                 {
-                    MessageBox.Show("用户名已经存在，请选择别的");
-                    textBox_UserName.Focus();
-                    textBox_UserName.SelectAll();
+                    MessageBox.Show("币种已经存在，请选择别的");
+                    textBox_BiZhong.Focus();
+                    textBox_BiZhong.SelectAll();
                     return false;
                 }
             }
-
-            if (textBox_PassWord.Text == textBox_RePassWord.Text &&
-                textBox_PassWord.Text.Length >= 8 && textBox_PassWord.Text.Length <= 16)
-                rs = true;
-            else
-            {
-                MessageBox.Show("密码输入不一致，长度要在8-16码之间，请重新输入");
-                textBox_PassWord.Clear();
-                textBox_RePassWord.Clear();
-                textBox_PassWord.Focus();
-                return false;
-            }
-
             return rs;
         }
 
         private void ClearForm()
         {
-            textBox_UserName.Clear();
-            textBox_UserName.Tag = string.Empty;
-            textBox_PassWord.Clear();
-            textBox_RePassWord.Clear();
-            textBox_UserName.Focus();
+            textBox_BiZhong.Clear();
+            textBox_BiZhong.Tag = string.Empty;
+            textBox_BiZhong.Focus();
         }
 
         private void ChangeMode(bool isEdit)
@@ -168,13 +151,13 @@ namespace LiuShuiZhang2._0
             {
                 button_Add.Enabled = false;
                 button_Update.Enabled = true;
-                textBox_UserName.Enabled = false;
+                textBox_BiZhong.Enabled = false;
             }
             else
             {
                 button_Add.Enabled = true;
                 button_Update.Enabled = false;
-                textBox_UserName.Enabled = true;
+                textBox_BiZhong.Enabled = true;
             }
         }
     }

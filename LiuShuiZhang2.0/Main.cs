@@ -96,10 +96,16 @@ namespace LiuShuiZhang2._0
 
         #region Menu Strip 
 
-        private void ToolStripMenuItem_Emp_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_User_Click(object sender, EventArgs e)
         {
             User us = new User();
             us.ShowDialog();
+        }
+
+        private void ToolStripMenuItem_Type_Click(object sender, EventArgs e)
+        {
+            BiZhong bz = new BiZhong();
+            bz.ShowDialog();
         }
 
         private void ToolStripMenuItem_Exit_Click(object sender, EventArgs e)
@@ -341,6 +347,7 @@ namespace LiuShuiZhang2._0
                 __1 = int.Parse(dataGridView_CashDetails.Rows[0].Cells["_1000"].Value.ToString()),
             };
         }
+
 
         #endregion
 

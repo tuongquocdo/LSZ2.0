@@ -49,9 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BLL_LiuShui.cs" />
+    <Compile Include="BLL\BLL_BiZhong.cs" />
     <Compile Include="BLL\BLL_User.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="DAL\DAL_Main.cs" />
+    <Compile Include="DAL\DAL_BiZhong.cs" />
     <Compile Include="DAL\DAL_User.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
