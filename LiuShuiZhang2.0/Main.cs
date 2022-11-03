@@ -140,8 +140,6 @@ namespace LiuShuiZhang2._0
             dateTimePicker.MaxDate = DateTime.Now;
             DAL_main = new DAL_Main();
             FillDataToForm();
-
-            //dataGridView_CashDetails.Rows.Add("12235", "5698", "8759", "6624", "103", "24", "4587", "10000", "95682
         }
 
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
