@@ -43,6 +43,7 @@ namespace LiuShuiZhang2._0
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox_BiZhong = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.panel_BiZhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_BiZhong)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +57,7 @@ namespace LiuShuiZhang2._0
             this.panel_BiZhong.Controls.Add(this.dataGridView_BiZhong);
             this.panel_BiZhong.Controls.Add(this.button_Update);
             this.panel_BiZhong.Controls.Add(this.button_Add);
+            this.panel_BiZhong.Controls.Add(this.radioButton5);
             this.panel_BiZhong.Controls.Add(this.radioButton4);
             this.panel_BiZhong.Controls.Add(this.radioButton3);
             this.panel_BiZhong.Controls.Add(this.radioButton2);
@@ -65,7 +67,7 @@ namespace LiuShuiZhang2._0
             this.panel_BiZhong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_BiZhong.Location = new System.Drawing.Point(0, 0);
             this.panel_BiZhong.Name = "panel_BiZhong";
-            this.panel_BiZhong.Size = new System.Drawing.Size(784, 761);
+            this.panel_BiZhong.Size = new System.Drawing.Size(534, 761);
             this.panel_BiZhong.TabIndex = 0;
             // 
             // button_Clear
@@ -122,7 +124,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_BiZhong.MultiSelect = false;
             this.dataGridView_BiZhong.Name = "dataGridView_BiZhong";
             this.dataGridView_BiZhong.ReadOnly = true;
-            this.dataGridView_BiZhong.Size = new System.Drawing.Size(752, 584);
+            this.dataGridView_BiZhong.Size = new System.Drawing.Size(495, 584);
             this.dataGridView_BiZhong.TabIndex = 12;
             this.dataGridView_BiZhong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_User_CellClick);
             // 
@@ -156,7 +158,7 @@ namespace LiuShuiZhang2._0
             this.radioButton4.AutoSize = true;
             this.radioButton4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton4.ForeColor = System.Drawing.Color.Red;
-            this.radioButton4.Location = new System.Drawing.Point(382, 50);
+            this.radioButton4.Location = new System.Drawing.Point(355, 50);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(82, 27);
             this.radioButton4.TabIndex = 8;
@@ -169,7 +171,7 @@ namespace LiuShuiZhang2._0
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.Red;
-            this.radioButton3.Location = new System.Drawing.Point(291, 50);
+            this.radioButton3.Location = new System.Drawing.Point(267, 50);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(82, 27);
             this.radioButton3.TabIndex = 8;
@@ -182,7 +184,7 @@ namespace LiuShuiZhang2._0
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.Red;
-            this.radioButton2.Location = new System.Drawing.Point(192, 50);
+            this.radioButton2.Location = new System.Drawing.Point(179, 50);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(82, 27);
             this.radioButton2.TabIndex = 8;
@@ -210,7 +212,7 @@ namespace LiuShuiZhang2._0
             this.textBox_BiZhong.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_BiZhong.Location = new System.Drawing.Point(109, 9);
             this.textBox_BiZhong.Name = "textBox_BiZhong";
-            this.textBox_BiZhong.Size = new System.Drawing.Size(663, 29);
+            this.textBox_BiZhong.Size = new System.Drawing.Size(406, 29);
             this.textBox_BiZhong.TabIndex = 1;
             // 
             // label1
@@ -224,11 +226,24 @@ namespace LiuShuiZhang2._0
             this.label1.TabIndex = 0;
             this.label1.Text = "币种";
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5.ForeColor = System.Drawing.Color.Red;
+            this.radioButton5.Location = new System.Drawing.Point(440, 50);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(64, 27);
+            this.radioButton5.TabIndex = 8;
+            this.radioButton5.Tag = "5";
+            this.radioButton5.Text = "现金";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
             // BiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 761);
+            this.ClientSize = new System.Drawing.Size(534, 761);
             this.Controls.Add(this.panel_BiZhong);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -259,5 +274,6 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }

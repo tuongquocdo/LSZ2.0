@@ -14,7 +14,9 @@ namespace LiuShuiZhang2._0
 {
     public partial class Main : Form
     {
-        DAL_Main DAL_main;
+        DAL_LiuShui DAL_liuShui;
+
+        DAL_BiZhong DAL_biZhong;
 
         private BLL_User user;
         public BLL_User User { get => user; set => user = value; }
@@ -67,7 +69,7 @@ namespace LiuShuiZhang2._0
             }
             else if (e.Control && e.KeyCode == Keys.C)
             {
-                button_CancelTran.PerformClick();
+                //button_CancelTran.PerformClick();
             }
 
         }
@@ -138,7 +140,8 @@ namespace LiuShuiZhang2._0
             #endregion
 
             dateTimePicker.MaxDate = DateTime.Now;
-            DAL_main = new DAL_Main();
+            DAL_liuShui = new DAL_LiuShui();
+            DAL_biZhong = new DAL_BiZhong();
             FillDataToForm();
         }
 
@@ -219,7 +222,7 @@ namespace LiuShuiZhang2._0
             {
                 groupBox_CashStatus.Enabled = true;
                 groupBox_Transaction.Enabled = true;
-                groupBox_CashCounting.Enabled = true;
+                groupBox_CashCounting.Enabled = false;
                 groupBox_LiuShui.Enabled = true;
             }
             else if (mode == 2) // viewing mode
@@ -237,7 +240,7 @@ namespace LiuShuiZhang2._0
 
             if (dataGridView_CashDetails.Rows.Count == 0) { dataGridView_CashDetails.Rows.Add(new DataGridViewRow()); }
 
-            DataTable dt_LastLiuShui = DAL_main.GetLastRecord();
+            DataTable dt_LastLiuShui = DAL_liuShui.GetLastRecord();
             
 
             if (dt_LastLiuShui.Rows.Count > 0)
@@ -262,7 +265,7 @@ namespace LiuShuiZhang2._0
                 else if (gg > 0)
                 {
                     ChangeWorkingMode(2);
-                    DataTable dt_PreviousLiuShui = DAL_main.GetRecordByDate(dateTimePicker.Value.Date);
+                    DataTable dt_PreviousLiuShui = DAL_liuShui.GetRecordByDate(dateTimePicker.Value.Date);
 
                     if (dt_PreviousLiuShui.Rows.Count > 0)
                     {
@@ -290,7 +293,7 @@ namespace LiuShuiZhang2._0
 
                     try
                     {
-                        DAL_main.AddNewLiuShui(CreateLiuShui());
+                        DAL_liuShui.AddNewLiuShui(CreateLiuShui());
                         MessageBox.Show(string.Format("{0}的流水账已经创新", dateTimePicker.Value.Date), "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Refresh();
 
@@ -311,7 +314,7 @@ namespace LiuShuiZhang2._0
                 }
                 try
                 {
-                    DAL_main.AddNewLiuShui(CreateLiuShui());
+                    DAL_liuShui.AddNewLiuShui(CreateLiuShui());
                     MessageBox.Show(string.Format("{0}的流水账已经创新", dateTimePicker.Value.Date), "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Refresh();
 
@@ -322,6 +325,14 @@ namespace LiuShuiZhang2._0
                 }
             }
             dataGridView_CashDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CashDetails_CellValueChanged);
+            #endregion
+
+            #region Load BiZhong
+
+            comboBox_Type.DataSource = DAL_biZhong.GetAllBiZhong();
+            comboBox_Type.DisplayMember = "BIZHONG";
+            comboBox_Type.ValueMember = "BIZHONGID";
+
             #endregion
         }
 

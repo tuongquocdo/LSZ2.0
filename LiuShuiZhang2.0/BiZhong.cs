@@ -27,6 +27,9 @@ namespace LiuShuiZhang2._0
             dataGridView_BiZhong.DataSource = DAL_BiZhong.GetAllBiZhong();
             dataGridView_BiZhong.Columns["BIZHONGID"].HeaderText = "币种码";
             dataGridView_BiZhong.Columns["BIZHONG"].HeaderText = "币种";
+            dataGridView_BiZhong.Columns["LIANG"].Visible = false;
+            dataGridView_BiZhong.Columns["PINGJUNJIA"].Visible = false;
+            dataGridView_BiZhong.Columns["YIGONG"].Visible = false;
             dataGridView_BiZhong.Columns["LEI"].HeaderText = "類";
             dataGridView_BiZhong.Columns["TINGYONG"].HeaderText = "停用";
 

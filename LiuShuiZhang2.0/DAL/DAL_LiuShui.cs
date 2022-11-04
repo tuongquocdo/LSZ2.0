@@ -10,7 +10,7 @@ using LiuShuiZhang2._0.BLL;
 
 namespace LiuShuiZhang2._0.DAL
 {
-    public class DAL_Main
+    public class DAL_LiuShui
     {
         public DataTable GetLastRecord()
         {
