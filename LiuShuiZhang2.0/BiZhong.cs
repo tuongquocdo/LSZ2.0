@@ -75,7 +75,8 @@ namespace LiuShuiZhang2._0
                         DAL_BiZhong.EditBiZhong(new BLL_BiZhong
                         {
                             BiZhongID = long.Parse(textBox_BiZhong.Tag.ToString()),
-                            Type = int.Parse(((RadioButton)panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked)).Tag.ToString()),
+                            BiZhong = textBox_BiZhong.Text,
+                            Type = int.Parse(panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Tag.ToString()),
                             Disable = checkBox_Disable.Checked
                         });
 
@@ -104,8 +105,8 @@ namespace LiuShuiZhang2._0
 
             textBox_BiZhong.Tag = dataGridView_BiZhong.CurrentRow.Cells["BIZHONGID"].Value.ToString();
             textBox_BiZhong.Text = dataGridView_BiZhong.CurrentRow.Cells["BIZHONG"].Value.ToString();
-            ((RadioButton)panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Tag.ToString()==dataGridView_BiZhong.CurrentRow.Cells["LEI"].Value.ToString())).Checked = true;
-            checkBox_Disable.Checked = ((Boolean)dataGridView_BiZhong.CurrentRow.Cells["TINGYONG"].Value);
+            panel_BiZhong.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Tag.ToString() == dataGridView_BiZhong.CurrentRow.Cells["LEI"].Value.ToString()).Checked = true;
+            checkBox_Disable.Checked = ((bool)dataGridView_BiZhong.CurrentRow.Cells["TINGYONG"].Value);
         }
 
         private bool CheckData(bool isEdit)
@@ -151,13 +152,13 @@ namespace LiuShuiZhang2._0
             {
                 button_Add.Enabled = false;
                 button_Update.Enabled = true;
-                textBox_BiZhong.Enabled = false;
+                
             }
             else
             {
                 button_Add.Enabled = true;
                 button_Update.Enabled = false;
-                textBox_BiZhong.Enabled = true;
+                
             }
         }
     }

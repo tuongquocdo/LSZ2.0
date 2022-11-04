@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,6 +25,25 @@ namespace LiuShuiZhang2._0
         private void Login_Load(object sender, EventArgs e)
         {
             DAL_user = new DAL_User();
+            if (DAL_user.GetAllUser().Rows.Count == 0)
+            {
+                try
+                {
+                    DAL_user.AddNewUser(new BLL_User
+                    {
+                        UserName = ConfigurationManager.AppSettings["DefaultAdminUser"].ToString(),
+                        PassWord = ConfigurationManager.AppSettings["DefaultAdminUserPassword"].ToString(),
+                        Permission = 1,
+                        Disable = false
+                    });
+                    MessageBox.Show("管理员账户已创建", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textBox_Username.Focus();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void EnterToNextControl(object sender, KeyEventArgs e)

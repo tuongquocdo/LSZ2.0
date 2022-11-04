@@ -65,14 +65,14 @@ namespace LiuShuiZhang2._0
             this.panel_BiZhong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_BiZhong.Location = new System.Drawing.Point(0, 0);
             this.panel_BiZhong.Name = "panel_BiZhong";
-            this.panel_BiZhong.Size = new System.Drawing.Size(584, 761);
+            this.panel_BiZhong.Size = new System.Drawing.Size(784, 761);
             this.panel_BiZhong.TabIndex = 0;
             // 
             // button_Clear
             // 
             this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Clear.ForeColor = System.Drawing.Color.Red;
-            this.button_Clear.Location = new System.Drawing.Point(510, 124);
+            this.button_Clear.Location = new System.Drawing.Point(710, 124);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(62, 35);
             this.button_Clear.TabIndex = 15;
@@ -122,7 +122,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_BiZhong.MultiSelect = false;
             this.dataGridView_BiZhong.Name = "dataGridView_BiZhong";
             this.dataGridView_BiZhong.ReadOnly = true;
-            this.dataGridView_BiZhong.Size = new System.Drawing.Size(552, 584);
+            this.dataGridView_BiZhong.Size = new System.Drawing.Size(752, 584);
             this.dataGridView_BiZhong.TabIndex = 12;
             this.dataGridView_BiZhong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_User_CellClick);
             // 
@@ -156,7 +156,7 @@ namespace LiuShuiZhang2._0
             this.radioButton4.AutoSize = true;
             this.radioButton4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton4.ForeColor = System.Drawing.Color.Red;
-            this.radioButton4.Location = new System.Drawing.Point(490, 52);
+            this.radioButton4.Location = new System.Drawing.Point(382, 50);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(82, 27);
             this.radioButton4.TabIndex = 8;
@@ -169,7 +169,7 @@ namespace LiuShuiZhang2._0
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.Red;
-            this.radioButton3.Location = new System.Drawing.Point(351, 52);
+            this.radioButton3.Location = new System.Drawing.Point(291, 50);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(82, 27);
             this.radioButton3.TabIndex = 8;
@@ -182,7 +182,7 @@ namespace LiuShuiZhang2._0
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.Red;
-            this.radioButton2.Location = new System.Drawing.Point(214, 52);
+            this.radioButton2.Location = new System.Drawing.Point(192, 50);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(82, 27);
             this.radioButton2.TabIndex = 8;
@@ -210,7 +210,7 @@ namespace LiuShuiZhang2._0
             this.textBox_BiZhong.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_BiZhong.Location = new System.Drawing.Point(109, 9);
             this.textBox_BiZhong.Name = "textBox_BiZhong";
-            this.textBox_BiZhong.Size = new System.Drawing.Size(463, 29);
+            this.textBox_BiZhong.Size = new System.Drawing.Size(663, 29);
             this.textBox_BiZhong.TabIndex = 1;
             // 
             // label1
@@ -228,7 +228,7 @@ namespace LiuShuiZhang2._0
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 761);
+            this.ClientSize = new System.Drawing.Size(784, 761);
             this.Controls.Add(this.panel_BiZhong);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
