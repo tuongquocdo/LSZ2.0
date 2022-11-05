@@ -29,9 +29,9 @@ namespace LiuShuiZhang2._0
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_User = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +85,7 @@ namespace LiuShuiZhang2._0
             this.comboBox_Type = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button_CancelTran = new System.Windows.Forms.Button();
             this.button_SaveTran = new System.Windows.Forms.Button();
             this.button_NextTran = new System.Windows.Forms.Button();
             this.numericUpDown_Total = new System.Windows.Forms.NumericUpDown();
@@ -134,7 +135,6 @@ namespace LiuShuiZhang2._0
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1_HandleUser = new System.Windows.Forms.Label();
-            this.button_CancelTran = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox_LiuShui.SuspendLayout();
@@ -914,6 +914,7 @@ namespace LiuShuiZhang2._0
             this.numericUpDown_Quan.TabIndex = 2;
             this.numericUpDown_Quan.Tag = "text";
             this.numericUpDown_Quan.ThousandsSeparator = true;
+            this.numericUpDown_Quan.ValueChanged += new System.EventHandler(this.numericUpDown_Quan_ValueChanged);
             this.numericUpDown_Quan.Enter += new System.EventHandler(this.NumericUpDown_Enter);
             this.numericUpDown_Quan.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
@@ -961,6 +962,16 @@ namespace LiuShuiZhang2._0
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(338, 124);
             this.panel4.TabIndex = 1;
+            // 
+            // button_CancelTran
+            // 
+            this.button_CancelTran.Location = new System.Drawing.Point(232, 82);
+            this.button_CancelTran.Name = "button_CancelTran";
+            this.button_CancelTran.Size = new System.Drawing.Size(100, 32);
+            this.button_CancelTran.TabIndex = 0;
+            this.button_CancelTran.TabStop = false;
+            this.button_CancelTran.Text = "取消(C)";
+            this.button_CancelTran.UseVisualStyleBackColor = true;
             // 
             // button_SaveTran
             // 
@@ -1388,8 +1399,6 @@ namespace LiuShuiZhang2._0
             this.numericUpDown_PreValue.TabStop = false;
             this.numericUpDown_PreValue.Tag = "display";
             this.numericUpDown_PreValue.ThousandsSeparator = true;
-            this.numericUpDown_PreValue.ValueChanged += new System.EventHandler(this.numericUpDown_PreValue_ValueChanged);
-            this.numericUpDown_PreValue.Leave += new System.EventHandler(this.numericUpDown_PreValue_Leave);
             // 
             // dataGridView_CashDetails
             // 
@@ -1401,14 +1410,14 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_CashDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView_CashDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_CashDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_CashDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._500000,
@@ -1420,15 +1429,15 @@ namespace LiuShuiZhang2._0
             this._5000,
             this._2000,
             this._1000});
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle26.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_CashDetails.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_CashDetails.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_CashDetails.EnableHeadersVisualStyles = false;
             this.dataGridView_CashDetails.Location = new System.Drawing.Point(7, 72);
             this.dataGridView_CashDetails.Margin = new System.Windows.Forms.Padding(0);
@@ -1436,11 +1445,11 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashDetails.Name = "dataGridView_CashDetails";
             this.dataGridView_CashDetails.ReadOnly = true;
             this.dataGridView_CashDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle27.Format = "N0";
-            dataGridViewCellStyle27.NullValue = "0";
-            dataGridViewCellStyle27.Padding = new System.Windows.Forms.Padding(2);
-            this.dataGridView_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = "0";
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(2);
+            this.dataGridView_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_CashDetails.RowTemplate.Height = 30;
             this.dataGridView_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_CashDetails.Size = new System.Drawing.Size(679, 60);
@@ -1562,16 +1571,6 @@ namespace LiuShuiZhang2._0
             this.label1_HandleUser.Size = new System.Drawing.Size(96, 24);
             this.label1_HandleUser.TabIndex = 3;
             this.label1_HandleUser.Text = "管理人员:";
-            // 
-            // button_CancelTran
-            // 
-            this.button_CancelTran.Location = new System.Drawing.Point(232, 82);
-            this.button_CancelTran.Name = "button_CancelTran";
-            this.button_CancelTran.Size = new System.Drawing.Size(100, 32);
-            this.button_CancelTran.TabIndex = 0;
-            this.button_CancelTran.TabStop = false;
-            this.button_CancelTran.Text = "取消(C)";
-            this.button_CancelTran.UseVisualStyleBackColor = true;
             // 
             // Main
             // 

@@ -119,6 +119,7 @@ namespace LiuShuiZhang2._0
 
         #region Main
 
+        #region From Main
         private void Main_Load(object sender, EventArgs e)
         {
             #region Handle User Permision
@@ -145,11 +146,20 @@ namespace LiuShuiZhang2._0
             FillDataToForm();
         }
 
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("确认退出？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                e.Cancel = true;
+        }
+
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             FillDataToForm();
         }
 
+        #endregion
+
+        #region Cash Status
         private void dataGridView_CashDetails_SelectionChanged(object sender, EventArgs e)
         {
             (sender as DataGridView).ClearSelection();
@@ -158,32 +168,24 @@ namespace LiuShuiZhang2._0
         private void dataGridView_CashDetails_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
-            numericUpDown_CountValue.Value = 
+            numericUpDown_CountValue.Value =
                 ((IEnumerable<DataGridViewColumn>)dataGridView_CashDetails.Columns.Cast<DataGridViewColumn>())
-                                            .Sum(item => int.Parse(dataGridView_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) * 
+                                            .Sum(item => int.Parse(dataGridView_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
                                                          int.Parse(item.Name.Split('_')[1].ToString()));
             numericUpDown_DeltaValue.Value = numericUpDown_CountValue.Value - numericUpDown_CurValue.Value;
         }
-
-        private void Main_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("确认退出？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                e.Cancel = true;
-        }
-
-        private void button_Fix_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button_CashCouterMode_Click(object sender, EventArgs e)
         {
             groupBox_CashCounting.Enabled = cashCountingMode = true;
             groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = false;
             ((Control)sender).Enabled = false;
             numericUpDown_500000.Focus();
-            
+
         }
+
+        #endregion
+
+        #region Transaction
 
         private void button_CancelCashCounting_Click(object sender, EventArgs e)
         {
@@ -193,16 +195,16 @@ namespace LiuShuiZhang2._0
             groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = true;
             button_CashCouterMode.Enabled = true;
         }
-
-        private void numericUpDown_PreValue_ValueChanged(object sender, EventArgs e)
+        private void numericUpDown_Quan_ValueChanged(object sender, EventArgs e)
         {
-            numericUpDown_CurValue.Value = ((NumericUpDown)sender).Value;
+
+        }
+        private void button_Fix_Click(object sender, EventArgs e)
+        {
+
         }
 
-        private void numericUpDown_PreValue_Leave(object sender, EventArgs e)
-        {
-            button_CashCouterMode.PerformClick();
-        }
+        #endregion
 
         #endregion
 
@@ -356,6 +358,7 @@ namespace LiuShuiZhang2._0
                 __1 = int.Parse(dataGridView_CashDetails.Rows[0].Cells["_1000"].Value.ToString()),
             };
         }
+
 
 
         #endregion
