@@ -57,15 +57,15 @@ namespace LiuShuiZhang2._0
             //For Begin Trans
             if (e.Control && e.KeyCode == Keys.A)
             {
-                comboBox_Type.Focus();
+                comboBox_Transaction_Type.Focus();
             }
             else if (e.Control && e.KeyCode == Keys.N)
             {
-                button_NextTran.PerformClick();
+                button_Transaction_NextTran.PerformClick();
             }
             else if (e.Control && e.KeyCode == Keys.S)
             {
-                button_SaveTran.PerformClick();
+                button_Transaction_SaveTran.PerformClick();
             }
             else if (e.Control && e.KeyCode == Keys.C)
             {
@@ -195,9 +195,10 @@ namespace LiuShuiZhang2._0
             groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = true;
             button_CashCouterMode.Enabled = true;
         }
-        private void numericUpDown_Quan_ValueChanged(object sender, EventArgs e)
+        private void numericUpDown_Transaction_ValueChanged(object sender, EventArgs e)
         {
-
+            numericUpDown_Transaction_Total.Value = 
+                Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000;
         }
         private void button_Fix_Click(object sender, EventArgs e)
         {
@@ -331,9 +332,9 @@ namespace LiuShuiZhang2._0
 
             #region Load BiZhong
 
-            comboBox_Type.DataSource = DAL_biZhong.GetAllBiZhong();
-            comboBox_Type.DisplayMember = "BIZHONG";
-            comboBox_Type.ValueMember = "BIZHONGID";
+            comboBox_Transaction_Type.DataSource = DAL_biZhong.GetAllBiZhong();
+            comboBox_Transaction_Type.DisplayMember = "BIZHONG";
+            comboBox_Transaction_Type.ValueMember = "BIZHONGID";
 
             #endregion
         }

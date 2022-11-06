@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -88,10 +89,14 @@ namespace LiuShuiZhang2._0
 
         public decimal Valued { get => valued; set => valued = value; }
 
+        private bool justDispaly = false;
+        public bool JustDispaly { get => justDispaly; set => justDispaly = value; }
+
         protected override void OnValueChanged(EventArgs e)
         {
             base.OnValueChanged(e);
             this.valued = this.Value;
         }
+       
     }
 }
