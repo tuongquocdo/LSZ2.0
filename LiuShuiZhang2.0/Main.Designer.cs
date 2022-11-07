@@ -29,9 +29,9 @@ namespace LiuShuiZhang2._0
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_User = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,25 +53,34 @@ namespace LiuShuiZhang2._0
             this.groupBox_CashCounting = new System.Windows.Forms.GroupBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel_CashCountingTable = new System.Windows.Forms.Panel();
-            this.button_CancelCashCounting = new System.Windows.Forms.Button();
-            this.button_SaveCashCounting = new System.Windows.Forms.Button();
-            this.numericUpDown_TotalCashCounting = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_CashCounting_50000 = new LiuShuiZhang2._0.NumericUpDownEx();
+            this.button_CashCounting_CancelCashCounting = new System.Windows.Forms.Button();
+            this.button_CashCounting_SaveCashCounting = new System.Windows.Forms.Button();
+            this.numericUpDown_CashCounting_TotalCashCounting = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label22 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.numericUpDown_CashCounting_1000 = new LiuShuiZhang2._0.NumericUpDownEx();
+            this.numericUpDown_CashCounting_500000 = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label19 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.numericUpDown_CashCounting_2000 = new LiuShuiZhang2._0.NumericUpDownEx();
+            this.numericUpDown_CashCounting_200000 = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label20 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.numericUpDown_CashCounting_5000 = new LiuShuiZhang2._0.NumericUpDownEx();
+            this.numericUpDown_CashCounting_100000 = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.numericUpDown_CashCounting_10000 = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.numericUpDown_CashCounting_20000 = new LiuShuiZhang2._0.NumericUpDownEx();
             this.groupBox_Transaction = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.numericUpDown_Transaction_Price = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Transaction_Price = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown_Transaction_Quan = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Transaction_Quan = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox_Transaction_Type = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -79,7 +88,7 @@ namespace LiuShuiZhang2._0
             this.button_Transaction_CancelTran = new System.Windows.Forms.Button();
             this.button_Transaction_SaveTran = new System.Windows.Forms.Button();
             this.button_Transaction_NextTran = new System.Windows.Forms.Button();
-            this.numericUpDown_Transaction_Total = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Transaction_Total = new LiuShuiZhang2._0.NumericUpDownEx();
             this.textBox_Transaction_Note = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -97,22 +106,22 @@ namespace LiuShuiZhang2._0
             this.panel6 = new System.Windows.Forms.Panel();
             this.button_Transaction_Fix = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.numericUpDown_Transaction_Fix = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Transaction_Fix = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown_Transaction_TotalAll = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_Transaction_TotalAll = new LiuShuiZhang2._0.NumericUpDownEx();
             this.groupBox_CashStatus = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button_CashCouterMode = new System.Windows.Forms.Button();
-            this.numericUpDown_CountValue = new System.Windows.Forms.NumericUpDown();
+            this.button_CashStatus_CashCouterMode = new System.Windows.Forms.Button();
+            this.numericUpDown_CashStatus_CountValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.numericUpDown_DeltaValue = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_CashStatus_DeltaValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown_CurValue = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_CashStatus_CurValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown_PreValue = new System.Windows.Forms.NumericUpDown();
-            this.dataGridView_CashDetails = new System.Windows.Forms.DataGridView();
+            this.numericUpDown_CashStatus_PreValue = new LiuShuiZhang2._0.NumericUpDownEx();
+            this.dataGridView_CashStatus_CashDetails = new System.Windows.Forms.DataGridView();
             this._500000 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._200000 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._100000 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -126,16 +135,6 @@ namespace LiuShuiZhang2._0
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1_HandleUser = new System.Windows.Forms.Label();
-            this.numericUpDownEx1 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_50000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_1000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_500000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_2000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_200000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_5000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_100000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_10000 = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.numericUpDown_20000 = new LiuShuiZhang2._0.NumericUpDownEx();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox_LiuShui.SuspendLayout();
@@ -144,7 +143,16 @@ namespace LiuShuiZhang2._0
             this.groupBox_CashCounting.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel_CashCountingTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TotalCashCounting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_50000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_TotalCashCounting)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_1000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_500000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_2000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_200000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_5000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_100000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_10000)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_20000)).BeginInit();
             this.groupBox_Transaction.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -165,23 +173,13 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Transaction_TotalAll)).BeginInit();
             this.groupBox_CashStatus.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CountValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_CountValue)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DeltaValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PreValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CashDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_DeltaValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_CurValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_PreValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CashStatus_CashDetails)).BeginInit();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEx1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_50000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_1000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_500000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_2000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_200000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_5000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_100000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_10000)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_20000)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -385,75 +383,121 @@ namespace LiuShuiZhang2._0
             // panel_CashCountingTable
             // 
             this.panel_CashCountingTable.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_50000);
-            this.panel_CashCountingTable.Controls.Add(this.button_CancelCashCounting);
-            this.panel_CashCountingTable.Controls.Add(this.button_SaveCashCounting);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_TotalCashCounting);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_50000);
+            this.panel_CashCountingTable.Controls.Add(this.button_CashCounting_CancelCashCounting);
+            this.panel_CashCountingTable.Controls.Add(this.button_CashCounting_SaveCashCounting);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_TotalCashCounting);
             this.panel_CashCountingTable.Controls.Add(this.label22);
             this.panel_CashCountingTable.Controls.Add(this.label13);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_1000);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_500000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_1000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_500000);
             this.panel_CashCountingTable.Controls.Add(this.label19);
             this.panel_CashCountingTable.Controls.Add(this.label14);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_2000);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_200000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_2000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_200000);
             this.panel_CashCountingTable.Controls.Add(this.label20);
             this.panel_CashCountingTable.Controls.Add(this.label15);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_5000);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_100000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_5000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_100000);
             this.panel_CashCountingTable.Controls.Add(this.label21);
             this.panel_CashCountingTable.Controls.Add(this.label18);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_10000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_10000);
             this.panel_CashCountingTable.Controls.Add(this.label16);
             this.panel_CashCountingTable.Controls.Add(this.label17);
-            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_20000);
+            this.panel_CashCountingTable.Controls.Add(this.numericUpDown_CashCounting_20000);
             this.panel_CashCountingTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_CashCountingTable.Location = new System.Drawing.Point(0, 0);
             this.panel_CashCountingTable.Name = "panel_CashCountingTable";
             this.panel_CashCountingTable.Size = new System.Drawing.Size(748, 206);
             this.panel_CashCountingTable.TabIndex = 0;
             // 
-            // button_CancelCashCounting
+            // numericUpDown_CashCounting_50000
             // 
-            this.button_CancelCashCounting.Location = new System.Drawing.Point(146, 152);
-            this.button_CancelCashCounting.Name = "button_CancelCashCounting";
-            this.button_CancelCashCounting.Size = new System.Drawing.Size(100, 32);
-            this.button_CancelCashCounting.TabIndex = 0;
-            this.button_CancelCashCounting.TabStop = false;
-            this.button_CancelCashCounting.Text = "取消";
-            this.button_CancelCashCounting.UseVisualStyleBackColor = true;
-            this.button_CancelCashCounting.Click += new System.EventHandler(this.button_CancelCashCounting_Click);
-            // 
-            // button_SaveCashCounting
-            // 
-            this.button_SaveCashCounting.Location = new System.Drawing.Point(40, 152);
-            this.button_SaveCashCounting.Name = "button_SaveCashCounting";
-            this.button_SaveCashCounting.Size = new System.Drawing.Size(100, 32);
-            this.button_SaveCashCounting.TabIndex = 15;
-            this.button_SaveCashCounting.Text = "确认";
-            this.button_SaveCashCounting.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown_TotalCashCounting
-            // 
-            this.numericUpDown_TotalCashCounting.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_TotalCashCounting.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown_TotalCashCounting.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_TotalCashCounting.Location = new System.Drawing.Point(88, 118);
-            this.numericUpDown_TotalCashCounting.Maximum = new decimal(new int[] {
+            this.numericUpDown_CashCounting_50000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_50000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_50000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_50000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_50000.Location = new System.Drawing.Point(262, 10);
+            this.numericUpDown_CashCounting_50000.Maximum = new decimal(new int[] {
             -727379969,
             232,
             0,
             0});
-            this.numericUpDown_TotalCashCounting.Minimum = new decimal(new int[] {
+            this.numericUpDown_CashCounting_50000.Minimum = new decimal(new int[] {
             -727379969,
             232,
             0,
             -2147483648});
-            this.numericUpDown_TotalCashCounting.Name = "numericUpDown_TotalCashCounting";
-            this.numericUpDown_TotalCashCounting.Size = new System.Drawing.Size(421, 25);
-            this.numericUpDown_TotalCashCounting.TabIndex = 0;
-            this.numericUpDown_TotalCashCounting.Tag = "display";
-            this.numericUpDown_TotalCashCounting.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_50000.Name = "numericUpDown_CashCounting_50000";
+            this.numericUpDown_CashCounting_50000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_50000.TabIndex = 9;
+            this.numericUpDown_CashCounting_50000.Tag = "text";
+            this.numericUpDown_CashCounting_50000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_50000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_50000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_50000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_50000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
+            // button_CashCounting_CancelCashCounting
+            // 
+            this.button_CashCounting_CancelCashCounting.Location = new System.Drawing.Point(146, 152);
+            this.button_CashCounting_CancelCashCounting.Name = "button_CashCounting_CancelCashCounting";
+            this.button_CashCounting_CancelCashCounting.Size = new System.Drawing.Size(100, 32);
+            this.button_CashCounting_CancelCashCounting.TabIndex = 0;
+            this.button_CashCounting_CancelCashCounting.TabStop = false;
+            this.button_CashCounting_CancelCashCounting.Text = "取消";
+            this.button_CashCounting_CancelCashCounting.UseVisualStyleBackColor = true;
+            this.button_CashCounting_CancelCashCounting.Click += new System.EventHandler(this.button_CancelCashCounting_Click);
+            // 
+            // button_CashCounting_SaveCashCounting
+            // 
+            this.button_CashCounting_SaveCashCounting.Location = new System.Drawing.Point(40, 152);
+            this.button_CashCounting_SaveCashCounting.Name = "button_CashCounting_SaveCashCounting";
+            this.button_CashCounting_SaveCashCounting.Size = new System.Drawing.Size(100, 32);
+            this.button_CashCounting_SaveCashCounting.TabIndex = 15;
+            this.button_CashCounting_SaveCashCounting.Text = "确认";
+            this.button_CashCounting_SaveCashCounting.UseVisualStyleBackColor = true;
+            // 
+            // numericUpDown_CashCounting_TotalCashCounting
+            // 
+            this.numericUpDown_CashCounting_TotalCashCounting.BackColor = System.Drawing.SystemColors.Info;
+            this.numericUpDown_CashCounting_TotalCashCounting.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_TotalCashCounting.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_TotalCashCounting.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_TotalCashCounting.Location = new System.Drawing.Point(88, 118);
+            this.numericUpDown_CashCounting_TotalCashCounting.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_TotalCashCounting.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_TotalCashCounting.Name = "numericUpDown_CashCounting_TotalCashCounting";
+            this.numericUpDown_CashCounting_TotalCashCounting.ReadOnly = true;
+            this.numericUpDown_CashCounting_TotalCashCounting.Size = new System.Drawing.Size(421, 25);
+            this.numericUpDown_CashCounting_TotalCashCounting.TabIndex = 0;
+            this.numericUpDown_CashCounting_TotalCashCounting.Tag = "display";
+            this.numericUpDown_CashCounting_TotalCashCounting.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_TotalCashCounting.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // label22
             // 
@@ -475,6 +519,76 @@ namespace LiuShuiZhang2._0
             this.label13.TabIndex = 3;
             this.label13.Text = "500K";
             // 
+            // numericUpDown_CashCounting_1000
+            // 
+            this.numericUpDown_CashCounting_1000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_1000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_1000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_1000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_1000.Location = new System.Drawing.Point(424, 81);
+            this.numericUpDown_CashCounting_1000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_1000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_1000.Name = "numericUpDown_CashCounting_1000";
+            this.numericUpDown_CashCounting_1000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_1000.TabIndex = 14;
+            this.numericUpDown_CashCounting_1000.Tag = "text";
+            this.numericUpDown_CashCounting_1000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_1000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_1000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_1000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_1000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
+            // numericUpDown_CashCounting_500000
+            // 
+            this.numericUpDown_CashCounting_500000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_500000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_500000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_500000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_500000.Location = new System.Drawing.Point(88, 10);
+            this.numericUpDown_CashCounting_500000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_500000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_500000.Name = "numericUpDown_CashCounting_500000";
+            this.numericUpDown_CashCounting_500000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_500000.TabIndex = 6;
+            this.numericUpDown_CashCounting_500000.Tag = "text";
+            this.numericUpDown_CashCounting_500000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_500000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_500000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_500000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_500000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -494,6 +608,76 @@ namespace LiuShuiZhang2._0
             this.label14.Size = new System.Drawing.Size(47, 23);
             this.label14.TabIndex = 5;
             this.label14.Text = "200K";
+            // 
+            // numericUpDown_CashCounting_2000
+            // 
+            this.numericUpDown_CashCounting_2000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_2000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_2000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_2000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_2000.Location = new System.Drawing.Point(424, 46);
+            this.numericUpDown_CashCounting_2000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_2000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_2000.Name = "numericUpDown_CashCounting_2000";
+            this.numericUpDown_CashCounting_2000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_2000.TabIndex = 13;
+            this.numericUpDown_CashCounting_2000.Tag = "text";
+            this.numericUpDown_CashCounting_2000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_2000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_2000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_2000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_2000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
+            // numericUpDown_CashCounting_200000
+            // 
+            this.numericUpDown_CashCounting_200000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_200000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_200000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_200000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_200000.Location = new System.Drawing.Point(88, 46);
+            this.numericUpDown_CashCounting_200000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_200000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_200000.Name = "numericUpDown_CashCounting_200000";
+            this.numericUpDown_CashCounting_200000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_200000.TabIndex = 7;
+            this.numericUpDown_CashCounting_200000.Tag = "text";
+            this.numericUpDown_CashCounting_200000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_200000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_200000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_200000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_200000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // label20
             // 
@@ -515,6 +699,76 @@ namespace LiuShuiZhang2._0
             this.label15.TabIndex = 7;
             this.label15.Text = "100K";
             // 
+            // numericUpDown_CashCounting_5000
+            // 
+            this.numericUpDown_CashCounting_5000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_5000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_5000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_5000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_5000.Location = new System.Drawing.Point(424, 10);
+            this.numericUpDown_CashCounting_5000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_5000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_5000.Name = "numericUpDown_CashCounting_5000";
+            this.numericUpDown_CashCounting_5000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_5000.TabIndex = 12;
+            this.numericUpDown_CashCounting_5000.Tag = "text";
+            this.numericUpDown_CashCounting_5000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_5000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_5000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_5000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_5000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
+            // numericUpDown_CashCounting_100000
+            // 
+            this.numericUpDown_CashCounting_100000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_100000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_100000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_100000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_100000.Location = new System.Drawing.Point(88, 81);
+            this.numericUpDown_CashCounting_100000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_100000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_100000.Name = "numericUpDown_CashCounting_100000";
+            this.numericUpDown_CashCounting_100000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_100000.TabIndex = 8;
+            this.numericUpDown_CashCounting_100000.Tag = "text";
+            this.numericUpDown_CashCounting_100000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_100000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_100000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_100000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_100000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -535,6 +789,41 @@ namespace LiuShuiZhang2._0
             this.label18.TabIndex = 9;
             this.label18.Text = "50K";
             // 
+            // numericUpDown_CashCounting_10000
+            // 
+            this.numericUpDown_CashCounting_10000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_10000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_10000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_10000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_10000.Location = new System.Drawing.Point(262, 81);
+            this.numericUpDown_CashCounting_10000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_10000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_10000.Name = "numericUpDown_CashCounting_10000";
+            this.numericUpDown_CashCounting_10000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_10000.TabIndex = 11;
+            this.numericUpDown_CashCounting_10000.Tag = "text";
+            this.numericUpDown_CashCounting_10000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_10000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_10000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_10000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_10000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -554,6 +843,41 @@ namespace LiuShuiZhang2._0
             this.label17.Size = new System.Drawing.Size(38, 23);
             this.label17.TabIndex = 11;
             this.label17.Text = "20K";
+            // 
+            // numericUpDown_CashCounting_20000
+            // 
+            this.numericUpDown_CashCounting_20000.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_CashCounting_20000.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashCounting_20000.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashCounting_20000.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_20000.Location = new System.Drawing.Point(262, 46);
+            this.numericUpDown_CashCounting_20000.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.numericUpDown_CashCounting_20000.Minimum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            -2147483648});
+            this.numericUpDown_CashCounting_20000.Name = "numericUpDown_CashCounting_20000";
+            this.numericUpDown_CashCounting_20000.Size = new System.Drawing.Size(85, 25);
+            this.numericUpDown_CashCounting_20000.TabIndex = 10;
+            this.numericUpDown_CashCounting_20000.Tag = "text";
+            this.numericUpDown_CashCounting_20000.ThousandsSeparator = true;
+            this.numericUpDown_CashCounting_20000.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashCounting_20000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
+            this.numericUpDown_CashCounting_20000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
+            this.numericUpDown_CashCounting_20000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // groupBox_Transaction
             // 
@@ -603,8 +927,14 @@ namespace LiuShuiZhang2._0
             // numericUpDown_Transaction_Price
             // 
             this.numericUpDown_Transaction_Price.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_Transaction_Price.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown_Transaction_Price.DecimalPlaces = 2;
             this.numericUpDown_Transaction_Price.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_Transaction_Price.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_Price.Location = new System.Drawing.Point(58, 85);
             this.numericUpDown_Transaction_Price.Maximum = new decimal(new int[] {
             -727379969,
@@ -617,10 +947,15 @@ namespace LiuShuiZhang2._0
             0,
             -2147483648});
             this.numericUpDown_Transaction_Price.Name = "numericUpDown_Transaction_Price";
-            this.numericUpDown_Transaction_Price.Size = new System.Drawing.Size(283, 29);
+            this.numericUpDown_Transaction_Price.Size = new System.Drawing.Size(267, 25);
             this.numericUpDown_Transaction_Price.TabIndex = 3;
-            this.numericUpDown_Transaction_Price.Tag = "text";
+            this.numericUpDown_Transaction_Price.Tag = "";
             this.numericUpDown_Transaction_Price.ThousandsSeparator = true;
+            this.numericUpDown_Transaction_Price.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_Price.ValueChanged += new System.EventHandler(this.numericUpDown_Transaction_ValueChanged);
             this.numericUpDown_Transaction_Price.Enter += new System.EventHandler(this.NumericUpDown_Enter);
             this.numericUpDown_Transaction_Price.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
@@ -638,8 +973,14 @@ namespace LiuShuiZhang2._0
             // numericUpDown_Transaction_Quan
             // 
             this.numericUpDown_Transaction_Quan.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_Transaction_Quan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown_Transaction_Quan.DecimalPlaces = 2;
             this.numericUpDown_Transaction_Quan.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_Transaction_Quan.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_Quan.Location = new System.Drawing.Point(58, 48);
             this.numericUpDown_Transaction_Quan.Maximum = new decimal(new int[] {
             -727379969,
@@ -652,10 +993,15 @@ namespace LiuShuiZhang2._0
             0,
             -2147483648});
             this.numericUpDown_Transaction_Quan.Name = "numericUpDown_Transaction_Quan";
-            this.numericUpDown_Transaction_Quan.Size = new System.Drawing.Size(283, 29);
+            this.numericUpDown_Transaction_Quan.Size = new System.Drawing.Size(267, 25);
             this.numericUpDown_Transaction_Quan.TabIndex = 2;
-            this.numericUpDown_Transaction_Quan.Tag = "text";
+            this.numericUpDown_Transaction_Quan.Tag = "";
             this.numericUpDown_Transaction_Quan.ThousandsSeparator = true;
+            this.numericUpDown_Transaction_Quan.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_Quan.ValueChanged += new System.EventHandler(this.numericUpDown_Transaction_ValueChanged);
             this.numericUpDown_Transaction_Quan.Enter += new System.EventHandler(this.NumericUpDown_Enter);
             this.numericUpDown_Transaction_Quan.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
@@ -736,9 +1082,14 @@ namespace LiuShuiZhang2._0
             // 
             // numericUpDown_Transaction_Total
             // 
-            this.numericUpDown_Transaction_Total.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_Transaction_Total.BackColor = System.Drawing.SystemColors.Info;
             this.numericUpDown_Transaction_Total.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown_Transaction_Total.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_Transaction_Total.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_Total.Location = new System.Drawing.Point(62, 51);
             this.numericUpDown_Transaction_Total.Maximum = new decimal(new int[] {
             -727379969,
@@ -751,11 +1102,17 @@ namespace LiuShuiZhang2._0
             0,
             -2147483648});
             this.numericUpDown_Transaction_Total.Name = "numericUpDown_Transaction_Total";
-            this.numericUpDown_Transaction_Total.Size = new System.Drawing.Size(288, 25);
+            this.numericUpDown_Transaction_Total.ReadOnly = true;
+            this.numericUpDown_Transaction_Total.Size = new System.Drawing.Size(270, 25);
             this.numericUpDown_Transaction_Total.TabIndex = 0;
             this.numericUpDown_Transaction_Total.TabStop = false;
-            this.numericUpDown_Transaction_Total.Tag = "display";
+            this.numericUpDown_Transaction_Total.Tag = "";
             this.numericUpDown_Transaction_Total.ThousandsSeparator = true;
+            this.numericUpDown_Transaction_Total.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // textBox_Transaction_Note
             // 
@@ -880,7 +1237,7 @@ namespace LiuShuiZhang2._0
             this.panel8.Controls.Add(this.button_ClearTemp);
             this.panel8.Controls.Add(this.button_GetTemp);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(3, 322);
+            this.panel8.Location = new System.Drawing.Point(3, 312);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(662, 40);
             this.panel8.TabIndex = 4;
@@ -939,12 +1296,34 @@ namespace LiuShuiZhang2._0
             // 
             // numericUpDown_Transaction_Fix
             // 
+            this.numericUpDown_Transaction_Fix.BackColor = System.Drawing.SystemColors.Window;
+            this.numericUpDown_Transaction_Fix.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_Transaction_Fix.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_Fix.Location = new System.Drawing.Point(370, 15);
+            this.numericUpDown_Transaction_Fix.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numericUpDown_Transaction_Fix.Minimum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            -2147483648});
             this.numericUpDown_Transaction_Fix.Name = "numericUpDown_Transaction_Fix";
-            this.numericUpDown_Transaction_Fix.Size = new System.Drawing.Size(180, 29);
+            this.numericUpDown_Transaction_Fix.Size = new System.Drawing.Size(180, 25);
             this.numericUpDown_Transaction_Fix.TabIndex = 0;
             this.numericUpDown_Transaction_Fix.TabStop = false;
-            this.numericUpDown_Transaction_Fix.Tag = "display";
+            this.numericUpDown_Transaction_Fix.Tag = "";
+            this.numericUpDown_Transaction_Fix.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // label10
             // 
@@ -958,19 +1337,42 @@ namespace LiuShuiZhang2._0
             // 
             // numericUpDown_Transaction_TotalAll
             // 
+            this.numericUpDown_Transaction_TotalAll.BackColor = System.Drawing.SystemColors.Info;
+            this.numericUpDown_Transaction_TotalAll.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_Transaction_TotalAll.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_Transaction_TotalAll.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.numericUpDown_Transaction_TotalAll.Location = new System.Drawing.Point(58, 15);
+            this.numericUpDown_Transaction_TotalAll.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numericUpDown_Transaction_TotalAll.Minimum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            -2147483648});
             this.numericUpDown_Transaction_TotalAll.Name = "numericUpDown_Transaction_TotalAll";
-            this.numericUpDown_Transaction_TotalAll.Size = new System.Drawing.Size(180, 29);
+            this.numericUpDown_Transaction_TotalAll.ReadOnly = true;
+            this.numericUpDown_Transaction_TotalAll.Size = new System.Drawing.Size(180, 25);
             this.numericUpDown_Transaction_TotalAll.TabIndex = 0;
             this.numericUpDown_Transaction_TotalAll.TabStop = false;
-            this.numericUpDown_Transaction_TotalAll.Tag = "display";
+            this.numericUpDown_Transaction_TotalAll.Tag = "";
+            this.numericUpDown_Transaction_TotalAll.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // groupBox_CashStatus
             // 
-            this.groupBox_CashStatus.Controls.Add(this.numericUpDownEx1);
             this.groupBox_CashStatus.Controls.Add(this.panel2);
             this.groupBox_CashStatus.Controls.Add(this.panel1);
-            this.groupBox_CashStatus.Controls.Add(this.dataGridView_CashDetails);
+            this.groupBox_CashStatus.Controls.Add(this.dataGridView_CashStatus_CashDetails);
             this.groupBox_CashStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox_CashStatus.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_CashStatus.ForeColor = System.Drawing.Color.Red;
@@ -984,42 +1386,58 @@ namespace LiuShuiZhang2._0
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button_CashCouterMode);
-            this.panel2.Controls.Add(this.numericUpDown_CountValue);
+            this.panel2.Controls.Add(this.button_CashStatus_CashCouterMode);
+            this.panel2.Controls.Add(this.numericUpDown_CashStatus_CountValue);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(7, 136);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(679, 40);
             this.panel2.TabIndex = 0;
             // 
-            // button_CashCouterMode
+            // button_CashStatus_CashCouterMode
             // 
-            this.button_CashCouterMode.Location = new System.Drawing.Point(574, 4);
-            this.button_CashCouterMode.Name = "button_CashCouterMode";
-            this.button_CashCouterMode.Size = new System.Drawing.Size(100, 32);
-            this.button_CashCouterMode.TabIndex = 0;
-            this.button_CashCouterMode.TabStop = false;
-            this.button_CashCouterMode.Text = "点算";
-            this.button_CashCouterMode.UseVisualStyleBackColor = true;
-            this.button_CashCouterMode.Click += new System.EventHandler(this.button_CashCouterMode_Click);
+            this.button_CashStatus_CashCouterMode.Location = new System.Drawing.Point(574, 4);
+            this.button_CashStatus_CashCouterMode.Name = "button_CashStatus_CashCouterMode";
+            this.button_CashStatus_CashCouterMode.Size = new System.Drawing.Size(100, 32);
+            this.button_CashStatus_CashCouterMode.TabIndex = 0;
+            this.button_CashStatus_CashCouterMode.TabStop = false;
+            this.button_CashStatus_CashCouterMode.Text = "点算";
+            this.button_CashStatus_CashCouterMode.UseVisualStyleBackColor = true;
+            this.button_CashStatus_CashCouterMode.Click += new System.EventHandler(this.button_CashCouterMode_Click);
             // 
-            // numericUpDown_CountValue
+            // numericUpDown_CashStatus_CountValue
             // 
-            this.numericUpDown_CountValue.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_CountValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown_CountValue.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_CountValue.Location = new System.Drawing.Point(72, 9);
-            this.numericUpDown_CountValue.Maximum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_CountValue.BackColor = System.Drawing.SystemColors.Info;
+            this.numericUpDown_CashStatus_CountValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashStatus_CountValue.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashStatus_CountValue.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashStatus_CountValue.Location = new System.Drawing.Point(72, 9);
+            this.numericUpDown_CashStatus_CountValue.Maximum = new decimal(new int[] {
             -727379969,
             232,
             0,
             0});
-            this.numericUpDown_CountValue.Name = "numericUpDown_CountValue";
-            this.numericUpDown_CountValue.Size = new System.Drawing.Size(200, 25);
-            this.numericUpDown_CountValue.TabIndex = 0;
-            this.numericUpDown_CountValue.TabStop = false;
-            this.numericUpDown_CountValue.Tag = "display";
-            this.numericUpDown_CountValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_CountValue.Minimum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            -2147483648});
+            this.numericUpDown_CashStatus_CountValue.Name = "numericUpDown_CashStatus_CountValue";
+            this.numericUpDown_CashStatus_CountValue.ReadOnly = true;
+            this.numericUpDown_CashStatus_CountValue.Size = new System.Drawing.Size(200, 25);
+            this.numericUpDown_CashStatus_CountValue.TabIndex = 0;
+            this.numericUpDown_CashStatus_CountValue.TabStop = false;
+            this.numericUpDown_CashStatus_CountValue.Tag = "";
+            this.numericUpDown_CashStatus_CountValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_CountValue.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // label4
             // 
@@ -1033,39 +1451,50 @@ namespace LiuShuiZhang2._0
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.numericUpDown_DeltaValue);
+            this.panel1.Controls.Add(this.numericUpDown_CashStatus_DeltaValue);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.numericUpDown_CurValue);
+            this.panel1.Controls.Add(this.numericUpDown_CashStatus_CurValue);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.numericUpDown_PreValue);
+            this.panel1.Controls.Add(this.numericUpDown_CashStatus_PreValue);
             this.panel1.Location = new System.Drawing.Point(7, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(679, 40);
             this.panel1.TabIndex = 0;
             // 
-            // numericUpDown_DeltaValue
+            // numericUpDown_CashStatus_DeltaValue
             // 
-            this.numericUpDown_DeltaValue.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_DeltaValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown_DeltaValue.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_DeltaValue.Location = new System.Drawing.Point(504, 8);
-            this.numericUpDown_DeltaValue.Maximum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_DeltaValue.BackColor = System.Drawing.SystemColors.Info;
+            this.numericUpDown_CashStatus_DeltaValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashStatus_DeltaValue.ForeColor = System.Drawing.Color.Red;
+            this.numericUpDown_CashStatus_DeltaValue.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashStatus_DeltaValue.Location = new System.Drawing.Point(504, 8);
+            this.numericUpDown_CashStatus_DeltaValue.Maximum = new decimal(new int[] {
             -727379969,
             232,
             0,
             0});
-            this.numericUpDown_DeltaValue.Minimum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_DeltaValue.Minimum = new decimal(new int[] {
             -727379969,
             232,
             0,
             -2147483648});
-            this.numericUpDown_DeltaValue.Name = "numericUpDown_DeltaValue";
-            this.numericUpDown_DeltaValue.Size = new System.Drawing.Size(188, 25);
-            this.numericUpDown_DeltaValue.TabIndex = 0;
-            this.numericUpDown_DeltaValue.TabStop = false;
-            this.numericUpDown_DeltaValue.Tag = "display";
-            this.numericUpDown_DeltaValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_DeltaValue.Name = "numericUpDown_CashStatus_DeltaValue";
+            this.numericUpDown_CashStatus_DeltaValue.ReadOnly = true;
+            this.numericUpDown_CashStatus_DeltaValue.Size = new System.Drawing.Size(170, 25);
+            this.numericUpDown_CashStatus_DeltaValue.TabIndex = 0;
+            this.numericUpDown_CashStatus_DeltaValue.TabStop = false;
+            this.numericUpDown_CashStatus_DeltaValue.Tag = "";
+            this.numericUpDown_CashStatus_DeltaValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_DeltaValue.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -1077,28 +1506,39 @@ namespace LiuShuiZhang2._0
             this.label1.TabIndex = 0;
             this.label1.Text = "前额";
             // 
-            // numericUpDown_CurValue
+            // numericUpDown_CashStatus_CurValue
             // 
-            this.numericUpDown_CurValue.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_CurValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown_CurValue.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_CurValue.Location = new System.Drawing.Point(280, 8);
-            this.numericUpDown_CurValue.Maximum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_CurValue.BackColor = System.Drawing.SystemColors.Info;
+            this.numericUpDown_CashStatus_CurValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashStatus_CurValue.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_CashStatus_CurValue.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashStatus_CurValue.Location = new System.Drawing.Point(280, 8);
+            this.numericUpDown_CashStatus_CurValue.Maximum = new decimal(new int[] {
             -727379969,
             232,
             0,
             0});
-            this.numericUpDown_CurValue.Minimum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_CurValue.Minimum = new decimal(new int[] {
             -727379969,
             232,
             0,
             -2147483648});
-            this.numericUpDown_CurValue.Name = "numericUpDown_CurValue";
-            this.numericUpDown_CurValue.Size = new System.Drawing.Size(165, 25);
-            this.numericUpDown_CurValue.TabIndex = 0;
-            this.numericUpDown_CurValue.TabStop = false;
-            this.numericUpDown_CurValue.Tag = "display";
-            this.numericUpDown_CurValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_CurValue.Name = "numericUpDown_CashStatus_CurValue";
+            this.numericUpDown_CashStatus_CurValue.ReadOnly = true;
+            this.numericUpDown_CashStatus_CurValue.Size = new System.Drawing.Size(165, 25);
+            this.numericUpDown_CashStatus_CurValue.TabIndex = 0;
+            this.numericUpDown_CashStatus_CurValue.TabStop = false;
+            this.numericUpDown_CashStatus_CurValue.Tag = "";
+            this.numericUpDown_CashStatus_CurValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_CurValue.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -1120,49 +1560,60 @@ namespace LiuShuiZhang2._0
             this.label2.TabIndex = 0;
             this.label2.Text = "现额";
             // 
-            // numericUpDown_PreValue
+            // numericUpDown_CashStatus_PreValue
             // 
-            this.numericUpDown_PreValue.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_PreValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.numericUpDown_PreValue.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_PreValue.Location = new System.Drawing.Point(55, 8);
-            this.numericUpDown_PreValue.Maximum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_PreValue.BackColor = System.Drawing.SystemColors.Info;
+            this.numericUpDown_CashStatus_PreValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.numericUpDown_CashStatus_PreValue.ForeColor = System.Drawing.Color.Black;
+            this.numericUpDown_CashStatus_PreValue.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.numericUpDown_CashStatus_PreValue.Location = new System.Drawing.Point(55, 8);
+            this.numericUpDown_CashStatus_PreValue.Maximum = new decimal(new int[] {
             -727379969,
             232,
             0,
             0});
-            this.numericUpDown_PreValue.Minimum = new decimal(new int[] {
+            this.numericUpDown_CashStatus_PreValue.Minimum = new decimal(new int[] {
             -727379969,
             232,
             0,
             -2147483648});
-            this.numericUpDown_PreValue.Name = "numericUpDown_PreValue";
-            this.numericUpDown_PreValue.Size = new System.Drawing.Size(165, 25);
-            this.numericUpDown_PreValue.TabIndex = 0;
-            this.numericUpDown_PreValue.TabStop = false;
-            this.numericUpDown_PreValue.Tag = "display";
-            this.numericUpDown_PreValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_PreValue.Name = "numericUpDown_CashStatus_PreValue";
+            this.numericUpDown_CashStatus_PreValue.ReadOnly = true;
+            this.numericUpDown_CashStatus_PreValue.Size = new System.Drawing.Size(165, 25);
+            this.numericUpDown_CashStatus_PreValue.TabIndex = 0;
+            this.numericUpDown_CashStatus_PreValue.TabStop = false;
+            this.numericUpDown_CashStatus_PreValue.Tag = "";
+            this.numericUpDown_CashStatus_PreValue.ThousandsSeparator = true;
+            this.numericUpDown_CashStatus_PreValue.Valued = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             // 
-            // dataGridView_CashDetails
+            // dataGridView_CashStatus_CashDetails
             // 
-            this.dataGridView_CashDetails.AllowUserToAddRows = false;
-            this.dataGridView_CashDetails.AllowUserToDeleteRows = false;
-            this.dataGridView_CashDetails.AllowUserToResizeColumns = false;
-            this.dataGridView_CashDetails.AllowUserToResizeRows = false;
-            this.dataGridView_CashDetails.BackgroundColor = System.Drawing.SystemColors.Info;
-            this.dataGridView_CashDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView_CashDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView_CashDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGridView_CashDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_CashDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView_CashStatus_CashDetails.AllowUserToAddRows = false;
+            this.dataGridView_CashStatus_CashDetails.AllowUserToDeleteRows = false;
+            this.dataGridView_CashStatus_CashDetails.AllowUserToResizeColumns = false;
+            this.dataGridView_CashStatus_CashDetails.AllowUserToResizeRows = false;
+            this.dataGridView_CashStatus_CashDetails.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dataGridView_CashStatus_CashDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView_CashStatus_CashDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView_CashStatus_CashDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView_CashStatus_CashDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_CashStatus_CashDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._500000,
             this._200000,
             this._100000,
@@ -1172,32 +1623,32 @@ namespace LiuShuiZhang2._0
             this._5000,
             this._2000,
             this._1000});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_CashDetails.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridView_CashDetails.EnableHeadersVisualStyles = false;
-            this.dataGridView_CashDetails.Location = new System.Drawing.Point(7, 72);
-            this.dataGridView_CashDetails.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView_CashDetails.MultiSelect = false;
-            this.dataGridView_CashDetails.Name = "dataGridView_CashDetails";
-            this.dataGridView_CashDetails.ReadOnly = true;
-            this.dataGridView_CashDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Format = "N0";
-            dataGridViewCellStyle15.NullValue = "0";
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(2);
-            this.dataGridView_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridView_CashDetails.RowTemplate.Height = 30;
-            this.dataGridView_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridView_CashDetails.Size = new System.Drawing.Size(679, 60);
-            this.dataGridView_CashDetails.TabIndex = 0;
-            this.dataGridView_CashDetails.SelectionChanged += new System.EventHandler(this.dataGridView_CashDetails_SelectionChanged);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView_CashStatus_CashDetails.EnableHeadersVisualStyles = false;
+            this.dataGridView_CashStatus_CashDetails.Location = new System.Drawing.Point(7, 72);
+            this.dataGridView_CashStatus_CashDetails.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridView_CashStatus_CashDetails.MultiSelect = false;
+            this.dataGridView_CashStatus_CashDetails.Name = "dataGridView_CashStatus_CashDetails";
+            this.dataGridView_CashStatus_CashDetails.ReadOnly = true;
+            this.dataGridView_CashStatus_CashDetails.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView_CashStatus_CashDetails.RowTemplate.Height = 30;
+            this.dataGridView_CashStatus_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridView_CashStatus_CashDetails.Size = new System.Drawing.Size(679, 60);
+            this.dataGridView_CashStatus_CashDetails.TabIndex = 0;
+            this.dataGridView_CashStatus_CashDetails.SelectionChanged += new System.EventHandler(this.dataGridView_CashDetails_SelectionChanged);
             // 
             // _500000
             // 
@@ -1315,290 +1766,6 @@ namespace LiuShuiZhang2._0
             this.label1_HandleUser.TabIndex = 3;
             this.label1_HandleUser.Text = "管理人员:";
             // 
-            // numericUpDownEx1
-            // 
-            this.numericUpDownEx1.JustDispaly = false;
-            this.numericUpDownEx1.Location = new System.Drawing.Point(568, 199);
-            this.numericUpDownEx1.Name = "numericUpDownEx1";
-            this.numericUpDownEx1.Size = new System.Drawing.Size(120, 29);
-            this.numericUpDownEx1.TabIndex = 20;
-            this.numericUpDownEx1.Tag = "display";
-            this.numericUpDownEx1.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown_50000
-            // 
-            this.numericUpDown_50000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_50000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_50000.JustDispaly = false;
-            this.numericUpDown_50000.Location = new System.Drawing.Point(262, 10);
-            this.numericUpDown_50000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_50000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_50000.Name = "numericUpDown_50000";
-            this.numericUpDown_50000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_50000.TabIndex = 9;
-            this.numericUpDown_50000.Tag = "text";
-            this.numericUpDown_50000.ThousandsSeparator = true;
-            this.numericUpDown_50000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_50000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_50000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_50000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_1000
-            // 
-            this.numericUpDown_1000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_1000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_1000.JustDispaly = false;
-            this.numericUpDown_1000.Location = new System.Drawing.Point(424, 81);
-            this.numericUpDown_1000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_1000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_1000.Name = "numericUpDown_1000";
-            this.numericUpDown_1000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_1000.TabIndex = 14;
-            this.numericUpDown_1000.Tag = "text";
-            this.numericUpDown_1000.ThousandsSeparator = true;
-            this.numericUpDown_1000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_1000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_1000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_1000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_500000
-            // 
-            this.numericUpDown_500000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_500000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_500000.JustDispaly = false;
-            this.numericUpDown_500000.Location = new System.Drawing.Point(88, 10);
-            this.numericUpDown_500000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_500000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_500000.Name = "numericUpDown_500000";
-            this.numericUpDown_500000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_500000.TabIndex = 6;
-            this.numericUpDown_500000.Tag = "text";
-            this.numericUpDown_500000.ThousandsSeparator = true;
-            this.numericUpDown_500000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_500000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_500000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_500000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_2000
-            // 
-            this.numericUpDown_2000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_2000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_2000.JustDispaly = false;
-            this.numericUpDown_2000.Location = new System.Drawing.Point(424, 46);
-            this.numericUpDown_2000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_2000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_2000.Name = "numericUpDown_2000";
-            this.numericUpDown_2000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_2000.TabIndex = 13;
-            this.numericUpDown_2000.Tag = "text";
-            this.numericUpDown_2000.ThousandsSeparator = true;
-            this.numericUpDown_2000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_2000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_2000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_2000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_200000
-            // 
-            this.numericUpDown_200000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_200000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_200000.JustDispaly = false;
-            this.numericUpDown_200000.Location = new System.Drawing.Point(88, 46);
-            this.numericUpDown_200000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_200000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_200000.Name = "numericUpDown_200000";
-            this.numericUpDown_200000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_200000.TabIndex = 7;
-            this.numericUpDown_200000.Tag = "text";
-            this.numericUpDown_200000.ThousandsSeparator = true;
-            this.numericUpDown_200000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_200000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_200000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_200000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_5000
-            // 
-            this.numericUpDown_5000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_5000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_5000.JustDispaly = false;
-            this.numericUpDown_5000.Location = new System.Drawing.Point(424, 10);
-            this.numericUpDown_5000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_5000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_5000.Name = "numericUpDown_5000";
-            this.numericUpDown_5000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_5000.TabIndex = 12;
-            this.numericUpDown_5000.Tag = "text";
-            this.numericUpDown_5000.ThousandsSeparator = true;
-            this.numericUpDown_5000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_5000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_5000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_5000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_100000
-            // 
-            this.numericUpDown_100000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_100000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_100000.JustDispaly = false;
-            this.numericUpDown_100000.Location = new System.Drawing.Point(88, 81);
-            this.numericUpDown_100000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_100000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_100000.Name = "numericUpDown_100000";
-            this.numericUpDown_100000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_100000.TabIndex = 8;
-            this.numericUpDown_100000.Tag = "text";
-            this.numericUpDown_100000.ThousandsSeparator = true;
-            this.numericUpDown_100000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_100000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_100000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_100000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_10000
-            // 
-            this.numericUpDown_10000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_10000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_10000.JustDispaly = false;
-            this.numericUpDown_10000.Location = new System.Drawing.Point(262, 81);
-            this.numericUpDown_10000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_10000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_10000.Name = "numericUpDown_10000";
-            this.numericUpDown_10000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_10000.TabIndex = 11;
-            this.numericUpDown_10000.Tag = "text";
-            this.numericUpDown_10000.ThousandsSeparator = true;
-            this.numericUpDown_10000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_10000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_10000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_10000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
-            // numericUpDown_20000
-            // 
-            this.numericUpDown_20000.BackColor = System.Drawing.SystemColors.Window;
-            this.numericUpDown_20000.ForeColor = System.Drawing.Color.Red;
-            this.numericUpDown_20000.JustDispaly = false;
-            this.numericUpDown_20000.Location = new System.Drawing.Point(262, 46);
-            this.numericUpDown_20000.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown_20000.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            -2147483648});
-            this.numericUpDown_20000.Name = "numericUpDown_20000";
-            this.numericUpDown_20000.Size = new System.Drawing.Size(85, 29);
-            this.numericUpDown_20000.TabIndex = 10;
-            this.numericUpDown_20000.Tag = "text";
-            this.numericUpDown_20000.ThousandsSeparator = true;
-            this.numericUpDown_20000.Valued = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.numericUpDown_20000.ValueChanged += new System.EventHandler(this.CashCountingValueChanged);
-            this.numericUpDown_20000.Enter += new System.EventHandler(this.NumericUpDown_Enter);
-            this.numericUpDown_20000.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1629,7 +1796,16 @@ namespace LiuShuiZhang2._0
             this.panel10.ResumeLayout(false);
             this.panel_CashCountingTable.ResumeLayout(false);
             this.panel_CashCountingTable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_TotalCashCounting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_50000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_TotalCashCounting)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_1000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_500000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_2000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_200000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_5000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_100000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_10000)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashCounting_20000)).EndInit();
             this.groupBox_Transaction.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1654,25 +1830,15 @@ namespace LiuShuiZhang2._0
             this.groupBox_CashStatus.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CountValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_CountValue)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_DeltaValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CurValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_PreValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CashDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_DeltaValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_CurValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_PreValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CashStatus_CashDetails)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEx1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_50000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_1000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_500000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_2000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_200000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_5000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_100000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_10000)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_20000)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1695,40 +1861,31 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.GroupBox groupBox_CashStatus;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.NumericUpDown numericUpDown_CountValue;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.NumericUpDown numericUpDown_DeltaValue;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown_CurValue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown_PreValue;
-        private System.Windows.Forms.DataGridView dataGridView_CashDetails;
+        private System.Windows.Forms.DataGridView dataGridView_CashStatus_CashDetails;
         private System.Windows.Forms.GroupBox groupBox_Transaction;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Transaction_Price;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Transaction_Quan;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox_Transaction_Type;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button_Transaction_SaveTran;
         private System.Windows.Forms.Button button_Transaction_NextTran;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Transaction_Total;
         private System.Windows.Forms.TextBox textBox_Transaction_Note;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView_Transaction_MainTran;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Transaction_TotalAll;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Transaction_Fix;
         private System.Windows.Forms.Button button_Transaction_Fix;
         private System.Windows.Forms.TabControl tabControl__Transaction_Tran;
         private System.Windows.Forms.TabPage tabPage_Transaction_MainTran;
@@ -1746,13 +1903,12 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.Label label1_HandleUser;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.GroupBox groupBox_LiuShui;
-        private System.Windows.Forms.Button button_CashCouterMode;
+        private System.Windows.Forms.Button button_CashStatus_CashCouterMode;
         private System.Windows.Forms.GroupBox groupBox_CashCounting;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel_CashCountingTable;
-        private System.Windows.Forms.Button button_CancelCashCounting;
-        private System.Windows.Forms.Button button_SaveCashCounting;
-        private System.Windows.Forms.NumericUpDown numericUpDown_TotalCashCounting;
+        private System.Windows.Forms.Button button_CashCounting_CancelCashCounting;
+        private System.Windows.Forms.Button button_CashCounting_SaveCashCounting;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label19;
@@ -1772,16 +1928,25 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.DataGridViewTextBoxColumn _5000;
         private System.Windows.Forms.DataGridViewTextBoxColumn _2000;
         private System.Windows.Forms.DataGridViewTextBoxColumn _1000;
-        private NumericUpDownEx numericUpDown_50000;
-        private NumericUpDownEx numericUpDown_1000;
-        private NumericUpDownEx numericUpDown_500000;
-        private NumericUpDownEx numericUpDown_2000;
-        private NumericUpDownEx numericUpDown_200000;
-        private NumericUpDownEx numericUpDown_5000;
-        private NumericUpDownEx numericUpDown_100000;
-        private NumericUpDownEx numericUpDown_10000;
-        private NumericUpDownEx numericUpDown_20000;
+        private NumericUpDownEx numericUpDown_CashCounting_50000;
+        private NumericUpDownEx numericUpDown_CashCounting_1000;
+        private NumericUpDownEx numericUpDown_CashCounting_500000;
+        private NumericUpDownEx numericUpDown_CashCounting_2000;
+        private NumericUpDownEx numericUpDown_CashCounting_200000;
+        private NumericUpDownEx numericUpDown_CashCounting_5000;
+        private NumericUpDownEx numericUpDown_CashCounting_100000;
+        private NumericUpDownEx numericUpDown_CashCounting_10000;
+        private NumericUpDownEx numericUpDown_CashCounting_20000;
         private System.Windows.Forms.Button button_Transaction_CancelTran;
-        private NumericUpDownEx numericUpDownEx1;
+        private NumericUpDownEx numericUpDown_CashStatus_CountValue;
+        private NumericUpDownEx numericUpDown_CashStatus_DeltaValue;
+        private NumericUpDownEx numericUpDown_CashStatus_CurValue;
+        private NumericUpDownEx numericUpDown_Transaction_Quan;
+        private NumericUpDownEx numericUpDown_Transaction_Price;
+        private NumericUpDownEx numericUpDown_Transaction_Total;
+        private NumericUpDownEx numericUpDown_CashStatus_PreValue;
+        private NumericUpDownEx numericUpDown_Transaction_TotalAll;
+        private NumericUpDownEx numericUpDown_Transaction_Fix;
+        private NumericUpDownEx numericUpDown_CashCounting_TotalCashCounting;
     }
 }

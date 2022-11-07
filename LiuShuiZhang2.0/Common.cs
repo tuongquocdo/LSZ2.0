@@ -14,28 +14,6 @@ namespace LiuShuiZhang2._0
     {
         public static string constr = ConfigurationManager.ConnectionStrings["LSZConstr"].ConnectionString;
 
-        public static void FixNumbericUpDownMockup(Control f)
-        {
-            foreach (NumericUpDown n in GetAllControlByType(f, typeof(NumericUpDown)))
-            {
-                if (n.Tag != null)
-                {
-                    if (n.Tag.ToString().Split(';')[0] == "display")
-                    {
-                        n.Enabled = false;
-                        n.BackColor = System.Drawing.SystemColors.Info;
-                        n.BorderStyle = BorderStyle.None;
-                        n.Controls[0].Hide();
-                    }
-                    else if (n.Tag.ToString().Split(';')[0] == "text")
-                    {
-                        n.BorderStyle = BorderStyle.None;
-                        n.Controls[0].Hide();
-                    }
-                }
-            }
-        }
-
         public static IEnumerable<Control> GetAllControlByType(Control control, Type type)
         {
             var controls = control.Controls.Cast<Control>();
@@ -89,14 +67,40 @@ namespace LiuShuiZhang2._0
 
         public decimal Valued { get => valued; set => valued = value; }
 
-        private bool justDispaly = false;
-        public bool JustDispaly { get => justDispaly; set => justDispaly = value; }
+        public NumericUpDownEx() : base() { }
+
+        public NumericUpDownEx(bool isDisplayValueMode) : base()
+        {
+            Maximum = 999999999999999;
+            Minimum = -999999999999999;
+            Increment = 0;
+            BorderStyle = BorderStyle.None;
+            if (isDisplayValueMode)
+            {
+                BackColor = SystemColors.Info;
+                ReadOnly = true;
+            }
+            else
+            {
+                BackColor = SystemColors.Window;
+            }
+        }
 
         protected override void OnValueChanged(EventArgs e)
         {
             base.OnValueChanged(e);
-            this.valued = this.Value;
+            valued = Value;
         }
-       
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Controls[0].Hide();
+        }
+
+        protected override void OnTextBoxResize(object source, EventArgs e)
+        {
+            Controls[1].Width = Width;
+        }
     }
 }
