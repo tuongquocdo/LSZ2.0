@@ -50,6 +50,7 @@ namespace LiuShuiZhang2._0.DAL
                 con.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = string.Format("insert into BIZHONG(BIZHONG,LIANG,PINGJUNJIA,YIGONG,LEI,TINGYONG) values (@BIZHONG,@LIANG,@PINGJUNJIA,@YIGONG,@LEI,@TINGYONG)");
+                
                 cmd.Parameters.AddWithValue("@BIZHONG", b.BiZhong);
                 cmd.Parameters.AddWithValue("@LIANG", b.Quantity);
                 cmd.Parameters.AddWithValue("@PINGJUNJIA", b.AveragePrice);
@@ -74,6 +75,22 @@ namespace LiuShuiZhang2._0.DAL
                 cmd.Parameters.AddWithValue("@TINGYONG", b.Disable);
                 cmd.Connection = con;
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int GetLeiOfBiZhong(int biZhongId)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "select LEI from BIZHONG where BIZHONGID = @BIZHONGID";
+                cmd.Parameters.AddWithValue("@BIZHONGID",biZhongId);
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return int.Parse(dt.Rows[0][0].ToString());
             }
         }
     }

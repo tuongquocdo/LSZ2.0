@@ -29,9 +29,9 @@ namespace LiuShuiZhang2._0
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_User = new System.Windows.Forms.ToolStripMenuItem();
@@ -478,13 +478,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_CashCounting_TotalCashCounting.Location = new System.Drawing.Point(88, 118);
             this.numericUpDown_CashCounting_TotalCashCounting.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_CashCounting_TotalCashCounting.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_CashCounting_TotalCashCounting.Name = "numericUpDown_CashCounting_TotalCashCounting";
@@ -937,13 +937,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_Transaction_Price.Location = new System.Drawing.Point(58, 85);
             this.numericUpDown_Transaction_Price.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_Transaction_Price.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_Transaction_Price.Name = "numericUpDown_Transaction_Price";
@@ -983,13 +983,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_Transaction_Quan.Location = new System.Drawing.Point(58, 48);
             this.numericUpDown_Transaction_Quan.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            1874919423,
+            2328306,
             0,
             0});
             this.numericUpDown_Transaction_Quan.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_Transaction_Quan.Name = "numericUpDown_Transaction_Quan";
@@ -1079,6 +1079,7 @@ namespace LiuShuiZhang2._0
             this.button_Transaction_NextTran.TabIndex = 5;
             this.button_Transaction_NextTran.Text = "继续(N)";
             this.button_Transaction_NextTran.UseVisualStyleBackColor = true;
+            this.button_Transaction_NextTran.Click += new System.EventHandler(this.button_Transaction_NextTran_Click);
             // 
             // numericUpDown_Transaction_Total
             // 
@@ -1092,13 +1093,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_Transaction_Total.Location = new System.Drawing.Point(62, 51);
             this.numericUpDown_Transaction_Total.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_Transaction_Total.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_Transaction_Total.Name = "numericUpDown_Transaction_Total";
@@ -1417,8 +1418,8 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_CashStatus_CountValue.Location = new System.Drawing.Point(72, 9);
             this.numericUpDown_CashStatus_CountValue.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_CashStatus_CountValue.Minimum = new decimal(new int[] {
@@ -1428,7 +1429,7 @@ namespace LiuShuiZhang2._0
             -2147483648});
             this.numericUpDown_CashStatus_CountValue.Name = "numericUpDown_CashStatus_CountValue";
             this.numericUpDown_CashStatus_CountValue.ReadOnly = true;
-            this.numericUpDown_CashStatus_CountValue.Size = new System.Drawing.Size(200, 25);
+            this.numericUpDown_CashStatus_CountValue.Size = new System.Drawing.Size(373, 25);
             this.numericUpDown_CashStatus_CountValue.TabIndex = 0;
             this.numericUpDown_CashStatus_CountValue.TabStop = false;
             this.numericUpDown_CashStatus_CountValue.Tag = "";
@@ -1474,13 +1475,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_CashStatus_DeltaValue.Location = new System.Drawing.Point(504, 8);
             this.numericUpDown_CashStatus_DeltaValue.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_CashStatus_DeltaValue.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_CashStatus_DeltaValue.Name = "numericUpDown_CashStatus_DeltaValue";
@@ -1518,13 +1519,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_CashStatus_CurValue.Location = new System.Drawing.Point(280, 8);
             this.numericUpDown_CashStatus_CurValue.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_CashStatus_CurValue.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_CashStatus_CurValue.Name = "numericUpDown_CashStatus_CurValue";
@@ -1572,13 +1573,13 @@ namespace LiuShuiZhang2._0
             0});
             this.numericUpDown_CashStatus_PreValue.Location = new System.Drawing.Point(55, 8);
             this.numericUpDown_CashStatus_PreValue.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             0});
             this.numericUpDown_CashStatus_PreValue.Minimum = new decimal(new int[] {
-            -727379969,
-            232,
+            -1530494977,
+            232830,
             0,
             -2147483648});
             this.numericUpDown_CashStatus_PreValue.Name = "numericUpDown_CashStatus_PreValue";
@@ -1604,14 +1605,14 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_CashStatus_CashDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView_CashStatus_CashDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView_CashStatus_CashDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_CashStatus_CashDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._500000,
@@ -1623,15 +1624,15 @@ namespace LiuShuiZhang2._0
             this._5000,
             this._2000,
             this._1000});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView_CashStatus_CashDetails.EnableHeadersVisualStyles = false;
             this.dataGridView_CashStatus_CashDetails.Location = new System.Drawing.Point(7, 72);
             this.dataGridView_CashStatus_CashDetails.Margin = new System.Windows.Forms.Padding(0);
@@ -1639,11 +1640,11 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.Name = "dataGridView_CashStatus_CashDetails";
             this.dataGridView_CashStatus_CashDetails.ReadOnly = true;
             this.dataGridView_CashStatus_CashDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = "0";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = "0";
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(2);
+            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView_CashStatus_CashDetails.RowTemplate.Height = 30;
             this.dataGridView_CashStatus_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_CashStatus_CashDetails.Size = new System.Drawing.Size(679, 60);

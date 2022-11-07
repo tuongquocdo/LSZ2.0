@@ -125,7 +125,7 @@ namespace LiuShuiZhang2._0
             ///test
             user = new BLL_User()
             {
-                UserID = 2,
+                UserID = 1,
                 UserName = "admin"
             };
             label1_HandleUser.Text = "管理人员: " + user.UserName;
@@ -199,6 +199,15 @@ namespace LiuShuiZhang2._0
             numericUpDown_Transaction_Total.Value = 
                 Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000;
         }
+
+        private void button_Transaction_NextTran_Click(object sender, EventArgs e)
+        {
+            if (CheckTranInfo())
+            {
+                MessageBox.Show("ok");
+            }
+        }
+
         private void button_Fix_Click(object sender, EventArgs e)
         {
 
@@ -209,6 +218,35 @@ namespace LiuShuiZhang2._0
         #endregion
 
         #region Private method
+
+        private bool CheckTranInfo()
+        {
+            bool checkingResult = false;
+            if (numericUpDown_Transaction_Quan.Value != 0 &&
+                numericUpDown_Transaction_Price.Value != 0 &&
+                numericUpDown_Transaction_Total.Value != 0)
+                checkingResult = true;
+            else
+            {
+                MessageBox.Show("请输入数量，价格","温倾提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return false;
+            }
+
+            if ((DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BiZhongLei.KeRenQian ||
+                DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BiZhongLei.QianKeRen ||
+                DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BiZhongLei.XianJin))
+            {
+                if (textBox_Transaction_Note.Text != string.Empty)
+                    checkingResult = true;
+                else
+                {
+                    MessageBox.Show("此币种需要输入备注", "温倾提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+            }
+
+                return checkingResult;
+        }
 
         private void ClearCashCountingTable()
         {
@@ -361,9 +399,23 @@ namespace LiuShuiZhang2._0
 
 
 
+
         #endregion
 
-        
+        #region Enum
+
+        enum BiZhongLei
+        { 
+            None,
+            WaiBi,
+            KeRenQian,
+            QianKeRen,
+            DianZiZhang,
+            XianJin
+        }
+
+        #endregion
+
     }
-    
+
 }
