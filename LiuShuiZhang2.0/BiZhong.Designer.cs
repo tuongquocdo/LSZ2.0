@@ -37,13 +37,13 @@ namespace LiuShuiZhang2._0
             this.dataGridView_BiZhong = new System.Windows.Forms.DataGridView();
             this.button_Update = new System.Windows.Forms.Button();
             this.button_Add = new System.Windows.Forms.Button();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textBox_BiZhong = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.panel_BiZhong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_BiZhong)).BeginInit();
             this.SuspendLayout();
@@ -67,14 +67,14 @@ namespace LiuShuiZhang2._0
             this.panel_BiZhong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_BiZhong.Location = new System.Drawing.Point(0, 0);
             this.panel_BiZhong.Name = "panel_BiZhong";
-            this.panel_BiZhong.Size = new System.Drawing.Size(534, 761);
+            this.panel_BiZhong.Size = new System.Drawing.Size(533, 761);
             this.panel_BiZhong.TabIndex = 0;
             // 
             // button_Clear
             // 
             this.button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Clear.ForeColor = System.Drawing.Color.Red;
-            this.button_Clear.Location = new System.Drawing.Point(710, 124);
+            this.button_Clear.Location = new System.Drawing.Point(453, 124);
             this.button_Clear.Name = "button_Clear";
             this.button_Clear.Size = new System.Drawing.Size(62, 35);
             this.button_Clear.TabIndex = 15;
@@ -153,6 +153,19 @@ namespace LiuShuiZhang2._0
             this.button_Add.UseVisualStyleBackColor = true;
             this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton5.ForeColor = System.Drawing.Color.Red;
+            this.radioButton5.Location = new System.Drawing.Point(440, 50);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(64, 27);
+            this.radioButton5.TabIndex = 8;
+            this.radioButton5.Tag = "5";
+            this.radioButton5.Text = "现金";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
@@ -226,24 +239,11 @@ namespace LiuShuiZhang2._0
             this.label1.TabIndex = 0;
             this.label1.Text = "币种";
             // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton5.ForeColor = System.Drawing.Color.Red;
-            this.radioButton5.Location = new System.Drawing.Point(440, 50);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(64, 27);
-            this.radioButton5.TabIndex = 8;
-            this.radioButton5.Tag = "5";
-            this.radioButton5.Text = "现金";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
             // BiZhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 761);
+            this.ClientSize = new System.Drawing.Size(533, 761);
             this.Controls.Add(this.panel_BiZhong);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
