@@ -29,5 +29,15 @@ namespace LiuShuiZhang2._0.BLL
         public decimal TotalValue { get => totalValue; set => totalValue = value; }
         public int Type { get => type; set => type = value; }
         public bool Disable { get => disable; set => disable = value; }
+
+        public enum BiZhongLei
+        {
+            None,
+            WaiBi,
+            KeRenQian,
+            QianKeRen,
+            DianZiZhang,
+            XianJin
+        }
     }
 }

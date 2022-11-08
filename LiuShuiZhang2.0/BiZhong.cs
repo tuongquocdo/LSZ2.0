@@ -114,7 +114,7 @@ namespace LiuShuiZhang2._0
 
         private bool CheckData(bool isEdit)
         {
-            bool rs = false;
+            bool rs;
             if (!(textBox_BiZhong.Text == string.Empty) &&
                 textBox_BiZhong.Text.Length >= 3 &&
                 textBox_BiZhong.Text.Length <=12)

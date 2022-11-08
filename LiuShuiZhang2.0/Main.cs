@@ -125,7 +125,7 @@ namespace LiuShuiZhang2._0
             ///test
             user = new BLL_User()
             {
-                UserID = 1,
+                UserID = 2,
                 UserName = "admin"
             };
             label1_HandleUser.Text = "管理人员: " + user.UserName;
@@ -199,12 +199,53 @@ namespace LiuShuiZhang2._0
             numericUpDown_Transaction_Total.Value = 
                 Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000;
         }
-
         private void button_Transaction_NextTran_Click(object sender, EventArgs e)
         {
             if (CheckTranInfo())
             {
                 MessageBox.Show("ok");
+            }
+        }
+        private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
+        {
+            Main_Load(this, null);
+        }
+        private void comboBox_Transaction_Type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string temp = (sender as ComboBox).SelectedValue.ToString();
+            if (Common.IsNumber(temp))
+            {
+                int biZhongID = int.Parse(temp);
+                try
+                {
+                    if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.KeRenQian)
+                    {
+                        numericUpDown_Transaction_Quan.Minimum = numericUpDown_Transaction_Quan.Maximum = 1;
+                        numericUpDown_Transaction_Quan.ReadOnly = true;
+                    }
+                    else if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.QianKeRen)
+                    {
+                        numericUpDown_Transaction_Quan.Minimum = numericUpDown_Transaction_Quan.Maximum = -1;
+                        numericUpDown_Transaction_Quan.ReadOnly = true;
+                    }
+                    else if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.DianZiZhang ||
+                            DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.XianJin)
+                    {
+                        numericUpDown_Transaction_Quan.Minimum = -1;
+                        numericUpDown_Transaction_Quan.Maximum = 1;
+                        numericUpDown_Transaction_Quan.ReadOnly = false;
+                    }
+                    else if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.WaiBi)
+                    {
+                        numericUpDown_Transaction_Quan.Minimum = -999999999999999;
+                        numericUpDown_Transaction_Quan.Maximum = 999999999999999;
+                        numericUpDown_Transaction_Quan.ReadOnly = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -221,7 +262,7 @@ namespace LiuShuiZhang2._0
 
         private bool CheckTranInfo()
         {
-            bool checkingResult = false;
+            bool checkingResult;
             if (numericUpDown_Transaction_Quan.Value != 0 &&
                 numericUpDown_Transaction_Price.Value != 0 &&
                 numericUpDown_Transaction_Total.Value != 0)
@@ -232,20 +273,26 @@ namespace LiuShuiZhang2._0
                 return false;
             }
 
-            if ((DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BiZhongLei.KeRenQian ||
-                DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BiZhongLei.QianKeRen ||
-                DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BiZhongLei.XianJin))
+            try
             {
-                if (textBox_Transaction_Note.Text != string.Empty)
-                    checkingResult = true;
-                else
+                if ((DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BLL_BiZhong.BiZhongLei.KeRenQian ||
+                    DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BLL_BiZhong.BiZhongLei.QianKeRen ||
+                    DAL_biZhong.GetLeiOfBiZhong(int.Parse(comboBox_Transaction_Type.SelectedValue.ToString())) == (int)BLL_BiZhong.BiZhongLei.XianJin))
                 {
-                    MessageBox.Show("此币种需要输入备注", "温倾提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return false;
+                    if (textBox_Transaction_Note.Text != string.Empty)
+                        checkingResult = true;
+                    else
+                    {
+                        MessageBox.Show("此币种需要输入备注", "温倾提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return false;
+                    }
                 }
             }
-
-                return checkingResult;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return checkingResult;
         }
 
         private void ClearCashCountingTable()
@@ -397,25 +444,9 @@ namespace LiuShuiZhang2._0
             };
         }
 
-
-
-
         #endregion
 
-        #region Enum
-
-        enum BiZhongLei
-        { 
-            None,
-            WaiBi,
-            KeRenQian,
-            QianKeRen,
-            DianZiZhang,
-            XianJin
-        }
-
-        #endregion
-
+       
     }
 
 }
