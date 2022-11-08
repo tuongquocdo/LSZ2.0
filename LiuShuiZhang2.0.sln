@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{E1BF47FB-8085-4A3E-B772-D7830B9C7A0A}"
 	ProjectSection(SolutionItems) = preProject
 		database.sql = database.sql
+		liushuizhangdb.bak = liushuizhangdb.bak
 	EndProjectSection
 EndProject
 Global
