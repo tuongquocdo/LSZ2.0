@@ -25,7 +25,6 @@ namespace LiuShuiZhang2._0
 
         private bool cashCountingMode;
         public bool CashCountingMode { get => cashCountingMode; set => cashCountingMode = value; }
-        
 
         public Main()
         {
@@ -146,6 +145,7 @@ namespace LiuShuiZhang2._0
             DAL_liuShui = new DAL_LiuShui();
             DAL_biZhong = new DAL_BiZhong();
             BLL_jiaoYi = new BLL_JiaoYi();
+            
             FillDataToForm();
         }
 
