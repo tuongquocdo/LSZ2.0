@@ -18,12 +18,15 @@ namespace LiuShuiZhang2._0
 
         DAL_BiZhong DAL_biZhong;
 
+        BLL_JiaoYi BLL_jiaoYi;
+
         private BLL_User user;
         public BLL_User User { get => user; set => user = value; }
 
         private bool cashCountingMode;
         public bool CashCountingMode { get => cashCountingMode; set => cashCountingMode = value; }
         
+
         public Main()
         {
             InitializeComponent();
@@ -142,6 +145,7 @@ namespace LiuShuiZhang2._0
             dateTimePicker.MaxDate = DateTime.Now;
             DAL_liuShui = new DAL_LiuShui();
             DAL_biZhong = new DAL_BiZhong();
+            BLL_jiaoYi = new BLL_JiaoYi();
             FillDataToForm();
         }
 
@@ -197,7 +201,7 @@ namespace LiuShuiZhang2._0
         private void numericUpDown_Transaction_ValueChanged(object sender, EventArgs e)
         {
             numericUpDown_Transaction_Total.Value = 
-                Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000;
+                Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000*-1;
         }
         private void button_Transaction_NextTran_Click(object sender, EventArgs e)
         {
@@ -222,11 +226,15 @@ namespace LiuShuiZhang2._0
                     {
                         numericUpDown_Transaction_Quan.Minimum = numericUpDown_Transaction_Quan.Maximum = 1;
                         numericUpDown_Transaction_Quan.ReadOnly = true;
+                        comboBox_Transaction_FeeType.Enabled = false;
+                        numericUpDownEx_Transaction_Fee.Enabled = false;
                     }
                     else if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.QianKeRen)
                     {
                         numericUpDown_Transaction_Quan.Minimum = numericUpDown_Transaction_Quan.Maximum = -1;
                         numericUpDown_Transaction_Quan.ReadOnly = true;
+                        comboBox_Transaction_FeeType.Enabled = false;
+                        numericUpDownEx_Transaction_Fee.Enabled = false;
                     }
                     else if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.DianZiZhang ||
                             DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.XianJin)
@@ -234,18 +242,40 @@ namespace LiuShuiZhang2._0
                         numericUpDown_Transaction_Quan.Minimum = -1;
                         numericUpDown_Transaction_Quan.Maximum = 1;
                         numericUpDown_Transaction_Quan.ReadOnly = false;
+                        comboBox_Transaction_FeeType.Enabled = false;
+                        numericUpDownEx_Transaction_Fee.Enabled = false;
                     }
                     else if (DAL_biZhong.GetLeiOfBiZhong(biZhongID) == (int)BLL_BiZhong.BiZhongLei.WaiBi)
                     {
                         numericUpDown_Transaction_Quan.Minimum = -999999999999999;
                         numericUpDown_Transaction_Quan.Maximum = 999999999999999;
                         numericUpDown_Transaction_Quan.ReadOnly = false;
+                        comboBox_Transaction_FeeType.Enabled = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void comboBox_Transaction_FeeType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string temp = (sender as ComboBox).SelectedValue.ToString();
+
+            if (Common.IsNumber(temp))
+            {
+                if (int.Parse(temp) == (int)BLL_JiaoYi.Enum_FeeTypes.Free)
+                {
+                    numericUpDownEx_Transaction_Fee.Enabled = false;
+                }
+                else
+                {
+                    numericUpDownEx_Transaction_Fee.Enabled = true;
+                }
+
+                CalcAfterFee();
             }
         }
 
@@ -259,6 +289,26 @@ namespace LiuShuiZhang2._0
         #endregion
 
         #region Private method
+
+        private void CalcAfterFee()
+        {
+            if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.Free)
+            {
+                numericUpDownEx_Transaction_AfterFee.Value = numericUpDown_Transaction_Total.Value;
+            }
+            else if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.Percent)
+            { 
+            
+            }
+            else if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.ByBiZhong)
+            {
+
+            }
+            else if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.ByXianJin)
+            {
+
+            }
+        }
 
         private bool CheckTranInfo()
         {
@@ -419,6 +469,18 @@ namespace LiuShuiZhang2._0
             comboBox_Transaction_Type.DataSource = DAL_biZhong.GetAllBiZhong();
             comboBox_Transaction_Type.DisplayMember = "BIZHONG";
             comboBox_Transaction_Type.ValueMember = "BIZHONGID";
+            comboBox_Transaction_Type.SelectedIndex = 1;
+            comboBox_Transaction_Type.SelectedIndex = 0;
+
+            #endregion
+
+            #region Initialize Fee Type
+
+            comboBox_Transaction_FeeType.DataSource = BLL_jiaoYi.FeeTypes;
+            comboBox_Transaction_FeeType.DisplayMember = "FEETYPE";
+            comboBox_Transaction_FeeType.ValueMember = "FEETYPEID";
+            comboBox_Transaction_FeeType.SelectedItem = 1;
+            comboBox_Transaction_FeeType.SelectedItem = 0;
 
             #endregion
         }
@@ -444,9 +506,8 @@ namespace LiuShuiZhang2._0
             };
         }
 
-        #endregion
 
-       
+        #endregion
     }
 
 }

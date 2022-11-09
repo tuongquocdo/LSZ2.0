@@ -75,6 +75,7 @@ namespace LiuShuiZhang2._0
             Minimum = -999999999999999;
             Increment = 0;
             BorderStyle = BorderStyle.None;
+            
             if (isDisplayValueMode)
             {
                 BackColor = SystemColors.Info;
