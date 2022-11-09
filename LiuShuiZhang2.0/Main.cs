@@ -202,6 +202,7 @@ namespace LiuShuiZhang2._0
         {
             numericUpDown_Transaction_Total.Value = 
                 Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000*-1;
+            CalcAfterFee();
         }
         private void button_Transaction_NextTran_Click(object sender, EventArgs e)
         {
@@ -274,7 +275,7 @@ namespace LiuShuiZhang2._0
                 {
                     numericUpDownEx_Transaction_Fee.Enabled = true;
                 }
-
+                numericUpDownEx_Transaction_Fee.Value = 0;
                 CalcAfterFee();
             }
         }
@@ -297,16 +298,22 @@ namespace LiuShuiZhang2._0
                 numericUpDownEx_Transaction_AfterFee.Value = numericUpDown_Transaction_Total.Value;
             }
             else if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.Percent)
-            { 
-            
+            {
+                numericUpDownEx_Transaction_AfterFee.Value = numericUpDown_Transaction_Total.Value +
+                                                               Math.Abs(numericUpDown_Transaction_Total.Value) *
+                                                                numericUpDownEx_Transaction_Fee.Value /
+                                                                100;
             }
             else if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.ByBiZhong)
             {
-
+                numericUpDownEx_Transaction_AfterFee.Value = numericUpDown_Transaction_Total.Value +
+                                                            numericUpDownEx_Transaction_Fee.Value *
+                                                            numericUpDown_Transaction_Price.Value;
             }
             else if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.ByXianJin)
             {
-
+                numericUpDownEx_Transaction_AfterFee.Value = numericUpDown_Transaction_Total.Value +
+                                                            numericUpDownEx_Transaction_Fee.Value;
             }
         }
 
