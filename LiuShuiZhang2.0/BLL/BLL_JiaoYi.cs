@@ -14,12 +14,9 @@ namespace LiuShuiZhang2._0.BLL
         private long liuShuiID;
         private long biZhongID;
         private long qianDanID;
-        private string customerName;
         private DateTime time;
         private decimal quantity;
         private decimal value;
-        private decimal fee;
-        private string feeType;
         private decimal price;
         private decimal cogs;
         private decimal profit;
@@ -32,12 +29,9 @@ namespace LiuShuiZhang2._0.BLL
         public long LiuShuiID { get => liuShuiID; set => liuShuiID = value; }
         public long BiZhongID { get => biZhongID; set => biZhongID = value; }
         public long QianDanID { get => qianDanID; set => qianDanID = value; }
-        public string CustomerName { get => customerName; set => customerName = value; }
         public DateTime Time { get => time; set => time = value; }
         public decimal Quantity { get => quantity; set => quantity = value; }
         public decimal Value { get => value; set => this.value = value; }
-        public decimal Fee { get => fee; set => fee = value; }
-        public string FeeType { get => feeType; set => feeType = value; }
         public decimal Price { get => price; set => price = value; }
         public decimal Cogs { get => cogs; set => cogs = value; }
         public decimal Profit { get => profit; set => profit = value; }

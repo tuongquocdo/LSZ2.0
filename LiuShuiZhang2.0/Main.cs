@@ -14,6 +14,8 @@ namespace LiuShuiZhang2._0
 {
     public partial class Main : Form
     {
+        DataTable mainTrans = new DataTable("DataTable_MainTransaction");
+
         DAL_LiuShui DAL_liuShui;
 
         DAL_BiZhong DAL_biZhong;
@@ -32,7 +34,7 @@ namespace LiuShuiZhang2._0
         }
 
         #region Other
-        private void Control_KeyUp(object sender, KeyEventArgs e)
+        private void Control_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
             {
@@ -204,17 +206,32 @@ namespace LiuShuiZhang2._0
                 Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000*-1;
             CalcAfterFee();
         }
+
+        //TODO continue
         private void button_Transaction_NextTran_Click(object sender, EventArgs e)
         {
             if (CheckTranInfo())
             {
-                MessageBox.Show("ok");
+                dataGridView_Transaction_MainTran.Rows.Add(
+                user.UserID,
+                0,
+                comboBox_Transaction_Type.SelectedValue,
+                0,
+                comboBox_Transaction_Type.Text,
+                numericUpDown_Transaction_Quan.Value,
+                numericUpDown_Transaction_Price.Value,
+                numericUpDownEx_Transaction_AfterFee.Value,
+                textBox_Transaction_Note.Text
+                );
+                ClearTransactionData();
             }
         }
         private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
         {
             Main_Load(this, null);
+            ClearTransactionData();
         }
+
         private void comboBox_Transaction_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
             string temp = (sender as ComboBox).SelectedValue.ToString();
@@ -290,6 +307,17 @@ namespace LiuShuiZhang2._0
         #endregion
 
         #region Private method
+
+        private void ClearTransactionData()
+        {
+            comboBox_Transaction_Type.SelectedIndex = 0;
+            numericUpDown_Transaction_Quan.Value = 0;
+            numericUpDown_Transaction_Price.Value = 0;
+            textBox_Transaction_Note.Text = string.Empty;
+            numericUpDown_Transaction_Total.Value = 0;
+            numericUpDownEx_Transaction_AfterFee.Value = 0;
+            comboBox_Transaction_Type.Focus();
+        }
 
         private void CalcAfterFee()
         {
