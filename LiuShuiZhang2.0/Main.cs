@@ -25,6 +25,8 @@ namespace LiuShuiZhang2._0
         private BLL_User user;
         public BLL_User User { get => user; set => user = value; }
 
+        DataTable dt_LastLiuShui;
+
         private bool cashCountingMode;
         public bool CashCountingMode { get => cashCountingMode; set => cashCountingMode = value; }
 
@@ -202,19 +204,25 @@ namespace LiuShuiZhang2._0
         }
         private void numericUpDown_Transaction_ValueChanged(object sender, EventArgs e)
         {
-            numericUpDown_Transaction_Total.Value = 
-                Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000)*1000*-1;
+            try
+            {
+                numericUpDown_Transaction_Total.Value =
+                   Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000) * 1000 * -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             CalcAfterFee();
         }
 
-        //TODO continue
         private void button_Transaction_NextTran_Click(object sender, EventArgs e)
         {
             if (CheckTranInfo())
             {
                 dataGridView_Transaction_MainTran.Rows.Add(
                 user.UserID,
-                0,
+                dt_LastLiuShui.Rows[0]["LIUSHUIID"].ToString(),
                 comboBox_Transaction_Type.SelectedValue,
                 0,
                 comboBox_Transaction_Type.Text,
@@ -222,7 +230,7 @@ namespace LiuShuiZhang2._0
                 numericUpDown_Transaction_Price.Value,
                 numericUpDownEx_Transaction_AfterFee.Value,
                 textBox_Transaction_Note.Text
-                );
+                ) ;
                 ClearTransactionData();
             }
         }
@@ -230,7 +238,9 @@ namespace LiuShuiZhang2._0
         {
             Main_Load(this, null);
             ClearTransactionData();
+            ClearTransactionTable();
         }
+
 
         private void comboBox_Transaction_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -308,6 +318,12 @@ namespace LiuShuiZhang2._0
 
         #region Private method
 
+        private void ClearTransactionTable()
+        {
+            dataGridView_Transaction_MainTran.Rows.Clear();
+            numericUpDown_Transaction_TotalAll.Value = 0;
+        }
+
         private void ClearTransactionData()
         {
             comboBox_Transaction_Type.SelectedIndex = 0;
@@ -316,6 +332,7 @@ namespace LiuShuiZhang2._0
             textBox_Transaction_Note.Text = string.Empty;
             numericUpDown_Transaction_Total.Value = 0;
             numericUpDownEx_Transaction_AfterFee.Value = 0;
+            numericUpDown_Transaction_Fix.Value = 0;
             comboBox_Transaction_Type.Focus();
         }
 
@@ -412,9 +429,8 @@ namespace LiuShuiZhang2._0
 
             if (dataGridView_CashStatus_CashDetails.Rows.Count == 0) { dataGridView_CashStatus_CashDetails.Rows.Add(new DataGridViewRow()); }
 
-            DataTable dt_LastLiuShui = DAL_liuShui.GetLastRecord();
+            dt_LastLiuShui = DAL_liuShui.GetLastRecord();
             
-
             if (dt_LastLiuShui.Rows.Count > 0)
             {
                 int gg = DateTime.Compare(((DateTime)dt_LastLiuShui.Rows[0]["RIZI"]).Date, dateTimePicker.Value.Date);
@@ -497,6 +513,8 @@ namespace LiuShuiZhang2._0
                 }
             }
             dataGridView_CashStatus_CashDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CashDetails_CellValueChanged);
+            dt_LastLiuShui = DAL_liuShui.GetLastRecord();
+
             #endregion
 
             #region Load BiZhong
@@ -543,6 +561,20 @@ namespace LiuShuiZhang2._0
 
 
         #endregion
+
+        private void dataGridView_Transaction_MainTran_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            DataGridView d = sender as DataGridView;
+
+            numericUpDown_Transaction_TotalAll.Value +=
+                (decimal)d.Rows[e.RowIndex].Cells["DataGridViewColumn_YIGONG_N2"].Value;
+
+            foreach (DataGridViewColumn columnn in d.Columns)
+            {
+                columnn.DefaultCellStyle.Format =
+                    columnn.Name.Split('_').Length == 3 ? columnn.Name.Split('_')[2] : string.Empty;
+            }
+        }
     }
 
 }
