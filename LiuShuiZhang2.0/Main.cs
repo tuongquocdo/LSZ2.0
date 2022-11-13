@@ -227,7 +227,7 @@ namespace LiuShuiZhang2._0
                 0,
                 comboBox_Transaction_Type.Text,
                 numericUpDown_Transaction_Quan.Value,
-                numericUpDown_Transaction_Price.Value,
+                Math.Abs(numericUpDownEx_Transaction_AfterFee.Value / numericUpDown_Transaction_Quan.Value),
                 numericUpDownEx_Transaction_AfterFee.Value,
                 textBox_Transaction_Note.Text
                 ) ;
@@ -307,9 +307,54 @@ namespace LiuShuiZhang2._0
             }
         }
 
+        private void dataGridView_Transaction_MainTran_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            DataGridView d = sender as DataGridView;
+
+            foreach (DataGridViewColumn columnn in d.Columns)
+            {
+                columnn.DefaultCellStyle.Format =
+                    columnn.Name.Split('_').Length == 3 ? columnn.Name.Split('_')[2] : string.Empty;
+            }
+
+            if((decimal)d.Rows[e.RowIndex].Cells["DataGridViewColumn_YIGONG_N2"].Value > 0 )
+            {
+                d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+            }
+            CalcTotallAll();
+        }
+
+        private void dataGridView_Transaction_MainTran_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            CalcTotallAll();
+        }
+
         private void button_Fix_Click(object sender, EventArgs e)
         {
+            if (dataGridView_Transaction_MainTran.RowCount > 0)
+            {
+                if (dataGridView_Transaction_MainTran.SelectedRows.Count != 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView_Transaction_MainTran.SelectedRows[0];
+                    if (MessageBox.Show("是否要修改合共额，修改后你在交易单上所选择的交易价格会自动地调整至对应的修改额", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value =
+                        (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value -
+                        numericUpDown_Transaction_TotalAll.Value +
+                        numericUpDown_Transaction_FixValue.Value;
 
+                        selectedRow.Cells["DataGridViewColumn_JIA_N2"].Value = Math.Abs(
+                        (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value /
+                        (decimal)selectedRow.Cells["DataGridViewColumn_LIANG_N2"].Value);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择要修改的交易", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+            }
+
+            numericUpDown_Transaction_FixValue.Value = 0;
         }
 
         #endregion
@@ -332,7 +377,7 @@ namespace LiuShuiZhang2._0
             textBox_Transaction_Note.Text = string.Empty;
             numericUpDown_Transaction_Total.Value = 0;
             numericUpDownEx_Transaction_AfterFee.Value = 0;
-            numericUpDown_Transaction_Fix.Value = 0;
+            numericUpDown_Transaction_FixValue.Value = 0;
             comboBox_Transaction_Type.Focus();
         }
 
@@ -360,6 +405,16 @@ namespace LiuShuiZhang2._0
                 numericUpDownEx_Transaction_AfterFee.Value = numericUpDown_Transaction_Total.Value +
                                                             numericUpDownEx_Transaction_Fee.Value;
             }
+        }
+
+        private void CalcTotallAll()
+        {
+            decimal rs = 0;
+            foreach (DataGridViewRow r in dataGridView_Transaction_MainTran.Rows)
+            {
+                rs += (decimal)r.Cells["DataGridViewColumn_YIGONG_N2"].Value;
+            }
+            numericUpDown_Transaction_TotalAll.Value = rs;
         }
 
         private bool CheckTranInfo()
@@ -562,18 +617,9 @@ namespace LiuShuiZhang2._0
 
         #endregion
 
-        private void dataGridView_Transaction_MainTran_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void tabControl__Transaction_Tran_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataGridView d = sender as DataGridView;
 
-            numericUpDown_Transaction_TotalAll.Value +=
-                (decimal)d.Rows[e.RowIndex].Cells["DataGridViewColumn_YIGONG_N2"].Value;
-
-            foreach (DataGridViewColumn columnn in d.Columns)
-            {
-                columnn.DefaultCellStyle.Format =
-                    columnn.Name.Split('_').Length == 3 ? columnn.Name.Split('_')[2] : string.Empty;
-            }
         }
     }
 
