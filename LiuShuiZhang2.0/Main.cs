@@ -234,6 +234,40 @@ namespace LiuShuiZhang2._0
                 ClearTransactionData();
             }
         }
+
+        private void button_Transaction_SaveToTemp_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Transaction_MainTran.RowCount > 0)
+            {
+                if (dataGridView_Transaction_MainTran.SelectedRows.Count != 0)
+                {
+                    foreach (DataGridViewRow selectedRow in dataGridView_Transaction_MainTran.SelectedRows)
+                    {
+                        dataGridView_Transaction_TempTran.Rows.Add(
+                        selectedRow.Cells["DataGridViewColumn_REYUANID"].Value,
+                        selectedRow.Cells["DataGridViewColumn_LIUSHUIID"].Value,
+                        selectedRow.Cells["DataGridViewColumn_BIZHONGID"].Value,
+                        selectedRow.Cells["DataGridViewColumn_QIANDANID"].Value,
+                        selectedRow.Cells["DataGridViewColumn_BIZHONG"].Value,
+                        selectedRow.Cells["DataGridViewColumn_LIANG_N2"].Value,
+                        selectedRow.Cells["DataGridViewColumn_JIA_N2"].Value,
+                        selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value,
+                        selectedRow.Cells["DataGridViewColumn_BEIZHU"].Value
+                        );
+
+                        dataGridView_Transaction_MainTran.Rows.RemoveAt(selectedRow.Index);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("请选择要搁置的交易", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+
+
+            }
+        }
+
         private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
         {
             Main_Load(this, null);
@@ -333,7 +367,7 @@ namespace LiuShuiZhang2._0
         {
             if (dataGridView_Transaction_MainTran.RowCount > 0)
             {
-                if (dataGridView_Transaction_MainTran.SelectedRows.Count != 0)
+                if (dataGridView_Transaction_MainTran.SelectedRows.Count == 1)
                 {
                     DataGridViewRow selectedRow = dataGridView_Transaction_MainTran.SelectedRows[0];
                     if (MessageBox.Show("是否要修改合共额，修改后你在交易单上所选择的交易价格会自动地调整至对应的修改额", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -350,7 +384,7 @@ namespace LiuShuiZhang2._0
                 }
                 else
                 {
-                    MessageBox.Show("请选择要修改的交易", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    MessageBox.Show("请选择一个要修改的交易", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
             }
 

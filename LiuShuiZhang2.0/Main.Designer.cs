@@ -30,9 +30,10 @@ namespace LiuShuiZhang2._0
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_User = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,7 +96,6 @@ namespace LiuShuiZhang2._0
             this.panel7 = new System.Windows.Forms.Panel();
             this.button_Transaction_SaveToTemp = new System.Windows.Forms.Button();
             this.tabPage_Transaction_TempTran = new System.Windows.Forms.TabPage();
-            this.dataGridView_TempTran = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
             this.button_Transaction_ClearTemp = new System.Windows.Forms.Button();
             this.button_Transaction_GetTemp = new System.Windows.Forms.Button();
@@ -151,6 +151,16 @@ namespace LiuShuiZhang2._0
             this.numericUpDown_CashStatus_DeltaValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.numericUpDown_CashStatus_CurValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.numericUpDown_CashStatus_PreValue = new LiuShuiZhang2._0.NumericUpDownEx();
+            this.dataGridView_Transaction_TempTran = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox_CashCounting.SuspendLayout();
@@ -166,7 +176,6 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Transaction_MainTran)).BeginInit();
             this.panel7.SuspendLayout();
             this.tabPage_Transaction_TempTran.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_TempTran)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
             this.groupBox_CashStatus.SuspendLayout();
@@ -198,6 +207,7 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_DeltaValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_CurValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_PreValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Transaction_TempTran)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -863,10 +873,11 @@ namespace LiuShuiZhang2._0
             this.button_Transaction_SaveToTemp.TabStop = false;
             this.button_Transaction_SaveToTemp.Text = "搁置》》";
             this.button_Transaction_SaveToTemp.UseVisualStyleBackColor = true;
+            this.button_Transaction_SaveToTemp.Click += new System.EventHandler(this.button_Transaction_SaveToTemp_Click);
             // 
             // tabPage_Transaction_TempTran
             // 
-            this.tabPage_Transaction_TempTran.Controls.Add(this.dataGridView_TempTran);
+            this.tabPage_Transaction_TempTran.Controls.Add(this.dataGridView_Transaction_TempTran);
             this.tabPage_Transaction_TempTran.Controls.Add(this.panel8);
             this.tabPage_Transaction_TempTran.Location = new System.Drawing.Point(4, 32);
             this.tabPage_Transaction_TempTran.Name = "tabPage_Transaction_TempTran";
@@ -876,21 +887,12 @@ namespace LiuShuiZhang2._0
             this.tabPage_Transaction_TempTran.Text = "草稿";
             this.tabPage_Transaction_TempTran.UseVisualStyleBackColor = true;
             // 
-            // dataGridView_TempTran
-            // 
-            this.dataGridView_TempTran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_TempTran.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_TempTran.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView_TempTran.Name = "dataGridView_TempTran";
-            this.dataGridView_TempTran.Size = new System.Drawing.Size(656, 278);
-            this.dataGridView_TempTran.TabIndex = 5;
-            // 
             // panel8
             // 
             this.panel8.Controls.Add(this.button_Transaction_ClearTemp);
             this.panel8.Controls.Add(this.button_Transaction_GetTemp);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel8.Location = new System.Drawing.Point(3, 281);
+            this.panel8.Location = new System.Drawing.Point(3, 271);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(656, 40);
             this.panel8.TabIndex = 4;
@@ -1058,14 +1060,14 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_CashStatus_CashDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView_CashStatus_CashDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_CashStatus_CashDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_CashStatus_CashDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._500000,
@@ -1077,15 +1079,15 @@ namespace LiuShuiZhang2._0
             this._5000,
             this._2000,
             this._1000});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_CashStatus_CashDetails.EnableHeadersVisualStyles = false;
             this.dataGridView_CashStatus_CashDetails.Location = new System.Drawing.Point(7, 72);
             this.dataGridView_CashStatus_CashDetails.Margin = new System.Windows.Forms.Padding(0);
@@ -1093,11 +1095,11 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.Name = "dataGridView_CashStatus_CashDetails";
             this.dataGridView_CashStatus_CashDetails.ReadOnly = true;
             this.dataGridView_CashStatus_CashDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = "0";
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
-            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = "0";
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_CashStatus_CashDetails.RowTemplate.Height = 30;
             this.dataGridView_CashStatus_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_CashStatus_CashDetails.Size = new System.Drawing.Size(679, 60);
@@ -2027,6 +2029,109 @@ namespace LiuShuiZhang2._0
             0,
             0});
             // 
+            // dataGridView_Transaction_TempTran
+            // 
+            this.dataGridView_Transaction_TempTran.AllowUserToAddRows = false;
+            this.dataGridView_Transaction_TempTran.AllowUserToDeleteRows = false;
+            this.dataGridView_Transaction_TempTran.AllowUserToResizeColumns = false;
+            this.dataGridView_Transaction_TempTran.AllowUserToResizeRows = false;
+            this.dataGridView_Transaction_TempTran.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Transaction_TempTran.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView_Transaction_TempTran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Transaction_TempTran.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9});
+            this.dataGridView_Transaction_TempTran.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_Transaction_TempTran.EnableHeadersVisualStyles = false;
+            this.dataGridView_Transaction_TempTran.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_Transaction_TempTran.Name = "dataGridView_Transaction_TempTran";
+            this.dataGridView_Transaction_TempTran.Size = new System.Drawing.Size(656, 268);
+            this.dataGridView_Transaction_TempTran.TabIndex = 0;
+            this.dataGridView_Transaction_TempTran.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Transaction_MainTran_CellValueChanged);
+            this.dataGridView_Transaction_TempTran.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_Transaction_MainTran_RowsAdded);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "人员码";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "流水码";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "币种码";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.dataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "欠单码";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "币种";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn5.Width = 56;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "数量";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn6.Width = 56;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "价格";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn7.Width = 56;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "一共";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn8.Width = 56;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "备注";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn9.Width = 56;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2065,7 +2170,6 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Transaction_MainTran)).EndInit();
             this.panel7.ResumeLayout(false);
             this.tabPage_Transaction_TempTran.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_TempTran)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -2102,6 +2206,7 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_DeltaValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_CurValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_PreValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Transaction_TempTran)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2155,7 +2260,6 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.TabPage tabPage_Transaction_TempTran;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button_Transaction_SaveToTemp;
-        private System.Windows.Forms.DataGridView dataGridView_TempTran;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button_Transaction_GetTemp;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -2226,5 +2330,15 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_JIA_N2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_YIGONG_N2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BEIZHU;
+        private System.Windows.Forms.DataGridView dataGridView_Transaction_TempTran;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
     }
 }
