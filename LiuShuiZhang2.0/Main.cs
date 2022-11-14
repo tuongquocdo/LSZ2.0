@@ -94,7 +94,7 @@ namespace LiuShuiZhang2._0
                 {
                     dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value =
                         int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value.ToString()) -
-                        s.Valued + 
+                        s.Valued +
                         s.Value;
                 }
             }
@@ -149,7 +149,7 @@ namespace LiuShuiZhang2._0
             DAL_liuShui = new DAL_LiuShui();
             DAL_biZhong = new DAL_BiZhong();
             BLL_jiaoYi = new BLL_JiaoYi();
-            
+
             FillDataToForm();
         }
 
@@ -207,7 +207,7 @@ namespace LiuShuiZhang2._0
             try
             {
                 numericUpDown_Transaction_Total.Value =
-                   Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000) * 1000 * -1;
+                   Math.Round(numericUpDown_Transaction_Quan.Value * numericUpDown_Transaction_Price.Value / 1000) * 1000;
             }
             catch (Exception ex)
             {
@@ -227,10 +227,10 @@ namespace LiuShuiZhang2._0
                 0,
                 comboBox_Transaction_Type.Text,
                 numericUpDown_Transaction_Quan.Value,
-                Math.Abs(numericUpDownEx_Transaction_AfterFee.Value / numericUpDown_Transaction_Quan.Value),
+                Math.Round(Math.Abs(numericUpDownEx_Transaction_AfterFee.Value / numericUpDown_Transaction_Quan.Value),2),
                 numericUpDownEx_Transaction_AfterFee.Value,
                 textBox_Transaction_Note.Text
-                ) ;
+                );
                 ClearTransactionData();
             }
         }
@@ -341,7 +341,7 @@ namespace LiuShuiZhang2._0
             }
         }
 
-        private void dataGridView_Transaction_MainTran_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void dataGridView_Transaction_Tran_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             DataGridView d = sender as DataGridView;
 
@@ -351,16 +351,36 @@ namespace LiuShuiZhang2._0
                     columnn.Name.Split('_').Length == 3 ? columnn.Name.Split('_')[2] : string.Empty;
             }
 
-            if((decimal)d.Rows[e.RowIndex].Cells["DataGridViewColumn_YIGONG_N2"].Value > 0 )
+            if ((decimal)d.Rows[e.RowIndex].Cells[7].Value < 0)
             {
                 d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
             }
-            CalcTotallAll();
         }
 
-        private void dataGridView_Transaction_MainTran_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_Transaction_Tran_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            CalcTotallAll();
+            CalcTotallAll(sender);
+        }
+
+        private void dataGridView_Transaction_Tran_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            CalcTotallAll(sender);
+        }
+
+        private void dataGridView_Transaction_Tran_SelectionChanged(object sender, EventArgs e)
+        {
+
+            DataGridViewSelectedCellCollection cells = (sender as DataGridView).SelectedCells;
+            decimal rs = 0;
+            foreach (DataGridViewCell cell in cells)
+            {
+                if (Common.IsDecimal(cell.Value.ToString()))
+                {
+                    rs += decimal.Parse(cell.Value.ToString());
+                }
+            }
+
+            toolStripStatusLabel_QuickSum.Text = rs.ToString("N0");
         }
 
         private void button_Fix_Click(object sender, EventArgs e)
@@ -373,8 +393,8 @@ namespace LiuShuiZhang2._0
                     if (MessageBox.Show("是否要修改合共额，修改后你在交易单上所选择的交易价格会自动地调整至对应的修改额", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value =
-                        (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value -
-                        numericUpDown_Transaction_TotalAll.Value +
+                        (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value +
+                        numericUpDown_Transaction_MainTotalAll.Value -
                         numericUpDown_Transaction_FixValue.Value;
 
                         selectedRow.Cells["DataGridViewColumn_JIA_N2"].Value = Math.Abs(
@@ -391,6 +411,25 @@ namespace LiuShuiZhang2._0
             numericUpDown_Transaction_FixValue.Value = 0;
         }
 
+        private void button_Transaction_ClearTemp_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Transaction_TempTran.RowCount > 0)
+            {
+                if (dataGridView_Transaction_TempTran.SelectedRows.Count > 0)
+                {
+                    foreach (DataGridViewRow r in dataGridView_Transaction_TempTran.SelectedRows)
+                    {
+                        dataGridView_Transaction_TempTran.Rows.Remove(r);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择要清除的交易草稿", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+        }
+
         #endregion
 
         #endregion
@@ -400,7 +439,7 @@ namespace LiuShuiZhang2._0
         private void ClearTransactionTable()
         {
             dataGridView_Transaction_MainTran.Rows.Clear();
-            numericUpDown_Transaction_TotalAll.Value = 0;
+            numericUpDown_Transaction_MainTotalAll.Value = 0;
         }
 
         private void ClearTransactionData()
@@ -441,14 +480,17 @@ namespace LiuShuiZhang2._0
             }
         }
 
-        private void CalcTotallAll()
+        private void CalcTotallAll(object sender)
         {
             decimal rs = 0;
-            foreach (DataGridViewRow r in dataGridView_Transaction_MainTran.Rows)
+            foreach (DataGridViewRow r in (sender as DataGridView).Rows)
             {
-                rs += (decimal)r.Cells["DataGridViewColumn_YIGONG_N2"].Value;
+                rs += (decimal)r.Cells[7].Value;
             }
-            numericUpDown_Transaction_TotalAll.Value = rs;
+
+            List<Control> ls = Common.GetAllControlByName(this, (sender as DataGridView).Tag.ToString()).ToList();
+            if (ls != null && ls.Count > 0)
+                (ls[0] as NumericUpDownEx).Value = rs * -1;
         }
 
         private bool CheckTranInfo()
@@ -460,7 +502,7 @@ namespace LiuShuiZhang2._0
                 checkingResult = true;
             else
             {
-                MessageBox.Show("请输入数量，价格","温倾提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("请输入数量，价格", "温倾提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
@@ -519,7 +561,7 @@ namespace LiuShuiZhang2._0
             if (dataGridView_CashStatus_CashDetails.Rows.Count == 0) { dataGridView_CashStatus_CashDetails.Rows.Add(new DataGridViewRow()); }
 
             dt_LastLiuShui = DAL_liuShui.GetLastRecord();
-            
+
             if (dt_LastLiuShui.Rows.Count > 0)
             {
                 int gg = DateTime.Compare(((DateTime)dt_LastLiuShui.Rows[0]["RIZI"]).Date, dateTimePicker.Value.Date);
@@ -557,9 +599,9 @@ namespace LiuShuiZhang2._0
                 else
                 {
                     ChangeWorkingMode(1);
-                    numericUpDown_CashStatus_PreValue.Value = 
-                    numericUpDown_CashStatus_CurValue.Value = 
-                    numericUpDown_CashStatus_CountValue.Value = 
+                    numericUpDown_CashStatus_PreValue.Value =
+                    numericUpDown_CashStatus_CurValue.Value =
+                    numericUpDown_CashStatus_CountValue.Value =
                     decimal.Parse(dt_LastLiuShui.Rows[0]["DIANSUANJIEGUO"].ToString().Trim());
                     numericUpDown_CashStatus_DeltaValue.Value = 0;
                     foreach (DataGridViewColumn i in dataGridView_CashStatus_CashDetails.Columns)
@@ -655,6 +697,7 @@ namespace LiuShuiZhang2._0
         {
 
         }
-    }
 
+        
+    }
 }

@@ -23,9 +23,23 @@ namespace LiuShuiZhang2._0
                                       .Where(c => c.GetType() == type);
         }
 
+        public static IEnumerable<Control> GetAllControlByName(Control control, String name)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAllControlByName(ctrl, name))
+                                      .Concat(controls)
+                                      .Where(c => c.Name == name);
+        }
+
         public static bool IsNumber(string s)
         {
             return Regex.IsMatch(s, @"^\d+$");
+        }
+
+        public static bool IsDecimal(string s)
+        {
+            return decimal.TryParse(s, out decimal n);
         }
 
         public static bool NotInludeSpecialChar(string s)
