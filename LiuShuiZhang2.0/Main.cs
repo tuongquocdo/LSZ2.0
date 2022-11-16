@@ -176,7 +176,7 @@ namespace LiuShuiZhang2._0
         {
 
             numericUpDown_CashStatus_CountValue.Value =
-                ((IEnumerable<DataGridViewColumn>)dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>())
+                dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
                                             .Sum(item => int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
                                                          int.Parse(item.Name.Split('_')[1].ToString()));
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
@@ -233,6 +233,25 @@ namespace LiuShuiZhang2._0
             }
         }
 
+        //todo continue
+        private void button_Transaction_SaveTran_Click(object sender, EventArgs e)
+        {
+            #region Handle CashCouting
+
+            groupBox_CashCounting.Enabled = cashCountingMode = true;
+            groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = ((Control)sender).Enabled = false;
+            numericUpDown_CashCounting_500000.Focus();
+
+            #endregion
+        }
+
+        private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
+        {
+            Main_Load(this, null);
+            ClearTransactionData();
+            ClearTransactionTable();
+        }
+
         private void button_Transaction_Temp_Click(object sender, EventArgs e)
         {
             DataGridView dataGridView_Transaction_from =
@@ -269,14 +288,7 @@ namespace LiuShuiZhang2._0
                 }
             }
         }
-        private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
-        {
-            Main_Load(this, null);
-            ClearTransactionData();
-            ClearTransactionTable();
-        }
-
-
+       
         private void comboBox_Transaction_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
             string temp = (sender as ComboBox).SelectedValue.ToString();
@@ -699,5 +711,7 @@ namespace LiuShuiZhang2._0
         {
 
         }
+
+        
     }
 }
