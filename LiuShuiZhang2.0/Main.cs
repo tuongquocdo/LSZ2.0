@@ -184,8 +184,7 @@ namespace LiuShuiZhang2._0
         private void button_CashCouterMode_Click(object sender, EventArgs e)
         {
             groupBox_CashCounting.Enabled = cashCountingMode = true;
-            groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = false;
-            ((Control)sender).Enabled = false;
+            groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled  = ((Control)sender).Enabled = false;
             numericUpDown_CashCounting_500000.Focus();
 
         }
@@ -199,8 +198,7 @@ namespace LiuShuiZhang2._0
             ClearCashCountingTable();
             Main_Load(sender, e);
             groupBox_CashCounting.Enabled = cashCountingMode = false;
-            groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = true;
-            button_CashStatus_CashCouterMode.Enabled = true;
+            groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = button_CashStatus_CashCouterMode.Enabled = true;
         }
         private void numericUpDown_Transaction_ValueChanged(object sender, EventArgs e)
         {
@@ -235,27 +233,33 @@ namespace LiuShuiZhang2._0
             }
         }
 
-        private void button_Transaction_SaveToTemp_Click(object sender, EventArgs e)
+        private void button_Transaction_Temp_Click(object sender, EventArgs e)
         {
-            if (dataGridView_Transaction_MainTran.RowCount > 0)
+            DataGridView dataGridView_Transaction_from =
+                Common.GetAllControlByName(this, ((string[])(sender as Button).Tag)[0]).ToList()[0] as DataGridView;
+
+            DataGridView dataGridView_Transaction_to =
+                Common.GetAllControlByName(this, ((string[])(sender as Button).Tag)[1]).ToList()[0] as DataGridView;
+
+            if (dataGridView_Transaction_from.RowCount > 0)
             {
-                if (dataGridView_Transaction_MainTran.SelectedRows.Count != 0)
+                if (dataGridView_Transaction_from.SelectedRows.Count != 0)
                 {
-                    foreach (DataGridViewRow selectedRow in dataGridView_Transaction_MainTran.SelectedRows)
+                    foreach (DataGridViewRow selectedRow in dataGridView_Transaction_from.SelectedRows)
                     {
-                        dataGridView_Transaction_TempTran.Rows.Add(
-                        selectedRow.Cells["DataGridViewColumn_REYUANID"].Value,
-                        selectedRow.Cells["DataGridViewColumn_LIUSHUIID"].Value,
-                        selectedRow.Cells["DataGridViewColumn_BIZHONGID"].Value,
-                        selectedRow.Cells["DataGridViewColumn_QIANDANID"].Value,
-                        selectedRow.Cells["DataGridViewColumn_BIZHONG"].Value,
-                        selectedRow.Cells["DataGridViewColumn_LIANG_N2"].Value,
-                        selectedRow.Cells["DataGridViewColumn_JIA_N2"].Value,
-                        selectedRow.Cells["DataGridViewColumn_YIGONG_N2"].Value,
-                        selectedRow.Cells["DataGridViewColumn_BEIZHU"].Value
+                        dataGridView_Transaction_to.Rows.Add(
+                        selectedRow.Cells[0].Value,
+                        selectedRow.Cells[1].Value,
+                        selectedRow.Cells[2].Value,
+                        selectedRow.Cells[3].Value,
+                        selectedRow.Cells[4].Value,
+                        selectedRow.Cells[5].Value,
+                        selectedRow.Cells[6].Value,
+                        selectedRow.Cells[7].Value,
+                        selectedRow.Cells[8].Value
                         );
 
-                        dataGridView_Transaction_MainTran.Rows.RemoveAt(selectedRow.Index);
+                        dataGridView_Transaction_from.Rows.RemoveAt(selectedRow.Index);
                     }
 
                 }
@@ -263,11 +267,8 @@ namespace LiuShuiZhang2._0
                 {
                     MessageBox.Show("请选择要搁置的交易", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
-
-
             }
         }
-
         private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
         {
             Main_Load(this, null);
@@ -417,6 +418,7 @@ namespace LiuShuiZhang2._0
             {
                 if (dataGridView_Transaction_TempTran.SelectedRows.Count > 0)
                 {
+                    if(MessageBox.Show("是否要删除该草稿？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     foreach (DataGridViewRow r in dataGridView_Transaction_TempTran.SelectedRows)
                     {
                         dataGridView_Transaction_TempTran.Rows.Remove(r);
@@ -530,9 +532,9 @@ namespace LiuShuiZhang2._0
 
         private void ClearCashCountingTable()
         {
-            foreach (var c in Common.GetAllControlByType(panel_CashCountingTable, typeof(NumericUpDown)))
+            foreach (var c in Common.GetAllControlByType(panel_CashCountingTable, typeof(NumericUpDownEx)))
             {
-                ((NumericUpDown)c).Value = 0;
+                ((NumericUpDownEx)c).Value = 0;
             }
         }
 
@@ -697,7 +699,5 @@ namespace LiuShuiZhang2._0
         {
 
         }
-
-        
     }
 }
