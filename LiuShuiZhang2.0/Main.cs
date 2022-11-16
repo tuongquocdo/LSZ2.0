@@ -174,13 +174,24 @@ namespace LiuShuiZhang2._0
 
         private void dataGridView_CashDetails_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            CalcCountValueAndDeltaValue();
+        }
 
+        private void numericUpdown_CashDetails_CellValueChanged(object sender, EventArgs e)
+        {
+            CalcCountValueAndDeltaValue();
+        }
+
+        private void CalcCountValueAndDeltaValue()
+        {
             numericUpDown_CashStatus_CountValue.Value =
                 dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
                                             .Sum(item => int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
                                                          int.Parse(item.Name.Split('_')[1].ToString()));
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
+
         }
+
         private void button_CashCouterMode_Click(object sender, EventArgs e)
         {
             groupBox_CashCounting.Enabled = cashCountingMode = true;
@@ -236,7 +247,9 @@ namespace LiuShuiZhang2._0
         //todo continue
         private void button_Transaction_SaveTran_Click(object sender, EventArgs e)
         {
-            #region Handle CashCouting
+            numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
+
+            #region Handle CashCounting
 
             groupBox_CashCounting.Enabled = cashCountingMode = true;
             groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = ((Control)sender).Enabled = false;
@@ -658,6 +671,7 @@ namespace LiuShuiZhang2._0
                 }
             }
             dataGridView_CashStatus_CashDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CashDetails_CellValueChanged);
+            numericUpDown_CashStatus_CurValue.ValueChanged += new System.EventHandler(this.numericUpdown_CashDetails_CellValueChanged);
             dt_LastLiuShui = DAL_liuShui.GetLastRecord();
 
             #endregion
@@ -711,7 +725,5 @@ namespace LiuShuiZhang2._0
         {
 
         }
-
-        
     }
 }
