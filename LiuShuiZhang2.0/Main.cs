@@ -87,6 +87,7 @@ namespace LiuShuiZhang2._0
                 Common.GetAllControlByType(panel_CashCountingTable, typeof(NumericUpDownEx)).Cast<NumericUpDownEx>()
                                             .Where(item => item.Tag.ToString() == "text")
                                             .Sum(item => item.Value * decimal.Parse(item.Name.Split('_')[2]));
+            numericUpDown_CashCount_DeltaValue.Value = numericUpDown_CashCounting_TotalCashCounting.Value - numericUpDown_CashCount_MainTotalAll.Value;
 
             foreach (DataGridViewColumn c in dataGridView_CashStatus_CashDetails.Columns)
             {
@@ -182,16 +183,6 @@ namespace LiuShuiZhang2._0
             CalcCountValueAndDeltaValue();
         }
 
-        private void CalcCountValueAndDeltaValue()
-        {
-            numericUpDown_CashStatus_CountValue.Value =
-                dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
-                                            .Sum(item => int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
-                                                         int.Parse(item.Name.Split('_')[1].ToString()));
-            numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
-
-        }
-
         private void button_CashCouterMode_Click(object sender, EventArgs e)
         {
             groupBox_CashCounting.Enabled = cashCountingMode = true;
@@ -247,15 +238,18 @@ namespace LiuShuiZhang2._0
         //todo continue
         private void button_Transaction_SaveTran_Click(object sender, EventArgs e)
         {
-            numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
+            if (MessageBox.Show("确认要进账？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
+                numericUpDown_CashCount_MainTotalAll.Value = numericUpDown_Transaction_MainTotalAll.Value;
+                #region Handle CashCounting
 
-            #region Handle CashCounting
+                groupBox_CashCounting.Enabled = cashCountingMode = true;
+                groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = false;
+                numericUpDown_CashCounting_500000.Focus();
 
-            groupBox_CashCounting.Enabled = cashCountingMode = true;
-            groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = ((Control)sender).Enabled = false;
-            numericUpDown_CashCounting_500000.Focus();
-
-            #endregion
+                #endregion
+            }
         }
 
         private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
@@ -462,6 +456,16 @@ namespace LiuShuiZhang2._0
         #endregion
 
         #region Private method
+
+        private void CalcCountValueAndDeltaValue()
+        {
+            numericUpDown_CashStatus_CountValue.Value =
+                dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
+                                            .Sum(item => int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
+                                                         int.Parse(item.Name.Split('_')[1].ToString()));
+            numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
+
+        }
 
         private void ClearTransactionTable()
         {
@@ -721,9 +725,5 @@ namespace LiuShuiZhang2._0
 
         #endregion
 
-        private void tabControl__Transaction_Tran_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
