@@ -51,10 +51,15 @@
     <Compile Include="BLL\BLL_JiaoYi.cs" />
     <Compile Include="BLL\BLL_LiuShui.cs" />
     <Compile Include="BLL\BLL_BiZhong.cs" />
+    <Compile Include="BLL\BLL_QianDan.cs" />
     <Compile Include="BLL\BLL_User.cs" />
+    <Compile Include="BLL\BLL_JiaoYiDan.cs" />
     <Compile Include="Common.cs" />
+    <Compile Include="DAL\DAL_JiaoYi.cs" />
+    <Compile Include="DAL\DAL_JiaoYiDan.cs" />
     <Compile Include="DAL\DAL_LiuShui.cs" />
     <Compile Include="DAL\DAL_BiZhong.cs" />
+    <Compile Include="DAL\DAL_QianDan.cs" />
     <Compile Include="DAL\DAL_User.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -75,6 +80,12 @@
     </Compile>
     <Compile Include="BiZhong.Designer.cs">
       <DependentUpon>BiZhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <SubType>Form</SubType>
@@ -99,6 +110,9 @@
     </Compile>
     <EmbeddedResource Include="BiZhong.resx">
       <DependentUpon>BiZhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User.resx">
       <DependentUpon>User.cs</DependentUpon>

@@ -74,7 +74,7 @@ namespace LiuShuiZhang2._0
                     {
                         this.Hide();
                         Main m = new Main();
-                        m.User = u;
+                        m.BLL_User = u;
                         m.ShowDialog();
                         this.Show();
                     }

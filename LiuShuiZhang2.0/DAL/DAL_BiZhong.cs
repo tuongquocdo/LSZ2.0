@@ -27,6 +27,22 @@ namespace LiuShuiZhang2._0.DAL
             }
         }
 
+        public DataTable GetAllBiZhongByBiZhongID(long biZhongID)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "select * from BIZHONG where BIZHONGID = @BIZHONGID";
+                cmd.Parameters.AddWithValue("@BIZHONGID",biZhongID);
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
         public bool BiZhongExisted(string biZhong)
         {
             using (var con = new SqlConnection(Common.constr))

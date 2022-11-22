@@ -19,16 +19,24 @@ namespace LiuShuiZhang2._0
         DAL_LiuShui DAL_liuShui;
 
         DAL_BiZhong DAL_biZhong;
+        
+        DAL_JiaoYiDan DAL_jiaoYiDan;
+
+        DAL_JiaoYi DAL_jiaoYi;
 
         BLL_JiaoYi BLL_jiaoYi;
 
-        private BLL_User user;
-        public BLL_User User { get => user; set => user = value; }
+        BLL_JiaoYiDan BLL_jiaoYiDan;
+        public BLL_JiaoYiDan BLL_JiaoYiDan { get => BLL_jiaoYiDan; set => BLL_jiaoYiDan = value; }
+
+        private BLL_User BLL_user;
+        public BLL_User BLL_User { get => BLL_user; set => BLL_user = value; }
 
         DataTable dt_LastLiuShui;
 
         private bool cashCountingMode;
         public bool CashCountingMode { get => cashCountingMode; set => cashCountingMode = value; }
+        
 
         public Main()
         {
@@ -40,15 +48,15 @@ namespace LiuShuiZhang2._0
         {
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
             {
-                this.SelectNextControl((Control)sender, true, true, true, true);
+                SelectNextControl((Control)sender, true, true, true, true);
             }
             else if (e.KeyCode == Keys.PageUp)
             {
-                this.SelectNextControl((Control)sender, false, true, true, true);
+                SelectNextControl((Control)sender, false, true, true, true);
             }
             else if (e.KeyCode == Keys.PageDown)
             {
-                this.SelectNextControl((Control)sender, true, true, true, true);
+                SelectNextControl((Control)sender, true, true, true, true);
             }
         }
 
@@ -130,15 +138,15 @@ namespace LiuShuiZhang2._0
         {
             #region Handle User Permision
             ///test
-            user = new BLL_User()
+            BLL_user = new BLL_User()
             {
                 UserID = 2,
                 UserName = "admin"
             };
-            label1_HandleUser.Text = "管理人员: " + user.UserName;
+            label1_HandleUser.Text = "管理人员: " + BLL_user.UserName;
 
             DAL_User u = new DAL_User();
-            if (u.IsUserAdmnin(user.UserID))
+            if (u.IsUserAdmnin(BLL_user.UserID))
             {
                 ToolStripMenuItem_User.Visible = true;
                 ToolStripMenuItem_Type.Visible = true;
@@ -149,8 +157,9 @@ namespace LiuShuiZhang2._0
             dateTimePicker.MaxDate = DateTime.Now;
             DAL_liuShui = new DAL_LiuShui();
             DAL_biZhong = new DAL_BiZhong();
+            DAL_jiaoYiDan = new DAL_JiaoYiDan();
+            DAL_jiaoYi = new DAL_JiaoYi();
             BLL_jiaoYi = new BLL_JiaoYi();
-
             FillDataToForm();
         }
 
@@ -221,7 +230,7 @@ namespace LiuShuiZhang2._0
             if (CheckTranInfo())
             {
                 dataGridView_Transaction_MainTran.Rows.Add(
-                user.UserID,
+                BLL_user.UserID,
                 dt_LastLiuShui.Rows[0]["LIUSHUIID"].ToString(),
                 comboBox_Transaction_Type.SelectedValue,
                 0,
@@ -722,8 +731,122 @@ namespace LiuShuiZhang2._0
             };
         }
 
+        private BLL_JiaoYiDan CreateJiaoYiDan()
+        {
+            return new BLL_JiaoYiDan()
+            {
+                Time = dateTimePicker.Value,
+                TotalPrice = numericUpDown_Transaction_MainTotalAll.Value,
+                __500 = int.Parse(numericUpDown_CashCounting_500000.Value.ToString()),
+                __200 = int.Parse(numericUpDown_CashCounting_200000.Value.ToString()),
+                __100 = int.Parse(numericUpDown_CashCounting_100000.Value.ToString()),
+                __50 = int.Parse(numericUpDown_CashCounting_50000.Value.ToString()),
+                __20 = int.Parse(numericUpDown_CashCounting_20000.Value.ToString()),
+                __10 = int.Parse(numericUpDown_CashCounting_10000.Value.ToString()),
+                __5 = int.Parse(numericUpDown_CashCounting_5000.Value.ToString()),
+                __2 = int.Parse(numericUpDown_CashCounting_2000.Value.ToString()),
+                __1 = int.Parse(numericUpDown_CashCounting_1000.Value.ToString())
+            };
+        }
+
+        private List<BLL_JiaoYi> CreateJiaoYis()
+        {
+            List<BLL_JiaoYi> lst = new List<BLL_JiaoYi>();
+
+            foreach (DataGridViewRow row in dataGridView_Transaction_MainTran.Rows)
+            {
+                BLL_jiaoYi = new BLL_JiaoYi();
+                int lei = 0;
+                lei = DAL_biZhong.GetLeiOfBiZhong(int.Parse(row.Cells["DataGridViewColumn_BIZHONGID"].Value.ToString()));
+               
+                BLL_jiaoYi.JiaoYiDanID = 0;
+                BLL_jiaoYi.UserID = int.Parse(row.Cells["DataGridViewColumn_REYUANID"].Value.ToString());
+                BLL_jiaoYi.LiuShuiID = int.Parse(row.Cells["DataGridViewColumn_LIUSHUIID"].Value.ToString());
+                BLL_jiaoYi.BiZhongID = int.Parse(row.Cells["DataGridViewColumn_BIZHONGID"].Value.ToString());
+                BLL_jiaoYi.QianDanID = int.Parse(row.Cells["DataGridViewColumn_QIANDANID"].Value.ToString());
+                BLL_jiaoYi.Time = dateTimePicker.Value;
+                BLL_jiaoYi.Quantity = (decimal)row.Cells["DataGridViewColumn_LIANG_N2"].Value;
+                BLL_jiaoYi.Value = (decimal)row.Cells["DataGridViewColumn_JIA_N2"].Value;
+                BLL_jiaoYi.Price = (decimal)row.Cells["DataGridViewColumn_YIGONG_N2"].Value;
+                BLL_jiaoYi.Cogs = 0;
+                BLL_jiaoYi.Profit = 0;
+                BLL_jiaoYi.Note = row.Cells["DataGridViewColumn_BEIZHU"].Value.ToString();
+                BLL_jiaoYi.Confirmed = false;
+
+                ////qian dan
+                //if (lei == 2 || lei == 3)
+                //{
+
+                //}
+
+                ////update cogs & profit for sell
+                
+                //if (lei == 1)
+                //{
+                //    BLL_BiZhong bz = new BLL_BiZhong();
+                //    bz.Quantity += (decimal)row.Cells["DataGridViewColumn_LIANG_N2"].Value;
+                //    if (BLL_jiaoYi.Quantity < 0)
+                //    {
+                //        DataTable tb = DAL_biZhong.GetAllBiZhongByBiZhongID((int)row.Cells["DataGridViewColumn_BIZHONGID"].Value);
+                //        BLL_jiaoYi.Cogs = (decimal)tb.Rows[0]["PINGJUNJIA"];
+                //        BLL_jiaoYi.Profit = (decimal)row.Cells["DataGridViewColumn_YIGONG_N2"].Value - 
+                //                            (decimal)row.Cells["DataGridViewColumn_LIANG_N2"].Value * (decimal)tb.Rows[0]["PINGJUNJIA"];
+                //        bz.AveragePrice = (decimal)tb.Rows[0]["PINGJUNJIA"];
+                //    }
+                //    else
+                //    {
+                //        bz.AveragePrice = ((decimal)row.Cells["DataGridViewColumn_YIGONG_N2"].Value +
+                //                            Math.Abs(BLL_jiaoYi.Quantity * BLL_jiaoYi.Value))/ bz.Quantity;
+                //    }
+                //    bz.TotalValue = bz.Quantity * bz.AveragePrice;
+                //    BLL_jiaoYi.BiZhong = bz;
+                //}
+                lst.Add(BLL_jiaoYi);
+            }
+
+            return lst;
+        }
 
         #endregion
 
+        private void button_CashCounting_SaveCashCounting_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("请确认进账？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    #region initialize LiuShui
+                    BLL_LiuShui BLL_liuShui = CreateLiuShui();
+                    BLL_liuShui.LiuShuiID = (long) dt_LastLiuShui.Rows[0]["LIUSHUIID"];
+                    #endregion
+
+                    #region initialize JiaoYiDan
+                    BLL_jiaoYiDan = CreateJiaoYiDan();
+                    #endregion
+
+                    #region initialize JiaoYi List
+                    List<BLL_JiaoYi> BLL_jiaoYis = CreateJiaoYis();
+                    #endregion
+
+                    
+                    DAL_jiaoYi.AddNewJiaoYis(BLL_jiaoYiDan, BLL_liuShui, BLL_jiaoYis);
+
+                    MessageBox.Show("进账成功", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void NumericUpDown_Leave(object sender, EventArgs e)
+        {
+            if ((sender as NumericUpDownEx).Text == string.Empty)
+            {
+                (sender as NumericUpDownEx).Text = "0.00";
+                (sender as NumericUpDownEx).Value = 0;
+            }
+        }
     }
 }
