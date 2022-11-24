@@ -65,7 +65,6 @@ namespace LiuShuiZhang2._0.DAL
             }
         }
 
-
         public void AddNewJiaoYis(BLL.BLL_JiaoYiDan jyd, BLL.BLL_LiuShui ls,  BLL.BLL_JiaoYi_BiZhong jysbzs)
         {
             using (var con = new SqlConnection(Common.constr))
@@ -114,6 +113,16 @@ namespace LiuShuiZhang2._0.DAL
 
                     foreach (BLL.BLL_JiaoYi jy in jysbzs.Jys)
                     {
+                        if (jy.QianDan != null)
+                        {
+                            cmd.CommandText = string.Format("insert into QIANDAN output inserted.QIANDANID values (N'{0}','{1}',{2},'{3}')",
+                                jy.QianDan.Content,
+                                jy.QianDan.Time,
+                                jy.QianDan.QianDanValue,
+                                jy.QianDan.Finish);
+                            jy.QianDanID = (long)cmd.ExecuteScalar();
+                        }
+
                         cmd.CommandText = string.Format("insert into JIAOYI(JIAOYIDANID,RENYUANID,LIUSHUIID,BIZHONGID,QIANDANID,SHIJIAN,LIANG,JIA,YIGONG,BENQIAN,LIRUN,BEIZHU,QUEREN) " +
                         "values ({0},{1},{2},{3},{4},'{5}',{6},{7},{8},{9},{10}, N'{11}','{12}')",
                         jiaoYiDanId, 

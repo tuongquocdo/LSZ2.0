@@ -24,6 +24,7 @@ namespace LiuShuiZhang2._0.BLL
         private string note;
         private bool confirmed;
         private DataTable feeTypes;
+        private BLL_QianDan qianDan;
 
         public long JiaoYiID { get => jiaoYiID; set => jiaoYiID = value; }
         public long JiaoYiDanID { get => jiaoYiDanID; set => jiaoYiDanID = value; }
@@ -40,6 +41,7 @@ namespace LiuShuiZhang2._0.BLL
         public string Note { get => note; set => note = value; }
         public bool Confirmed { get => confirmed; set => confirmed = value; }
         public DataTable FeeTypes { get => feeTypes; set => feeTypes = value; }
+        public BLL_QianDan QianDan { get => qianDan; set => qianDan = value; }
 
         public BLL_JiaoYi()
         {

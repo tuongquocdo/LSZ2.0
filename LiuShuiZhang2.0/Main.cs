@@ -122,7 +122,22 @@ namespace LiuShuiZhang2._0
                                             .Where(item => item.Tag.ToString() == "text")
                                             .Sum(item => item.Value * decimal.Parse(item.Name.Split('_')[2]));
             numericUpDown_CashCount_DeltaValue.Value = numericUpDown_CashCounting_TotalCashCounting.Value - numericUpDown_CashCount_MainTotalAll.Value;
-
+            if (numericUpDown_CashCount_DeltaValue.Value > 0)
+            {
+                numericUpDown_CashCount_DeltaValue.BackColor = Color.Green;
+                numericUpDown_CashCount_DeltaValue.ForeColor = Color.Black;
+            }
+            else if (numericUpDown_CashCount_DeltaValue.Value < 0)
+            {
+                numericUpDown_CashCount_DeltaValue.BackColor = Color.Red;
+                numericUpDown_CashCount_DeltaValue.ForeColor = Color.Black;
+            }
+            else
+            {
+                numericUpDown_CashCount_DeltaValue.BackColor = SystemColors.Info;
+                numericUpDown_CashCount_DeltaValue.ForeColor = Color.Red;
+            }
+            
             foreach (DataGridViewColumn c in dataGridView_CashStatus_CashDetails.Columns)
             {
                 if (int.Parse(c.Name.Split('_')[1]) == int.Parse(s.Name.Split('_')[2]))
@@ -268,13 +283,12 @@ namespace LiuShuiZhang2._0
             {
                 numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
                 numericUpDown_CashCount_MainTotalAll.Value = numericUpDown_Transaction_MainTotalAll.Value;
-                #region Handle CashCounting
-
+                // Pass to CashCounting
                 groupBox_CashCounting.Enabled = cashCountingMode = true;
                 groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = false;
+                numericUpDown_CashCounting_500000.Value = 1;
+                numericUpDown_CashCounting_500000.Value = 0;
                 numericUpDown_CashCounting_500000.Focus();
-
-                #endregion
             }
         }
 
@@ -395,6 +409,7 @@ namespace LiuShuiZhang2._0
             {
                 d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
             }
+            CalcTotallAll(sender);
         }
 
         private void dataGridView_Transaction_Tran_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
@@ -405,6 +420,14 @@ namespace LiuShuiZhang2._0
         private void dataGridView_Transaction_Tran_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             CalcTotallAll(sender);
+            DataGridView d = sender as DataGridView;
+            if (d.Rows.Count > 0)
+            {
+                if ((decimal)d.Rows[e.RowIndex].Cells[7].Value < 0)
+                {
+                    d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
         }
 
         private void button_Fix_Click(object sender, EventArgs e)
@@ -420,6 +443,12 @@ namespace LiuShuiZhang2._0
                         (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG"].Value +
                         numericUpDown_Transaction_MainTotalAll.Value -
                         numericUpDown_Transaction_FixValue.Value;
+
+                        if ((decimal)selectedRow.Cells["DataGridViewColumn_YIGONG"].Value /
+                        (decimal)selectedRow.Cells["DataGridViewColumn_LIANG"].Value < 0)
+                        {
+                            selectedRow.Cells["DataGridViewColumn_LIANG"].Value = (decimal)selectedRow.Cells["DataGridViewColumn_LIANG"].Value * -1;
+                        }
 
                         selectedRow.Cells["DataGridViewColumn_JIA"].Value = Math.Abs(
                         (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG"].Value /
@@ -852,14 +881,23 @@ namespace LiuShuiZhang2._0
                 BLL_jiaoYi.Confirmed = true;
 
                 //qian dan
-                if (lei == 2 || lei == 3)
+                if (lei == (int)BLL_BiZhong.BiZhongLei.KeRenQian || lei == (int)BLL_BiZhong.BiZhongLei.QianKeRen)
                 {
-
+                    string title = lei == (int)BLL_BiZhong.BiZhongLei.KeRenQian ? "客人欠本店" : "本店欠客人";
+                    BLL_jiaoYi.QianDan = new BLL_QianDan()
+                    {
+                        Content = string.Format("{0} - 客户：{1} - 开单时间：{2}",
+                        title,
+                        row.Cells["DataGridViewColumn_BEIZHU"].Value.ToString(),
+                        BLL_jiaoYi.Time),
+                        Time = BLL_jiaoYi.Time,
+                        QianDanValue = BLL_jiaoYi.Price,
+                        Finish = false
+                    };
                 }
 
-                //update cogs & profit for sell
 
-                if (lei == 1)
+                if (lei == (int)BLL_BiZhong.BiZhongLei.WaiBi)
                 {
                     DataTable tb = DAL_biZhong.GetAllBiZhongByBiZhongID(biZhongID);
 
