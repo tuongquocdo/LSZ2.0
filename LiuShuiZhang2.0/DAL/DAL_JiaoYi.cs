@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,34 @@ namespace LiuShuiZhang2._0.DAL
 {
     public class DAL_JiaoYi
     {
+        public DataTable GetAllRecordByDate(DateTime date)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("select JIAOYI.JIAOYIID," +
+                                "JIAOYI.JIAOYIDANID," +
+                                "JIAOYI.RENYUANID," +
+                                "JIAOYI.LIUSHUIID," +
+                                "JIAOYI.BIZHONGID," +
+                                "JIAOYI.QIANDANID," +
+                                "BIZHONG.BIZHONG," +
+                                "JIAOYI.LIANG," +
+                                "JIAOYI.JIA," +
+                                "JIAOYI.YIGONG," +
+                                "JIAOYI.BEIZHU," +
+                                "JIAOYI.SHIJIAN" +
+                            " from JIAOYI,BIZHONG where JIAOYI.BIZHONGID = BIZHONG.BIZHONGID and (select dateadd(dd, 0, DATEDIFF(dd, 0, JIAOYI.SHIJIAN))) = '{0}'", date.Date);
+                
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
         public void AddNewJiaoYi(LiuShuiZhang2._0.BLL.BLL_JiaoYi jy)
         {
             using (var con = new SqlConnection(Common.constr))
@@ -37,7 +66,7 @@ namespace LiuShuiZhang2._0.DAL
         }
 
 
-        public void AddNewJiaoYis(BLL.BLL_JiaoYiDan jyd, BLL.BLL_LiuShui ls,  List<BLL.BLL_JiaoYi> jys)
+        public void AddNewJiaoYis(BLL.BLL_JiaoYiDan jyd, BLL.BLL_LiuShui ls,  BLL.BLL_JiaoYi_BiZhong jysbzs)
         {
             using (var con = new SqlConnection(Common.constr))
             {
@@ -83,24 +112,33 @@ namespace LiuShuiZhang2._0.DAL
                     cmd.Parameters.AddWithValue("@LIUSHUI_LIUSHUIID", ls.LiuShuiID);
                     cmd.ExecuteNonQuery();
 
-                    foreach (BLL.BLL_JiaoYi jy in jys)
+                    foreach (BLL.BLL_JiaoYi jy in jysbzs.Jys)
                     {
                         cmd.CommandText = string.Format("insert into JIAOYI(JIAOYIDANID,RENYUANID,LIUSHUIID,BIZHONGID,QIANDANID,SHIJIAN,LIANG,JIA,YIGONG,BENQIAN,LIRUN,BEIZHU,QUEREN) " +
-                        "values ({0},{1},{2},{3},{4},'{5}',{6},{7},{8},{9},{10}, N'{11}','{12}')", jiaoYiDanId, jy.UserID,jy.LiuShuiID, jy.BiZhongID, jy.QianDanID,
-                        jy.Time, jy.Quantity, jy.Value, jy.Price, jy.Cogs, jy.Profit, jy.Note, jy.Confirmed);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_JIAOYIDANID", jiaoYiDanId);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_RENYUANID", jy.UserID);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_LIUSHUIID", jy.LiuShuiID);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_BIZHONGID", jy.BiZhongID);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_QIANDANID", jy.QianDanID);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_SHIJIAN", jy.Time);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_LIANG", jy.Quantity);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_JIA", jy.Value);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_YIGONG", jy.Price);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_BENQIAN", jy.Cogs);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_LIRUN", jy.Profit);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_BEIZHU", jy.Note);
-                        //cmd.Parameters.AddWithValue("@JIAOYI_QUEREN", jy.Confirmed);
+                        "values ({0},{1},{2},{3},{4},'{5}',{6},{7},{8},{9},{10}, N'{11}','{12}')",
+                        jiaoYiDanId, 
+                        jy.UserID,
+                        jy.LiuShuiID,
+                        jy.BiZhongID,
+                        jy.QianDanID,
+                        jy.Time,
+                        jy.Quantity,
+                        jy.Value,
+                        jy.Price,
+                        jy.Cogs,
+                        jy.Profit,
+                        jy.Note,
+                        jy.Confirmed);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    foreach (BLL.BLL_BiZhong bz in jysbzs.Bzs)
+                    {
+                        cmd.CommandText = string.Format("update BIZHONG set LIANG={0}, PINGJUNJIA={1}, YIGONG={2} where BIZHONGID={3}",
+                            bz.Quantity,
+                            bz.AveragePrice,
+                            bz.TotalValue,
+                            bz.BiZhongID);
                         cmd.ExecuteNonQuery();
                     }
                     sqltran.Commit();

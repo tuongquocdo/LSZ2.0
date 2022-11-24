@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BLL_JiaoYi.cs" />
+    <Compile Include="BLL\BLL_JiaoYi_BiZhong.cs" />
     <Compile Include="BLL\BLL_LiuShui.cs" />
     <Compile Include="BLL\BLL_BiZhong.cs" />
     <Compile Include="BLL\BLL_QianDan.cs" />

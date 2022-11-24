@@ -30,10 +30,16 @@ namespace LiuShuiZhang2._0
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItem_Tools = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_User = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,15 +109,6 @@ namespace LiuShuiZhang2._0
             this.tabControl__Transaction_Tran = new System.Windows.Forms.TabControl();
             this.tabPage_Transaction_MainTran = new System.Windows.Forms.TabPage();
             this.dataGridView_Transaction_MainTran = new System.Windows.Forms.DataGridView();
-            this.DataGridViewColumn_REYUANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_LIUSHUIID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_BIZHONGID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_QIANDANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_BIZHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_LIANG_N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_JIA_N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_YIGONG_N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_BEIZHU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button_Transaction_Fix = new System.Windows.Forms.Button();
             this.button_Transaction_SaveToTemp = new System.Windows.Forms.Button();
@@ -121,15 +118,6 @@ namespace LiuShuiZhang2._0
             this.numericUpDown_Transaction_MainTotalAll = new LiuShuiZhang2._0.NumericUpDownEx();
             this.tabPage_Transaction_TempTran = new System.Windows.Forms.TabPage();
             this.dataGridView_Transaction_TempTran = new System.Windows.Forms.DataGridView();
-            this.DataGridViewColumn_TempREYUANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempLIUSHUIID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempBIZHONGID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempQIANDANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempBIZHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempLIANG_N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempJIA_N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempYIGONG_N2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataGridViewColumn_TempBEIZHU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.numericUpDown_Transaction_TempTotalAll = new LiuShuiZhang2._0.NumericUpDownEx();
@@ -158,15 +146,33 @@ namespace LiuShuiZhang2._0
             this._2000 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._1000 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_LiuShui = new System.Windows.Forms.GroupBox();
+            this.dataGridView_LiuShui_Trans = new System.Windows.Forms.DataGridView();
             this.panel9 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_QuickSum = new System.Windows.Forms.ToolStripStatusLabel();
             this.label1_HandleUser = new System.Windows.Forms.Label();
+            this.DataGridViewColumn_REYUANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_LIUSHUIID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_BIZHONGID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_QIANDANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_BIZHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_LIANG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_JIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_YIGONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_BEIZHU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempREYUANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempLIUSHUIID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempBIZHONGID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempQIANDANID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempBIZHONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempLIANG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempJIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempYIGONG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataGridViewColumn_TempBEIZHU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox_CashCounting.SuspendLayout();
@@ -213,8 +219,8 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_PreValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CashStatus_CashDetails)).BeginInit();
             this.groupBox_LiuShui.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LiuShui_Trans)).BeginInit();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1425,9 +1431,9 @@ namespace LiuShuiZhang2._0
             this.DataGridViewColumn_BIZHONGID,
             this.DataGridViewColumn_QIANDANID,
             this.DataGridViewColumn_BIZHONG,
-            this.DataGridViewColumn_LIANG_N2,
-            this.DataGridViewColumn_JIA_N2,
-            this.DataGridViewColumn_YIGONG_N2,
+            this.DataGridViewColumn_LIANG,
+            this.DataGridViewColumn_JIA,
+            this.DataGridViewColumn_YIGONG,
             this.DataGridViewColumn_BEIZHU});
             this.dataGridView_Transaction_MainTran.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Transaction_MainTran.EnableHeadersVisualStyles = false;
@@ -1439,82 +1445,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_Transaction_MainTran.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Transaction_Tran_CellValueChanged);
             this.dataGridView_Transaction_MainTran.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_Transaction_Tran_RowsAdded);
             this.dataGridView_Transaction_MainTran.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView_Transaction_Tran_RowStateChanged);
-            this.dataGridView_Transaction_MainTran.SelectionChanged += new System.EventHandler(this.dataGridView_Transaction_Tran_SelectionChanged);
-            // 
-            // DataGridViewColumn_REYUANID
-            // 
-            this.DataGridViewColumn_REYUANID.HeaderText = "人员码";
-            this.DataGridViewColumn_REYUANID.Name = "DataGridViewColumn_REYUANID";
-            this.DataGridViewColumn_REYUANID.ReadOnly = true;
-            this.DataGridViewColumn_REYUANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_REYUANID.Visible = false;
-            this.DataGridViewColumn_REYUANID.Width = 74;
-            // 
-            // DataGridViewColumn_LIUSHUIID
-            // 
-            this.DataGridViewColumn_LIUSHUIID.HeaderText = "流水码";
-            this.DataGridViewColumn_LIUSHUIID.Name = "DataGridViewColumn_LIUSHUIID";
-            this.DataGridViewColumn_LIUSHUIID.ReadOnly = true;
-            this.DataGridViewColumn_LIUSHUIID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_LIUSHUIID.Visible = false;
-            this.DataGridViewColumn_LIUSHUIID.Width = 74;
-            // 
-            // DataGridViewColumn_BIZHONGID
-            // 
-            this.DataGridViewColumn_BIZHONGID.HeaderText = "币种码";
-            this.DataGridViewColumn_BIZHONGID.Name = "DataGridViewColumn_BIZHONGID";
-            this.DataGridViewColumn_BIZHONGID.ReadOnly = true;
-            this.DataGridViewColumn_BIZHONGID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_BIZHONGID.Visible = false;
-            this.DataGridViewColumn_BIZHONGID.Width = 74;
-            // 
-            // DataGridViewColumn_QIANDANID
-            // 
-            this.DataGridViewColumn_QIANDANID.HeaderText = "欠单码";
-            this.DataGridViewColumn_QIANDANID.Name = "DataGridViewColumn_QIANDANID";
-            this.DataGridViewColumn_QIANDANID.ReadOnly = true;
-            this.DataGridViewColumn_QIANDANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_QIANDANID.Visible = false;
-            this.DataGridViewColumn_QIANDANID.Width = 74;
-            // 
-            // DataGridViewColumn_BIZHONG
-            // 
-            this.DataGridViewColumn_BIZHONG.HeaderText = "币种";
-            this.DataGridViewColumn_BIZHONG.Name = "DataGridViewColumn_BIZHONG";
-            this.DataGridViewColumn_BIZHONG.ReadOnly = true;
-            this.DataGridViewColumn_BIZHONG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_BIZHONG.Width = 56;
-            // 
-            // DataGridViewColumn_LIANG_N2
-            // 
-            this.DataGridViewColumn_LIANG_N2.HeaderText = "数量";
-            this.DataGridViewColumn_LIANG_N2.Name = "DataGridViewColumn_LIANG_N2";
-            this.DataGridViewColumn_LIANG_N2.ReadOnly = true;
-            this.DataGridViewColumn_LIANG_N2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_LIANG_N2.Width = 56;
-            // 
-            // DataGridViewColumn_JIA_N2
-            // 
-            this.DataGridViewColumn_JIA_N2.HeaderText = "价格";
-            this.DataGridViewColumn_JIA_N2.Name = "DataGridViewColumn_JIA_N2";
-            this.DataGridViewColumn_JIA_N2.ReadOnly = true;
-            this.DataGridViewColumn_JIA_N2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_JIA_N2.Width = 56;
-            // 
-            // DataGridViewColumn_YIGONG_N2
-            // 
-            this.DataGridViewColumn_YIGONG_N2.HeaderText = "一共";
-            this.DataGridViewColumn_YIGONG_N2.Name = "DataGridViewColumn_YIGONG_N2";
-            this.DataGridViewColumn_YIGONG_N2.ReadOnly = true;
-            this.DataGridViewColumn_YIGONG_N2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_YIGONG_N2.Width = 56;
-            // 
-            // DataGridViewColumn_BEIZHU
-            // 
-            this.DataGridViewColumn_BEIZHU.HeaderText = "备注";
-            this.DataGridViewColumn_BEIZHU.Name = "DataGridViewColumn_BEIZHU";
-            this.DataGridViewColumn_BEIZHU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_BEIZHU.Width = 56;
+            this.dataGridView_Transaction_MainTran.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
             // panel7
             // 
@@ -1663,15 +1594,15 @@ namespace LiuShuiZhang2._0
             this.dataGridView_Transaction_TempTran.AllowUserToResizeColumns = false;
             this.dataGridView_Transaction_TempTran.AllowUserToResizeRows = false;
             this.dataGridView_Transaction_TempTran.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_Transaction_TempTran.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_Transaction_TempTran.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_Transaction_TempTran.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Transaction_TempTran.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DataGridViewColumn_TempREYUANID,
@@ -1679,9 +1610,9 @@ namespace LiuShuiZhang2._0
             this.DataGridViewColumn_TempBIZHONGID,
             this.DataGridViewColumn_TempQIANDANID,
             this.DataGridViewColumn_TempBIZHONG,
-            this.DataGridViewColumn_TempLIANG_N2,
-            this.DataGridViewColumn_TempJIA_N2,
-            this.DataGridViewColumn_TempYIGONG_N2,
+            this.DataGridViewColumn_TempLIANG,
+            this.DataGridViewColumn_TempJIA,
+            this.DataGridViewColumn_TempYIGONG,
             this.DataGridViewColumn_TempBEIZHU});
             this.dataGridView_Transaction_TempTran.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Transaction_TempTran.EnableHeadersVisualStyles = false;
@@ -1694,83 +1625,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_Transaction_TempTran.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Transaction_Tran_CellValueChanged);
             this.dataGridView_Transaction_TempTran.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_Transaction_Tran_RowsAdded);
             this.dataGridView_Transaction_TempTran.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView_Transaction_Tran_RowStateChanged);
-            this.dataGridView_Transaction_TempTran.SelectionChanged += new System.EventHandler(this.dataGridView_Transaction_Tran_SelectionChanged);
-            // 
-            // DataGridViewColumn_TempREYUANID
-            // 
-            this.DataGridViewColumn_TempREYUANID.HeaderText = "人员码";
-            this.DataGridViewColumn_TempREYUANID.Name = "DataGridViewColumn_TempREYUANID";
-            this.DataGridViewColumn_TempREYUANID.ReadOnly = true;
-            this.DataGridViewColumn_TempREYUANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempREYUANID.Visible = false;
-            this.DataGridViewColumn_TempREYUANID.Width = 74;
-            // 
-            // DataGridViewColumn_TempLIUSHUIID
-            // 
-            this.DataGridViewColumn_TempLIUSHUIID.HeaderText = "流水码";
-            this.DataGridViewColumn_TempLIUSHUIID.Name = "DataGridViewColumn_TempLIUSHUIID";
-            this.DataGridViewColumn_TempLIUSHUIID.ReadOnly = true;
-            this.DataGridViewColumn_TempLIUSHUIID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempLIUSHUIID.Visible = false;
-            this.DataGridViewColumn_TempLIUSHUIID.Width = 74;
-            // 
-            // DataGridViewColumn_TempBIZHONGID
-            // 
-            this.DataGridViewColumn_TempBIZHONGID.HeaderText = "币种码";
-            this.DataGridViewColumn_TempBIZHONGID.Name = "DataGridViewColumn_TempBIZHONGID";
-            this.DataGridViewColumn_TempBIZHONGID.ReadOnly = true;
-            this.DataGridViewColumn_TempBIZHONGID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempBIZHONGID.Visible = false;
-            this.DataGridViewColumn_TempBIZHONGID.Width = 74;
-            // 
-            // DataGridViewColumn_TempQIANDANID
-            // 
-            this.DataGridViewColumn_TempQIANDANID.HeaderText = "欠单码";
-            this.DataGridViewColumn_TempQIANDANID.Name = "DataGridViewColumn_TempQIANDANID";
-            this.DataGridViewColumn_TempQIANDANID.ReadOnly = true;
-            this.DataGridViewColumn_TempQIANDANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempQIANDANID.Visible = false;
-            this.DataGridViewColumn_TempQIANDANID.Width = 74;
-            // 
-            // DataGridViewColumn_TempBIZHONG
-            // 
-            this.DataGridViewColumn_TempBIZHONG.HeaderText = "币种";
-            this.DataGridViewColumn_TempBIZHONG.Name = "DataGridViewColumn_TempBIZHONG";
-            this.DataGridViewColumn_TempBIZHONG.ReadOnly = true;
-            this.DataGridViewColumn_TempBIZHONG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempBIZHONG.Width = 56;
-            // 
-            // DataGridViewColumn_TempLIANG_N2
-            // 
-            this.DataGridViewColumn_TempLIANG_N2.HeaderText = "数量";
-            this.DataGridViewColumn_TempLIANG_N2.Name = "DataGridViewColumn_TempLIANG_N2";
-            this.DataGridViewColumn_TempLIANG_N2.ReadOnly = true;
-            this.DataGridViewColumn_TempLIANG_N2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempLIANG_N2.Width = 56;
-            // 
-            // DataGridViewColumn_TempJIA_N2
-            // 
-            this.DataGridViewColumn_TempJIA_N2.HeaderText = "价格";
-            this.DataGridViewColumn_TempJIA_N2.Name = "DataGridViewColumn_TempJIA_N2";
-            this.DataGridViewColumn_TempJIA_N2.ReadOnly = true;
-            this.DataGridViewColumn_TempJIA_N2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempJIA_N2.Width = 56;
-            // 
-            // DataGridViewColumn_TempYIGONG_N2
-            // 
-            this.DataGridViewColumn_TempYIGONG_N2.HeaderText = "一共";
-            this.DataGridViewColumn_TempYIGONG_N2.Name = "DataGridViewColumn_TempYIGONG_N2";
-            this.DataGridViewColumn_TempYIGONG_N2.ReadOnly = true;
-            this.DataGridViewColumn_TempYIGONG_N2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempYIGONG_N2.Width = 56;
-            // 
-            // DataGridViewColumn_TempBEIZHU
-            // 
-            this.DataGridViewColumn_TempBEIZHU.HeaderText = "备注";
-            this.DataGridViewColumn_TempBEIZHU.Name = "DataGridViewColumn_TempBEIZHU";
-            this.DataGridViewColumn_TempBEIZHU.ReadOnly = true;
-            this.DataGridViewColumn_TempBEIZHU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DataGridViewColumn_TempBEIZHU.Width = 56;
+            this.dataGridView_Transaction_TempTran.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
             // panel8
             // 
@@ -2094,14 +1949,14 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView_CashStatus_CashDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView_CashStatus_CashDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CashStatus_CashDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView_CashStatus_CashDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_CashStatus_CashDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._500000,
@@ -2113,15 +1968,15 @@ namespace LiuShuiZhang2._0
             this._5000,
             this._2000,
             this._1000});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Red;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_CashStatus_CashDetails.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView_CashStatus_CashDetails.EnableHeadersVisualStyles = false;
             this.dataGridView_CashStatus_CashDetails.Location = new System.Drawing.Point(7, 72);
             this.dataGridView_CashStatus_CashDetails.Margin = new System.Windows.Forms.Padding(0);
@@ -2129,11 +1984,11 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.Name = "dataGridView_CashStatus_CashDetails";
             this.dataGridView_CashStatus_CashDetails.ReadOnly = true;
             this.dataGridView_CashStatus_CashDetails.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = "0";
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
-            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = "0";
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(2);
+            this.dataGridView_CashStatus_CashDetails.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView_CashStatus_CashDetails.RowTemplate.Height = 30;
             this.dataGridView_CashStatus_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_CashStatus_CashDetails.Size = new System.Drawing.Size(679, 60);
@@ -2217,8 +2072,8 @@ namespace LiuShuiZhang2._0
             this.groupBox_LiuShui.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_LiuShui.Controls.Add(this.dataGridView_LiuShui_Trans);
             this.groupBox_LiuShui.Controls.Add(this.panel9);
-            this.groupBox_LiuShui.Controls.Add(this.dataGridView1);
             this.groupBox_LiuShui.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_LiuShui.ForeColor = System.Drawing.Color.Red;
             this.groupBox_LiuShui.Location = new System.Drawing.Point(703, 243);
@@ -2227,6 +2082,20 @@ namespace LiuShuiZhang2._0
             this.groupBox_LiuShui.TabIndex = 5;
             this.groupBox_LiuShui.TabStop = false;
             this.groupBox_LiuShui.Text = "流水账";
+            // 
+            // dataGridView_LiuShui_Trans
+            // 
+            this.dataGridView_LiuShui_Trans.AllowUserToAddRows = false;
+            this.dataGridView_LiuShui_Trans.AllowUserToDeleteRows = false;
+            this.dataGridView_LiuShui_Trans.AllowUserToResizeRows = false;
+            this.dataGridView_LiuShui_Trans.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_LiuShui_Trans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_LiuShui_Trans.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_LiuShui_Trans.Location = new System.Drawing.Point(3, 25);
+            this.dataGridView_LiuShui_Trans.Name = "dataGridView_LiuShui_Trans";
+            this.dataGridView_LiuShui_Trans.Size = new System.Drawing.Size(748, 575);
+            this.dataGridView_LiuShui_Trans.TabIndex = 6;
+            this.dataGridView_LiuShui_Trans.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
             // panel9
             // 
@@ -2259,17 +2128,6 @@ namespace LiuShuiZhang2._0
             this.label12.Size = new System.Drawing.Size(46, 23);
             this.label12.TabIndex = 0;
             this.label12.Text = "币种";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 69);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(742, 528);
-            this.dataGridView1.TabIndex = 0;
             // 
             // dateTimePicker
             // 
@@ -2323,6 +2181,169 @@ namespace LiuShuiZhang2._0
             this.label1_HandleUser.Size = new System.Drawing.Size(96, 24);
             this.label1_HandleUser.TabIndex = 3;
             this.label1_HandleUser.Text = "管理人员:";
+            // 
+            // DataGridViewColumn_REYUANID
+            // 
+            this.DataGridViewColumn_REYUANID.HeaderText = "人员码";
+            this.DataGridViewColumn_REYUANID.Name = "DataGridViewColumn_REYUANID";
+            this.DataGridViewColumn_REYUANID.ReadOnly = true;
+            this.DataGridViewColumn_REYUANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_REYUANID.Visible = false;
+            this.DataGridViewColumn_REYUANID.Width = 74;
+            // 
+            // DataGridViewColumn_LIUSHUIID
+            // 
+            this.DataGridViewColumn_LIUSHUIID.HeaderText = "流水码";
+            this.DataGridViewColumn_LIUSHUIID.Name = "DataGridViewColumn_LIUSHUIID";
+            this.DataGridViewColumn_LIUSHUIID.ReadOnly = true;
+            this.DataGridViewColumn_LIUSHUIID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_LIUSHUIID.Visible = false;
+            this.DataGridViewColumn_LIUSHUIID.Width = 74;
+            // 
+            // DataGridViewColumn_BIZHONGID
+            // 
+            this.DataGridViewColumn_BIZHONGID.HeaderText = "币种码";
+            this.DataGridViewColumn_BIZHONGID.Name = "DataGridViewColumn_BIZHONGID";
+            this.DataGridViewColumn_BIZHONGID.ReadOnly = true;
+            this.DataGridViewColumn_BIZHONGID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_BIZHONGID.Visible = false;
+            this.DataGridViewColumn_BIZHONGID.Width = 74;
+            // 
+            // DataGridViewColumn_QIANDANID
+            // 
+            this.DataGridViewColumn_QIANDANID.HeaderText = "欠单码";
+            this.DataGridViewColumn_QIANDANID.Name = "DataGridViewColumn_QIANDANID";
+            this.DataGridViewColumn_QIANDANID.ReadOnly = true;
+            this.DataGridViewColumn_QIANDANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_QIANDANID.Visible = false;
+            this.DataGridViewColumn_QIANDANID.Width = 74;
+            // 
+            // DataGridViewColumn_BIZHONG
+            // 
+            this.DataGridViewColumn_BIZHONG.HeaderText = "币种";
+            this.DataGridViewColumn_BIZHONG.Name = "DataGridViewColumn_BIZHONG";
+            this.DataGridViewColumn_BIZHONG.ReadOnly = true;
+            this.DataGridViewColumn_BIZHONG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_BIZHONG.Width = 56;
+            // 
+            // DataGridViewColumn_LIANG
+            // 
+            dataGridViewCellStyle2.Format = "N2";
+            this.DataGridViewColumn_LIANG.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DataGridViewColumn_LIANG.HeaderText = "数量";
+            this.DataGridViewColumn_LIANG.Name = "DataGridViewColumn_LIANG";
+            this.DataGridViewColumn_LIANG.ReadOnly = true;
+            this.DataGridViewColumn_LIANG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_LIANG.Width = 56;
+            // 
+            // DataGridViewColumn_JIA
+            // 
+            dataGridViewCellStyle3.Format = "N2";
+            this.DataGridViewColumn_JIA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DataGridViewColumn_JIA.HeaderText = "价格";
+            this.DataGridViewColumn_JIA.Name = "DataGridViewColumn_JIA";
+            this.DataGridViewColumn_JIA.ReadOnly = true;
+            this.DataGridViewColumn_JIA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_JIA.Width = 56;
+            // 
+            // DataGridViewColumn_YIGONG
+            // 
+            dataGridViewCellStyle4.Format = "N2";
+            this.DataGridViewColumn_YIGONG.DefaultCellStyle = dataGridViewCellStyle4;
+            this.DataGridViewColumn_YIGONG.HeaderText = "一共";
+            this.DataGridViewColumn_YIGONG.Name = "DataGridViewColumn_YIGONG";
+            this.DataGridViewColumn_YIGONG.ReadOnly = true;
+            this.DataGridViewColumn_YIGONG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_YIGONG.Width = 56;
+            // 
+            // DataGridViewColumn_BEIZHU
+            // 
+            this.DataGridViewColumn_BEIZHU.HeaderText = "备注";
+            this.DataGridViewColumn_BEIZHU.Name = "DataGridViewColumn_BEIZHU";
+            this.DataGridViewColumn_BEIZHU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_BEIZHU.Width = 56;
+            // 
+            // DataGridViewColumn_TempREYUANID
+            // 
+            this.DataGridViewColumn_TempREYUANID.HeaderText = "人员码";
+            this.DataGridViewColumn_TempREYUANID.Name = "DataGridViewColumn_TempREYUANID";
+            this.DataGridViewColumn_TempREYUANID.ReadOnly = true;
+            this.DataGridViewColumn_TempREYUANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempREYUANID.Visible = false;
+            this.DataGridViewColumn_TempREYUANID.Width = 74;
+            // 
+            // DataGridViewColumn_TempLIUSHUIID
+            // 
+            this.DataGridViewColumn_TempLIUSHUIID.HeaderText = "流水码";
+            this.DataGridViewColumn_TempLIUSHUIID.Name = "DataGridViewColumn_TempLIUSHUIID";
+            this.DataGridViewColumn_TempLIUSHUIID.ReadOnly = true;
+            this.DataGridViewColumn_TempLIUSHUIID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempLIUSHUIID.Visible = false;
+            this.DataGridViewColumn_TempLIUSHUIID.Width = 74;
+            // 
+            // DataGridViewColumn_TempBIZHONGID
+            // 
+            this.DataGridViewColumn_TempBIZHONGID.HeaderText = "币种码";
+            this.DataGridViewColumn_TempBIZHONGID.Name = "DataGridViewColumn_TempBIZHONGID";
+            this.DataGridViewColumn_TempBIZHONGID.ReadOnly = true;
+            this.DataGridViewColumn_TempBIZHONGID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempBIZHONGID.Visible = false;
+            this.DataGridViewColumn_TempBIZHONGID.Width = 74;
+            // 
+            // DataGridViewColumn_TempQIANDANID
+            // 
+            this.DataGridViewColumn_TempQIANDANID.HeaderText = "欠单码";
+            this.DataGridViewColumn_TempQIANDANID.Name = "DataGridViewColumn_TempQIANDANID";
+            this.DataGridViewColumn_TempQIANDANID.ReadOnly = true;
+            this.DataGridViewColumn_TempQIANDANID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempQIANDANID.Visible = false;
+            this.DataGridViewColumn_TempQIANDANID.Width = 74;
+            // 
+            // DataGridViewColumn_TempBIZHONG
+            // 
+            this.DataGridViewColumn_TempBIZHONG.HeaderText = "币种";
+            this.DataGridViewColumn_TempBIZHONG.Name = "DataGridViewColumn_TempBIZHONG";
+            this.DataGridViewColumn_TempBIZHONG.ReadOnly = true;
+            this.DataGridViewColumn_TempBIZHONG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempBIZHONG.Width = 56;
+            // 
+            // DataGridViewColumn_TempLIANG
+            // 
+            dataGridViewCellStyle6.Format = "N2";
+            this.DataGridViewColumn_TempLIANG.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DataGridViewColumn_TempLIANG.HeaderText = "数量";
+            this.DataGridViewColumn_TempLIANG.Name = "DataGridViewColumn_TempLIANG";
+            this.DataGridViewColumn_TempLIANG.ReadOnly = true;
+            this.DataGridViewColumn_TempLIANG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempLIANG.Width = 56;
+            // 
+            // DataGridViewColumn_TempJIA
+            // 
+            dataGridViewCellStyle7.Format = "N2";
+            this.DataGridViewColumn_TempJIA.DefaultCellStyle = dataGridViewCellStyle7;
+            this.DataGridViewColumn_TempJIA.HeaderText = "价格";
+            this.DataGridViewColumn_TempJIA.Name = "DataGridViewColumn_TempJIA";
+            this.DataGridViewColumn_TempJIA.ReadOnly = true;
+            this.DataGridViewColumn_TempJIA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempJIA.Width = 56;
+            // 
+            // DataGridViewColumn_TempYIGONG
+            // 
+            dataGridViewCellStyle8.Format = "N2";
+            this.DataGridViewColumn_TempYIGONG.DefaultCellStyle = dataGridViewCellStyle8;
+            this.DataGridViewColumn_TempYIGONG.HeaderText = "一共";
+            this.DataGridViewColumn_TempYIGONG.Name = "DataGridViewColumn_TempYIGONG";
+            this.DataGridViewColumn_TempYIGONG.ReadOnly = true;
+            this.DataGridViewColumn_TempYIGONG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempYIGONG.Width = 56;
+            // 
+            // DataGridViewColumn_TempBEIZHU
+            // 
+            this.DataGridViewColumn_TempBEIZHU.HeaderText = "备注";
+            this.DataGridViewColumn_TempBEIZHU.Name = "DataGridViewColumn_TempBEIZHU";
+            this.DataGridViewColumn_TempBEIZHU.ReadOnly = true;
+            this.DataGridViewColumn_TempBEIZHU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DataGridViewColumn_TempBEIZHU.Width = 56;
             // 
             // Main
             // 
@@ -2397,9 +2418,9 @@ namespace LiuShuiZhang2._0
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_CashStatus_PreValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CashStatus_CashDetails)).EndInit();
             this.groupBox_LiuShui.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_LiuShui_Trans)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2458,7 +2479,6 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.Button button_Transaction_GetTemp;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_Transaction_ClearTemp;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Label label1_HandleUser;
@@ -2518,28 +2538,29 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.DataGridView dataGridView_Transaction_TempTran;
         private System.Windows.Forms.Label label26;
         private NumericUpDownEx numericUpDown_Transaction_TempTotalAll;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempREYUANID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempLIUSHUIID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempBIZHONGID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempQIANDANID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempBIZHONG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempLIANG_N2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempJIA_N2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempYIGONG_N2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempBEIZHU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_REYUANID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_LIUSHUIID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BIZHONGID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_QIANDANID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BIZHONG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_LIANG_N2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_JIA_N2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_YIGONG_N2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BEIZHU;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_QuickSum;
         private NumericUpDownEx numericUpDown_CashCount_DeltaValue;
         private NumericUpDownEx numericUpDown_CashCount_MainTotalAll;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DataGridView dataGridView_LiuShui_Trans;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_REYUANID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_LIUSHUIID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BIZHONGID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_QIANDANID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BIZHONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_LIANG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_JIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_YIGONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_BEIZHU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempREYUANID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempLIUSHUIID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempBIZHONGID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempQIANDANID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempBIZHONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempLIANG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempJIA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempYIGONG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewColumn_TempBEIZHU;
     }
 }
