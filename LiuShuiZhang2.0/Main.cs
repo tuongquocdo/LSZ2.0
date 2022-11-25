@@ -140,12 +140,15 @@ namespace LiuShuiZhang2._0
             
             foreach (DataGridViewColumn c in dataGridView_CashStatus_CashDetails.Columns)
             {
-                if (int.Parse(c.Name.Split('_')[1]) == int.Parse(s.Name.Split('_')[2]))
+                if (c.Name.Split('_').Length > 1)
                 {
-                    dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value =
-                        int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value.ToString()) -
-                        s.Valued +
-                        s.Value;
+                    if (int.Parse(c.Name.Split('_')[1]) == int.Parse(s.Name.Split('_')[2]))
+                    {
+                        dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value =
+                            int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value.ToString()) -
+                            s.Valued +
+                            s.Value;
+                    }
                 }
             }
         }
@@ -225,12 +228,18 @@ namespace LiuShuiZhang2._0
 
         private void dataGridView_CashDetails_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            CalcCountValueAndDeltaValue();
+            if (dataGridView_CashStatus_CashDetails.Rows.Count > 0)
+            {
+                CalcCountValueAndDeltaValue();
+            }
         }
 
         private void numericUpdown_CashDetails_CellValueChanged(object sender, EventArgs e)
         {
-            CalcCountValueAndDeltaValue();
+            if (dataGridView_CashStatus_CashDetails.Rows.Count > 0)
+            {
+                CalcCountValueAndDeltaValue();
+            }
         }
 
         private void button_CashCouterMode_Click(object sender, EventArgs e)
@@ -534,10 +543,16 @@ namespace LiuShuiZhang2._0
 
         #region Private method
 
+        private enum WorkingMode { 
+            Working,
+            Viewing
+        }
+
         private void CalcCountValueAndDeltaValue()
         {
             numericUpDown_CashStatus_CountValue.Value =
                 dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
+                                            .Where(item => item.Name.Split('_').Length >1)    
                                             .Sum(item => int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
                                                          int.Parse(item.Name.Split('_')[1].ToString()));
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
@@ -646,14 +661,14 @@ namespace LiuShuiZhang2._0
 
         private void ChangeWorkingMode(int mode)
         {
-            if (mode == 1) // Working mode
+            if (mode == 0) // Working mode
             {
                 groupBox_CashStatus.Enabled = true;
                 groupBox_Transaction.Enabled = true;
                 groupBox_CashCounting.Enabled = false;
                 groupBox_LiuShui.Enabled = true;
             }
-            else if (mode == 2) // viewing mode
+            else if (mode == 1) // viewing mode
             {
                 groupBox_CashStatus.Enabled = false;
                 groupBox_Transaction.Enabled = false;
@@ -666,80 +681,63 @@ namespace LiuShuiZhang2._0
         {
             #region Load Cash Details
 
-            if (dataGridView_CashStatus_CashDetails.Rows.Count == 0) { dataGridView_CashStatus_CashDetails.Rows.Add(new DataGridViewRow()); }
-
-            dt_LastLiuShui = DAL_liuShui.GetLastRecord();
+            //if (dataGridView_CashStatus_CashDetails.Rows.Count == 0) { dataGridView_CashStatus_CashDetails.Rows.Add(new DataGridViewRow()); }
+            dt_LastLiuShui = DAL_liuShui.GetLastRecord();        
 
             if (dt_LastLiuShui.Rows.Count > 0)
             {
                 int gg = DateTime.Compare(((DateTime)dt_LastLiuShui.Rows[0]["RIZI"]).Date, dateTimePicker.Value.Date);
-
-                //Working mode
-                if (gg == 0)
-                {
-                    ChangeWorkingMode(1);
-                    numericUpDown_CashStatus_PreValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["QIANE"].ToString().Trim());
-                    numericUpDown_CashStatus_CurValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["XIANE"].ToString().Trim());
-                    numericUpDown_CashStatus_DeltaValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["XIANGCHA"].ToString().Trim());
-                    numericUpDown_CashStatus_CountValue.Value = decimal.Parse(dt_LastLiuShui.Rows[0]["DIANSUANJIEGUO"].ToString().Trim());
-                    foreach (DataGridViewColumn i in dataGridView_CashStatus_CashDetails.Columns)
-                    {
-                        dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].Value = dt_LastLiuShui.Rows[0][i.Name];
-                        dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].ValueType = typeof(int);
-                    }
-                }
                 //view data mode
-                else if (gg > 0)
+                if (gg > 0)
                 {
-                    ChangeWorkingMode(2);
-                    DataTable dt_PreviousLiuShui = DAL_liuShui.GetRecordByDate(dateTimePicker.Value.Date);
+                    ChangeWorkingMode((int)WorkingMode.Viewing);
+                    dt_LastLiuShui = DAL_liuShui.GetRecordByDate(dateTimePicker.Value.Date);
 
-                    if (dt_PreviousLiuShui.Rows.Count <= 0)
+                    if (dt_LastLiuShui.Rows.Count <= 0)
                     {
                         MessageBox.Show("该日子并没有存在流水账", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                //create new day data for using
+                //Working Mode
                 else
                 {
-                    ChangeWorkingMode(1);
-                    numericUpDown_CashStatus_PreValue.Value =
-                    numericUpDown_CashStatus_CurValue.Value =
-                    numericUpDown_CashStatus_CountValue.Value =
-                    decimal.Parse(dt_LastLiuShui.Rows[0]["DIANSUANJIEGUO"].ToString().Trim());
-                    numericUpDown_CashStatus_DeltaValue.Value = 0;
-                    foreach (DataGridViewColumn i in dataGridView_CashStatus_CashDetails.Columns)
+                    ChangeWorkingMode((int)WorkingMode.Working);
+                    // Create new data
+                    if (gg < 0)
                     {
-                        dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].Value = dt_LastLiuShui.Rows[0][i.Name];
-                        dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].ValueType = typeof(int);
-                    }
+                        numericUpDown_CashStatus_PreValue.Value =
+                        numericUpDown_CashStatus_CurValue.Value =
+                        numericUpDown_CashStatus_CountValue.Value =
+                        decimal.Parse(dt_LastLiuShui.Rows[0]["DIANSUANJIEGUO"].ToString().Trim());
+                        numericUpDown_CashStatus_DeltaValue.Value = 0;
+                        foreach (DataGridViewColumn i in dataGridView_CashStatus_CashDetails.Columns)
+                        {
+                            dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].Value = dt_LastLiuShui.Rows[0][i.Name];
+                            dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].ValueType = typeof(int);
+                        }
 
-                    try
-                    {
-                        DAL_liuShui.AddNewLiuShui(CreateLiuShui());
-                        MessageBox.Show(string.Format("{0}的流水账已经创新", dateTimePicker.Value.Date), "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Refresh();
+                        try
+                        {
+                            DAL_liuShui.AddNewLiuShui(CreateLiuShui());
+                            MessageBox.Show(string.Format("{0}的流水账已经创新", dateTimePicker.Value.Date), "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Refresh();
 
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
             else // the frist time using
             {
-                ChangeWorkingMode(1);
-                foreach (DataGridViewColumn i in dataGridView_CashStatus_CashDetails.Columns)
-                {
-                    dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].Value = 0;
-                    dataGridView_CashStatus_CashDetails.Rows[0].Cells[i.Name].ValueType = typeof(int);
-                }
+                ChangeWorkingMode((int)WorkingMode.Working);
                 try
                 {
                     DAL_liuShui.AddNewLiuShui(CreateLiuShui());
                     MessageBox.Show(string.Format("{0}的流水账已经创新", dateTimePicker.Value.Date), "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Refresh();
+                    Refresh();
 
                 }
                 catch (Exception ex)
@@ -747,8 +745,39 @@ namespace LiuShuiZhang2._0
                     MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            dataGridView_CashStatus_CashDetails.DataSource = dt_LastLiuShui;
+            foreach (DataGridViewColumn c in dataGridView_CashStatus_CashDetails.Columns)
+            {
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            dataGridView_CashStatus_CashDetails.Columns["LIUSHUIID"].Visible = false;
+            dataGridView_CashStatus_CashDetails.Columns["RIZI"].Visible = false;
+            dataGridView_CashStatus_CashDetails.Columns["QIANE"].Visible = false;
+            dataGridView_CashStatus_CashDetails.Columns["XIANE"].Visible = false;
+            dataGridView_CashStatus_CashDetails.Columns["XIANGCHA"].Visible = false;
+            dataGridView_CashStatus_CashDetails.Columns["DIANSUANJIEGUO"].Visible = false;
+
+            dataGridView_CashStatus_CashDetails.Columns["_500000"].HeaderText = "500K";
+            dataGridView_CashStatus_CashDetails.Columns["_200000"].HeaderText = "200K";
+            dataGridView_CashStatus_CashDetails.Columns["_100000"].HeaderText = "100K";
+
+            dataGridView_CashStatus_CashDetails.Columns["_50000"].HeaderText = "50K ";
+            dataGridView_CashStatus_CashDetails.Columns["_20000"].HeaderText = "20K ";
+            dataGridView_CashStatus_CashDetails.Columns["_10000"].HeaderText = "10K ";
+
+            dataGridView_CashStatus_CashDetails.Columns["_5000"].HeaderText = "5K  ";
+            dataGridView_CashStatus_CashDetails.Columns["_2000"].HeaderText = "2K  ";
+            dataGridView_CashStatus_CashDetails.Columns["_1000"].HeaderText = "1K  ";
+
+            numericUpDown_CashStatus_PreValue.Value = dt_LastLiuShui.Rows.Count==0 ? 0 : decimal.Parse(dt_LastLiuShui.Rows[0]["QIANE"].ToString().Trim());
+            numericUpDown_CashStatus_CurValue.Value = dt_LastLiuShui.Rows.Count == 0 ? 0 : decimal.Parse(dt_LastLiuShui.Rows[0]["XIANE"].ToString().Trim());
+            numericUpDown_CashStatus_DeltaValue.Value = dt_LastLiuShui.Rows.Count == 0 ? 0 : decimal.Parse(dt_LastLiuShui.Rows[0]["XIANGCHA"].ToString().Trim());
+            numericUpDown_CashStatus_CountValue.Value = dt_LastLiuShui.Rows.Count == 0 ? 0 : decimal.Parse(dt_LastLiuShui.Rows[0]["DIANSUANJIEGUO"].ToString().Trim());
+
             dataGridView_CashStatus_CashDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CashDetails_CellValueChanged);
             numericUpDown_CashStatus_CurValue.ValueChanged += new System.EventHandler(this.numericUpdown_CashDetails_CellValueChanged);
+
             dt_LastLiuShui = DAL_liuShui.GetLastRecord();
 
             #endregion
