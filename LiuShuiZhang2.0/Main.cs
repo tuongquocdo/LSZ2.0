@@ -295,8 +295,8 @@ namespace LiuShuiZhang2._0
         private void button_Transaction_CancelTran_Click(object sender, EventArgs e)
         {
             Main_Load(this, null);
-            ClearTransactionData();
             ClearTransactionTable();
+            ClearTransactionData();
         }
 
         private void button_Transaction_Temp_Click(object sender, EventArgs e)
@@ -401,20 +401,17 @@ namespace LiuShuiZhang2._0
             }
         }
 
-        private void dataGridView_Transaction_Tran_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            DataGridView d = sender as DataGridView;
-
-            if ((decimal)d.Rows[e.RowIndex].Cells[7].Value < 0)
-            {
-                d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
-            }
-            CalcTotallAll(sender);
-        }
-
         private void dataGridView_Transaction_Tran_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             CalcTotallAll(sender);
+            if (e.Row.Index >=0)
+            {
+                DataGridView d = sender as DataGridView;
+                if ((decimal)d.Rows[e.Row.Index].Cells[7].Value < 0)
+                {
+                    d.Rows[e.Row.Index].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
         }
 
         private void dataGridView_Transaction_Tran_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -697,11 +694,7 @@ namespace LiuShuiZhang2._0
                     ChangeWorkingMode(2);
                     DataTable dt_PreviousLiuShui = DAL_liuShui.GetRecordByDate(dateTimePicker.Value.Date);
 
-                    if (dt_PreviousLiuShui.Rows.Count > 0)
-                    {
-                        MessageBox.Show("View data mode");
-                    }
-                    else
+                    if (dt_PreviousLiuShui.Rows.Count <= 0)
                     {
                         MessageBox.Show("该日子并没有存在流水账", "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -782,6 +775,7 @@ namespace LiuShuiZhang2._0
 
             #region Load LiuShui
             dataGridView_LiuShui_Trans.DataSource = DAL_jiaoYi.GetAllRecordByDate(dateTimePicker.Value);
+            dataGridView_LiuShui_Trans.ReadOnly = true;
             dataGridView_LiuShui_Trans.Columns["JIAOYIID"].Visible = false;
             dataGridView_LiuShui_Trans.Columns["JIAOYIDANID"].Visible = false;
             dataGridView_LiuShui_Trans.Columns["RENYUANID"].Visible = false;
@@ -792,8 +786,8 @@ namespace LiuShuiZhang2._0
 
             dataGridView_LiuShui_Trans.Columns["LIANG"].HeaderText = "数量";
             dataGridView_LiuShui_Trans.Columns["LIANG"].DefaultCellStyle.Format = "N2";
-            dataGridView_LiuShui_Trans.Columns["JIA"].HeaderText = "价格";
 
+            dataGridView_LiuShui_Trans.Columns["JIA"].HeaderText = "价格";
             dataGridView_LiuShui_Trans.Columns["JIA"].DefaultCellStyle.Format = "N2";
             dataGridView_LiuShui_Trans.Columns["YIGONG"].HeaderText = "一共";
 
@@ -810,8 +804,6 @@ namespace LiuShuiZhang2._0
                     row.DefaultCellStyle.BackColor = Color.Yellow;
                 }
             }
-            
-
             #endregion
         }
 

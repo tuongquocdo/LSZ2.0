@@ -1443,7 +1443,6 @@ namespace LiuShuiZhang2._0
             this.dataGridView_Transaction_MainTran.TabIndex = 0;
             this.dataGridView_Transaction_MainTran.Tag = "numericUpDown_Transaction_MainTotalAll";
             this.dataGridView_Transaction_MainTran.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Transaction_Tran_CellValueChanged);
-            this.dataGridView_Transaction_MainTran.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_Transaction_Tran_RowsAdded);
             this.dataGridView_Transaction_MainTran.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView_Transaction_Tran_RowStateChanged);
             this.dataGridView_Transaction_MainTran.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
@@ -1704,7 +1703,6 @@ namespace LiuShuiZhang2._0
             this.dataGridView_Transaction_TempTran.TabIndex = 0;
             this.dataGridView_Transaction_TempTran.Tag = "numericUpDown_Transaction_TempTotalAll";
             this.dataGridView_Transaction_TempTran.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Transaction_Tran_CellValueChanged);
-            this.dataGridView_Transaction_TempTran.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_Transaction_Tran_RowsAdded);
             this.dataGridView_Transaction_TempTran.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView_Transaction_Tran_RowStateChanged);
             this.dataGridView_Transaction_TempTran.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
@@ -2257,7 +2255,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_LiuShui_Trans.Location = new System.Drawing.Point(3, 25);
             this.dataGridView_LiuShui_Trans.Name = "dataGridView_LiuShui_Trans";
             this.dataGridView_LiuShui_Trans.Size = new System.Drawing.Size(748, 575);
-            this.dataGridView_LiuShui_Trans.TabIndex = 6;
+            this.dataGridView_LiuShui_Trans.TabIndex = 0;
             this.dataGridView_LiuShui_Trans.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
             // panel9
