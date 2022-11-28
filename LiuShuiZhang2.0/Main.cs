@@ -563,8 +563,8 @@ namespace LiuShuiZhang2._0
             numericUpDown_CashStatus_CountValue.Value =
                 dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
                                             .Where(item => item.Name.Split('_').Length >1)    
-                                            .Sum(item => int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
-                                                         int.Parse(item.Name.Split('_')[1].ToString()));
+                                            .Sum(item => long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
+                                                         long.Parse(item.Name.Split('_')[1].ToString()));
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
 
         }
@@ -692,7 +692,7 @@ namespace LiuShuiZhang2._0
             #region Load Cash Details
 
             //if (dataGridView_CashStatus_CashDetails.Rows.Count == 0) { dataGridView_CashStatus_CashDetails.Rows.Add(new DataGridViewRow()); }
-            dt_LastLiuShui = DAL_liuShui.GetLastRecord();        
+            dt_LastLiuShui = DAL_liuShui.GetLastRecord();
 
             if (dt_LastLiuShui.Rows.Count > 0)
             {
@@ -739,13 +739,35 @@ namespace LiuShuiZhang2._0
                 ChangeWorkingMode((int)WorkingMode.Working);
                 try
                 {
-                    DataTable newLiuShui = dt_LastLiuShui.Copy();
+                    DataTable newLiuShui = new DataTable();
+                    newLiuShui.Columns.AddRange(new DataColumn[] {
+                        new DataColumn("RIZI",typeof(DateTime)),
+                        new DataColumn("QIANE",typeof(Decimal)),
+                        new DataColumn("XIANE",typeof(Decimal)),
+                        new DataColumn("XIANGCHA",typeof(Decimal)),
+                        new DataColumn("DIANSUANJIEGUO",typeof(Decimal)),
+                        new DataColumn("_500000",typeof(Decimal)),
+                        new DataColumn("_200000",typeof(Decimal)),
+                        new DataColumn("_100000",typeof(Decimal)),
+                        new DataColumn("_50000",typeof(Decimal)),
+                        new DataColumn("_20000",typeof(Decimal)),
+                        new DataColumn("_10000",typeof(Decimal)),
+                        new DataColumn("_5000",typeof(Decimal)),
+                        new DataColumn("_2000",typeof(Decimal)),
+                        new DataColumn("_1000",typeof(Decimal)),
+                    });
+                    newLiuShui.Rows.Add(newLiuShui.NewRow());
+
                     foreach (DataColumn c in newLiuShui.Columns)
                     {
-                        if (newLiuShui.Rows[0][c.ColumnName].ToString() == "RIZI")
+                        if (c.ColumnName == "RIZI")
+                        {
                             newLiuShui.Rows[0][c.ColumnName] = dateTimePicker.Value.Date;
+                        }
                         else
+                        {
                             newLiuShui.Rows[0][c.ColumnName] = 0;
+                        }
                     }
                     DAL_liuShui.AddNewLiuShui(CreateLiuShui(newLiuShui));
                     MessageBox.Show(string.Format("{0}的流水账已经创新", dateTimePicker.Value.Date), "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -857,15 +879,15 @@ namespace LiuShuiZhang2._0
                 CurValue = ls == null ? numericUpDown_CashStatus_CurValue.Value : Convert.ToDecimal(ls.Rows[0]["XIANE"].ToString()),
                 DeltaValue = ls == null ? numericUpDown_CashStatus_DeltaValue.Value : Convert.ToDecimal(ls.Rows[0]["XIANGCHA"].ToString()),
                 CountValue = ls == null ? numericUpDown_CashStatus_CountValue.Value : Convert.ToDecimal(ls.Rows[0]["DIANSUANJIEGUO"].ToString()),
-                __500 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_500000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_500000"].ToString()),
-                __200 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_200000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_200000"].ToString()),
-                __100 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_100000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_100000"].ToString()),
-                __50 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_50000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_50000"].ToString()),
-                __20 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_20000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_20000"].ToString()),
-                __10 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_10000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_10000"].ToString()),
-                __5 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_5000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_5000"].ToString()),
-                __2 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_2000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_2000"].ToString()),
-                __1 = ls == null ? int.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_1000"].Value.ToString()) : Convert.ToInt32(ls.Rows[0]["_1000"].ToString()),
+                __500 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_500000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_500000"].ToString()),
+                __200 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_200000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_200000"].ToString()),
+                __100 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_100000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_100000"].ToString()),
+                __50 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_50000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_50000"].ToString()),
+                __20 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_20000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_20000"].ToString()),
+                __10 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_10000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_10000"].ToString()),
+                __5 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_5000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_5000"].ToString()),
+                __2 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_2000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_2000"].ToString()),
+                __1 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_1000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_1000"].ToString()),
             };
         }
 
@@ -971,25 +993,10 @@ namespace LiuShuiZhang2._0
 
         #endregion
 
-        private void dataGridView_CashStatus_CashDetails_CellLeave(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView_CashStatus_CashDetails_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            //DataGridView g = dataGridView_CashStatus_CashDetails;
-            //if (g != null)
-            //{
-            //    int col = g.CurrentCell.ColumnIndex;
-            //    int row = g.CurrentCell.RowIndex;
-            //    if (col < g.ColumnCount - 1)
-            //    {
-            //        col++;
-            //    }
-            //    else
-            //    {
-            //        col = 0;
-            //        row++;
-            //    }
-            //    //g.CurrentCell = g[col, row];
-            //g.BeginEdit(true);
-            //}
+            //if (e.FormattedValue.GetType() != dataGridView_CashStatus_CashDetails.CurrentCell.ValueType.UnderlyingSystemType)
+            //    MessageBox.Show("Input type is wrong");
         }
     }
 }
