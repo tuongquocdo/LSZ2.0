@@ -123,7 +123,7 @@ namespace LiuShuiZhang2._0
             this.button_Transaction_GetTemp = new System.Windows.Forms.Button();
             this.groupBox_CashStatus = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button_CashStatus_CashCouterMode = new System.Windows.Forms.Button();
+            this.button_CashStatus_CashCouting = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -1156,7 +1156,7 @@ namespace LiuShuiZhang2._0
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button_CashStatus_CashCouterMode);
+            this.panel2.Controls.Add(this.button_CashStatus_CashCouting);
             this.panel2.Controls.Add(this.numericUpDown_CashStatus_CountValue);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(7, 136);
@@ -1164,16 +1164,16 @@ namespace LiuShuiZhang2._0
             this.panel2.Size = new System.Drawing.Size(679, 40);
             this.panel2.TabIndex = 0;
             // 
-            // button_CashStatus_CashCouterMode
+            // button_CashStatus_CashCouting
             // 
-            this.button_CashStatus_CashCouterMode.Location = new System.Drawing.Point(574, 4);
-            this.button_CashStatus_CashCouterMode.Name = "button_CashStatus_CashCouterMode";
-            this.button_CashStatus_CashCouterMode.Size = new System.Drawing.Size(100, 32);
-            this.button_CashStatus_CashCouterMode.TabIndex = 0;
-            this.button_CashStatus_CashCouterMode.TabStop = false;
-            this.button_CashStatus_CashCouterMode.Text = "点算";
-            this.button_CashStatus_CashCouterMode.UseVisualStyleBackColor = true;
-            this.button_CashStatus_CashCouterMode.Click += new System.EventHandler(this.button_CashCouterMode_Click);
+            this.button_CashStatus_CashCouting.Location = new System.Drawing.Point(574, 4);
+            this.button_CashStatus_CashCouting.Name = "button_CashStatus_CashCouting";
+            this.button_CashStatus_CashCouting.Size = new System.Drawing.Size(100, 32);
+            this.button_CashStatus_CashCouting.TabIndex = 0;
+            this.button_CashStatus_CashCouting.TabStop = false;
+            this.button_CashStatus_CashCouting.Text = "点算现金";
+            this.button_CashStatus_CashCouting.UseVisualStyleBackColor = true;
+            this.button_CashStatus_CashCouting.Click += new System.EventHandler(this.button_CashCouterMode_Click);
             // 
             // label4
             // 
@@ -1272,6 +1272,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_CashStatus_CashDetails.Size = new System.Drawing.Size(679, 60);
             this.dataGridView_CashStatus_CashDetails.TabIndex = 0;
+            this.dataGridView_CashStatus_CashDetails.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CashStatus_CashDetails_CellLeave);
             this.dataGridView_CashStatus_CashDetails.SelectionChanged += new System.EventHandler(this.dataGridView_CashDetails_SelectionChanged);
             // 
             // groupBox_LiuShui
@@ -2391,7 +2392,7 @@ namespace LiuShuiZhang2._0
         private System.Windows.Forms.Label label1_HandleUser;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.GroupBox groupBox_LiuShui;
-        private System.Windows.Forms.Button button_CashStatus_CashCouterMode;
+        private System.Windows.Forms.Button button_CashStatus_CashCouting;
         private System.Windows.Forms.GroupBox groupBox_CashCounting;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel_CashCountingTable;
