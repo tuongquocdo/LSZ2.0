@@ -2135,7 +2135,7 @@ namespace LiuShuiZhang2._0
             this.dataGridView_CashStatus_CashDetails.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_CashStatus_CashDetails.Size = new System.Drawing.Size(679, 60);
             this.dataGridView_CashStatus_CashDetails.TabIndex = 0;
-            this.dataGridView_CashStatus_CashDetails.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_CashStatus_CashDetails_CellValidating);
+            this.dataGridView_CashStatus_CashDetails.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_CashStatus_CashDetails_EditingControlShowing);
             this.dataGridView_CashStatus_CashDetails.SelectionChanged += new System.EventHandler(this.dataGridView_CashDetails_SelectionChanged);
             // 
             // groupBox_LiuShui

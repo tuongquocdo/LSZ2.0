@@ -70,5 +70,45 @@ namespace LiuShuiZhang2._0.DAL
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void UpdateLiuShuiByLiuShuiID(BLL_LiuShui l)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "update LIUSHUI set QIANE = @QIANE," +
+                                                    "XIANE = @XIANE," +
+                                                    "XIANGCHA = @XIANGCHA," +
+                                                    "DIANSUANJIEGUO = @DIANSUANJIEGUO," +
+                                                    "_500000 = @_500000," +
+                                                    "_200000 = @_200000," +
+                                                    "_100000 = @_100000," +
+                                                    "_50000 = @_50000," +
+                                                    "_20000 = @_20000," +
+                                                    "_10000 = @_10000," +
+                                                    "_5000 = @_5000," +
+                                                    "_2000 = @_2000," +
+                                                    "_1000 = @_1000 " +
+                                    "where LIUSHUIID = @LIUSHUIID";
+                cmd.Parameters.AddWithValue("@QIANE", l.PreValue);
+                cmd.Parameters.AddWithValue("@XIANE", l.CurValue);
+                cmd.Parameters.AddWithValue("@XIANGCHA", l.DeltaValue);
+                cmd.Parameters.AddWithValue("@DIANSUANJIEGUO", l.CountValue);
+                cmd.Parameters.AddWithValue("@_500000", l.__500);
+                cmd.Parameters.AddWithValue("@_200000", l.__200);
+                cmd.Parameters.AddWithValue("@_100000", l.__100);
+                cmd.Parameters.AddWithValue("@_50000", l.__50);
+                cmd.Parameters.AddWithValue("@_20000", l.__20);
+                cmd.Parameters.AddWithValue("@_10000", l.__10);
+                cmd.Parameters.AddWithValue("@_5000", l.__5);
+                cmd.Parameters.AddWithValue("@_2000", l.__2);
+                cmd.Parameters.AddWithValue("@_1000", l.__1);
+                cmd.Parameters.AddWithValue("@LIUSHUIID", l.LiuShuiID);
+
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
