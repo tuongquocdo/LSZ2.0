@@ -284,10 +284,6 @@ namespace LiuShuiZhang2._0
             }
             else
             {
-                groupBox_CashStatus.Enabled = groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashCounting.Enabled = true;
-                button_CashStatus_CashCouting.Text = "点算现金";
-                dataGridView_CashStatus_CashDetails.ReadOnly = true;
-                dataGridView_CashStatus_CashDetails.SelectionChanged += dataGridView_CashDetails_SelectionChanged;
                 try
                 {
                     
@@ -301,7 +297,10 @@ namespace LiuShuiZhang2._0
                 {
                     MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
+                groupBox_CashStatus.Enabled = groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashCounting.Enabled = true;
+                button_CashStatus_CashCouting.Text = "点算现金";
+                dataGridView_CashStatus_CashDetails.ReadOnly = true;
+                dataGridView_CashStatus_CashDetails.SelectionChanged += dataGridView_CashDetails_SelectionChanged;
             }
         }
 
@@ -1020,8 +1019,9 @@ namespace LiuShuiZhang2._0
                         bz.AveragePrice = (decimal)tb.Rows[0]["PINGJUNJIA"];
                         bz.TotalValue = (decimal)tb.Rows[0]["YIGONG"];
                         lstbz.Add(bz);
+                        index = lstbz.FindIndex(i => i.BiZhongID == biZhongID);
                     }
-                    index = lstbz.FindIndex(i => i.BiZhongID == biZhongID);
+                    
 
                     if (BLL_jiaoYi.Quantity < 0)
                     {
