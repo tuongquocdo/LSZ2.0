@@ -223,8 +223,18 @@ namespace LiuShuiZhang2._0
         {
             dataGridView_CashStatus_CashDetails.EditingControl.KeyPress -= dataGridView_CashStatus_CashDetails_EditingControl_KeyPress;
             dataGridView_CashStatus_CashDetails.EditingControl.KeyPress += dataGridView_CashStatus_CashDetails_EditingControl_KeyPress;
+            //dataGridView_CashStatus_CashDetails.EditingControl.KeyDown -= dataGridView_CashStatus_CashDetails_EditingControl_KeyDown;
+            //dataGridView_CashStatus_CashDetails.EditingControl.KeyDown += dataGridView_CashStatus_CashDetails_EditingControl_KeyDown;
         }
 
+        //private void dataGridView_CashStatus_CashDetails_EditingControl_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    e.SuppressKeyPress = true;
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        MessageBox.Show("ok");
+        //    }
+        //}
 
         private void dataGridView_CashStatus_CashDetails_EditingControl_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -270,16 +280,22 @@ namespace LiuShuiZhang2._0
                 dataGridView_CashStatus_CashDetails.ReadOnly = false;
                 dataGridView_CashStatus_CashDetails.CurrentCell = dataGridView_CashStatus_CashDetails.Rows[0].Cells["_500000"];
                 dataGridView_CashStatus_CashDetails.BeginEdit(true);
+                dataGridView_CashStatus_CashDetails.SelectionChanged -= dataGridView_CashDetails_SelectionChanged;
             }
             else
             {
                 groupBox_CashStatus.Enabled = groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashCounting.Enabled = true;
                 button_CashStatus_CashCouting.Text = "点算现金";
                 dataGridView_CashStatus_CashDetails.ReadOnly = true;
+                dataGridView_CashStatus_CashDetails.SelectionChanged += dataGridView_CashDetails_SelectionChanged;
                 try
                 {
-                    DAL_liuShui.UpdateLiuShuiByLiuShuiID(CreateLiuShui(null));
-                    MessageBox.Show("点算结果已保留","温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    if (MessageBox.Show("是否要保留已点算的结果？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        DAL_liuShui.UpdateLiuShuiByLiuShuiID(CreateLiuShui(null));   
+                    }
+                    button_Transaction_CancelTran.PerformClick();
                 }
                 catch (Exception ex)
                 {
@@ -542,18 +558,14 @@ namespace LiuShuiZhang2._0
             {
                 try
                 {
-                    #region initialize LiuShui
+                    //initialize LiuShui
                     BLL_LiuShui BLL_liuShui = CreateLiuShui(null);
-                    //BLL_liuShui.LiuShuiID = (long)dt_LastLiuShui.Rows[0]["LIUSHUIID"];
-                    #endregion
 
-                    #region initialize JiaoYiDan
+                    ///initialize JiaoYiDan
                     BLL_jiaoYiDan = CreateJiaoYiDan();
-                    #endregion
 
-                    #region initialize JiaoYi List
+                    //initialize JiaoYi List
                     BLL_jiaoYi_biZhong = CreateJiaoYis();
-                    #endregion
 
                     DAL_jiaoYi.AddNewJiaoYis(BLL_jiaoYiDan, BLL_liuShui, BLL_jiaoYi_biZhong);
 
@@ -589,11 +601,23 @@ namespace LiuShuiZhang2._0
 
         private void CalcCountValueAndDeltaValue()
         {
-            numericUpDown_CashStatus_CountValue.Value =
-                dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
-                                            .Where(item => item.Name.Split('_').Length >1)    
-                                            .Sum(item => Convert.ToInt64(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
-                                                         Convert.ToInt64(item.Name.Split('_')[1].ToString()));
+            long sum = 0;
+            foreach (DataGridViewColumn c in dataGridView_CashStatus_CashDetails.Columns)
+            {
+                if (c.Visible)
+                {
+                    sum += dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value.ToString() == string.Empty ? 0 :
+                            Convert.ToInt64(dataGridView_CashStatus_CashDetails.Rows[0].Cells[c.Name].Value.ToString()) *
+                           Convert.ToInt64(c.Name.Split('_')[1].ToString());
+                }
+            }
+            numericUpDown_CashStatus_CountValue.Value = sum;
+
+            //numericUpDown_CashStatus_CountValue.Value =
+            //    dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
+            //                                .Where(item => item.Name.Split('_').Length > 1)
+            //                                .Sum(item => Convert.ToInt64(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
+            //                                             Convert.ToInt64(item.Name.Split('_')[1].ToString()));
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
 
         }
@@ -769,6 +793,7 @@ namespace LiuShuiZhang2._0
                 {
                     DataTable newLiuShui = new DataTable();
                     newLiuShui.Columns.AddRange(new DataColumn[] {
+                        new DataColumn("LIUSHUIID",typeof(long)),
                         new DataColumn("RIZI",typeof(DateTime)),
                         new DataColumn("QIANE",typeof(Decimal)),
                         new DataColumn("XIANE",typeof(Decimal)),
@@ -1021,5 +1046,6 @@ namespace LiuShuiZhang2._0
         }
 
         #endregion
+
     }
 }
