@@ -37,6 +37,8 @@ namespace LiuShuiZhang2._0
 
         DataTable dt_LastLiuShui;
 
+        DataTable dt_JiaoYi;
+
         public Main()
         {
             InitializeComponent();
@@ -873,8 +875,45 @@ namespace LiuShuiZhang2._0
             comboBox_Transaction_Type.DataSource = DAL_biZhong.GetAllBiZhong();
             comboBox_Transaction_Type.DisplayMember = "BIZHONG";
             comboBox_Transaction_Type.ValueMember = "BIZHONGID";
-            comboBox_Transaction_Type.SelectedIndex = 1;
             comboBox_Transaction_Type.SelectedIndex = 0;
+
+            DataTable dt_BiZhongForFilter = DAL_biZhong.GetAllBiZhong();
+            DataRow dtr_SelectedLiuShuiFilterValue = dt_BiZhongForFilter.NewRow();
+            dtr_SelectedLiuShuiFilterValue[0] = 0;
+            dtr_SelectedLiuShuiFilterValue[1] = "===请选择===";
+            dtr_SelectedLiuShuiFilterValue[2] = 0;
+            dtr_SelectedLiuShuiFilterValue[3] = 0;
+            dtr_SelectedLiuShuiFilterValue[4] = 0;
+            dtr_SelectedLiuShuiFilterValue[5] = 0;
+            dtr_SelectedLiuShuiFilterValue[6] = false;
+            dt_BiZhongForFilter.Rows.InsertAt(dtr_SelectedLiuShuiFilterValue, 0);
+            comboBox_LiuShui_Type.DataSource = dt_BiZhongForFilter;
+            comboBox_LiuShui_Type.DisplayMember = "BIZHONG";
+            comboBox_LiuShui_Type.ValueMember = "BIZHONGID";
+            comboBox_LiuShui_Type.SelectedIndex = 0;
+
+            DataTable dt_ShouZhiForFilter = new DataTable();
+            dt_ShouZhiForFilter.Columns.AddRange(new DataColumn[] { 
+                new DataColumn("SHOUZHIID"),
+                new DataColumn("SHOUZHI")
+            });
+            DataRow dtr_SelectedShouZhiFilterValue0 = dt_ShouZhiForFilter.NewRow();
+            dtr_SelectedShouZhiFilterValue0[0] = "0";
+            dtr_SelectedShouZhiFilterValue0[1] = "===请选择===";
+            dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue0);
+            DataRow dtr_SelectedShouZhiFilterValue1 = dt_ShouZhiForFilter.NewRow();
+            dtr_SelectedShouZhiFilterValue1[0] = "-1";
+            dtr_SelectedShouZhiFilterValue1[1] = "收款";
+            dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue1);
+            DataRow dtr_SelectedShouZhiFilterValue2 = dt_ShouZhiForFilter.NewRow();
+            dtr_SelectedShouZhiFilterValue2[0] = "1";
+            dtr_SelectedShouZhiFilterValue2[1] = "付款";
+            dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue2);
+            comboBox_LiuShui_ShouZhi.DataSource = dt_ShouZhiForFilter;
+            comboBox_LiuShui_ShouZhi.DisplayMember = "SHOUZHI";
+            comboBox_LiuShui_ShouZhi.ValueMember = "SHOUZHIID";
+            comboBox_LiuShui_ShouZhi.SelectedIndex = 0;
+
 
             #endregion
 
@@ -888,8 +927,9 @@ namespace LiuShuiZhang2._0
 
             #endregion
 
-            #region Load LiuShui
-            dataGridView_LiuShui_Trans.DataSource = DAL_jiaoYi.GetAllRecordByDate(dateTimePicker.Value);
+            #region Load JiaoYi
+            dt_JiaoYi = DAL_jiaoYi.GetAllRecordByDate(dateTimePicker.Value);
+            dataGridView_LiuShui_Trans.DataSource = dt_JiaoYi;
             dataGridView_LiuShui_Trans.ReadOnly = true;
             dataGridView_LiuShui_Trans.Columns["JIAOYIID"].Visible = false;
             dataGridView_LiuShui_Trans.Columns["JIAOYIDANID"].Visible = false;
@@ -1047,5 +1087,37 @@ namespace LiuShuiZhang2._0
 
         #endregion
 
+        private void FilterLiuShuiByBiZhongAndShouZhi(object sender, EventArgs e)
+        {
+            if (dt_JiaoYi != null)
+            {
+                string filterCommandBuilder = string.Format("{0} {1}",
+                                                                    comboBox_LiuShui_Type.SelectedIndex == 0
+                                                                    ? string.Empty
+                                                                    : string.Format("{0} = '{1}' ",
+                                                                                                comboBox_LiuShui_Type.Tag.ToString(),
+                                                                                                comboBox_LiuShui_Type.Text
+                                                                                   ),
+                                                                    comboBox_LiuShui_ShouZhi.SelectedIndex == 0
+                                                                    ? string.Empty
+                                                                    : string.Format("AND {0} {1} ",
+                                                                                                    comboBox_LiuShui_ShouZhi.Tag.ToString(),
+                                                                                                    Convert.ToDecimal(comboBox_LiuShui_ShouZhi.SelectedValue.ToString()) > 0
+                                                                                                    ? string.Format(" > 0")
+                                                                                                    : string.Format(" < 0")
+                                                                                   )
+                                                           );
+                if (filterCommandBuilder.Trim(' ') != string.Empty)
+                {
+                    if (filterCommandBuilder.Trim(' ').Substring(0, 3) == "AND")
+                    {
+                        filterCommandBuilder = filterCommandBuilder.Trim(' ').Remove(0, 3);
+                    }
+                }
+
+
+                dt_JiaoYi.DefaultView.RowFilter = filterCommandBuilder.ToString();
+            }
+        }
     }
 }
