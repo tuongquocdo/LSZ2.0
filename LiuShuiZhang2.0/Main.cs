@@ -548,8 +548,67 @@ namespace LiuShuiZhang2._0
 
         #endregion
 
-        #region LiuShui
-       
+        #region LiuShuiZhang
+
+        List<string> filterCommands = new List<string>() { string.Empty, string.Empty };
+        private void comboBox_LiuShuiZhang_Type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox c = sender as ComboBox;
+            if (c.SelectedIndex == 0)
+                filterCommands[Convert.ToInt32(c.Tag)] = string.Empty;
+            else
+            {
+                filterCommands[Convert.ToInt32(c.Tag)] = string.Format("BIZHONG = '{0}'", c.Text);
+            }
+            FilterJiaoYi(filterCommands);
+        }
+
+        private void comboBox_LiuShuiZhang_ShouZhi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox c = sender as ComboBox;
+            if (c.SelectedIndex == 0)
+                filterCommands[Convert.ToInt32(c.Tag)] = string.Empty;
+            else
+            {
+                filterCommands[Convert.ToInt32(c.Tag)] = string.Format("LIANG {0}", Convert.ToDecimal(comboBox_LiuShuiZhang_ShouZhi.SelectedValue.ToString()) > 0
+                                                                                    ? string.Format("> 0")
+                                                                                    : string.Format("< 0")
+                                                                      );
+            }
+            FilterJiaoYi(filterCommands);
+        }
+
+        private void FilterJiaoYi(List<string> _filterCommands)
+        {
+            string filterCommand = string.Empty;
+            for (int i = 0; i < _filterCommands.Count; i++)
+            {
+                filterCommand += _filterCommands[i];
+                if (_filterCommands[i] != string.Empty &&
+                    i != _filterCommands.Count - 1 &&
+                    !string.IsNullOrEmpty(_filterCommands[i + 1]))
+                {
+                    filterCommand += " And ";
+                }
+            }
+            if (dt_JiaoYi != null)
+            {
+                dt_JiaoYi.DefaultView.RowFilter = filterCommand;
+            }
+        }
+
+        private void dataGridView_LiuShuiZhang_Trans_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (e.Row.Index >= 0)
+            {
+                DataGridView d = sender as DataGridView;
+                if ((decimal)d.Rows[e.Row.Index].Cells["LIANG"].Value < 0)
+                {
+                    d.Rows[e.Row.Index].DefaultCellStyle.BackColor = Color.Yellow;
+                }
+            }
+        }
+
         #endregion
 
         #region Cash Counting
@@ -613,12 +672,6 @@ namespace LiuShuiZhang2._0
                 }
             }
             numericUpDown_CashStatus_CountValue.Value = sum;
-
-            //numericUpDown_CashStatus_CountValue.Value =
-            //    dataGridView_CashStatus_CashDetails.Columns.Cast<DataGridViewColumn>()
-            //                                .Where(item => item.Name.Split('_').Length > 1)
-            //                                .Sum(item => Convert.ToInt64(dataGridView_CashStatus_CashDetails.Rows[0].Cells[item.Name].Value.ToString()) *
-            //                                             Convert.ToInt64(item.Name.Split('_')[1].ToString()));
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
 
         }
@@ -887,10 +940,10 @@ namespace LiuShuiZhang2._0
             dtr_SelectedLiuShuiFilterValue[5] = 0;
             dtr_SelectedLiuShuiFilterValue[6] = false;
             dt_BiZhongForFilter.Rows.InsertAt(dtr_SelectedLiuShuiFilterValue, 0);
-            comboBox_LiuShui_Type.DataSource = dt_BiZhongForFilter;
-            comboBox_LiuShui_Type.DisplayMember = "BIZHONG";
-            comboBox_LiuShui_Type.ValueMember = "BIZHONGID";
-            comboBox_LiuShui_Type.SelectedIndex = 0;
+            comboBox_LiuShuiZhang_Type.DataSource = dt_BiZhongForFilter;
+            comboBox_LiuShuiZhang_Type.DisplayMember = "BIZHONG";
+            comboBox_LiuShuiZhang_Type.ValueMember = "BIZHONGID";
+            comboBox_LiuShuiZhang_Type.SelectedIndex = 0;
 
             DataTable dt_ShouZhiForFilter = new DataTable();
             dt_ShouZhiForFilter.Columns.AddRange(new DataColumn[] { 
@@ -903,16 +956,16 @@ namespace LiuShuiZhang2._0
             dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue0);
             DataRow dtr_SelectedShouZhiFilterValue1 = dt_ShouZhiForFilter.NewRow();
             dtr_SelectedShouZhiFilterValue1[0] = "-1";
-            dtr_SelectedShouZhiFilterValue1[1] = "收款";
+            dtr_SelectedShouZhiFilterValue1[1] = "收";
             dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue1);
             DataRow dtr_SelectedShouZhiFilterValue2 = dt_ShouZhiForFilter.NewRow();
             dtr_SelectedShouZhiFilterValue2[0] = "1";
-            dtr_SelectedShouZhiFilterValue2[1] = "付款";
+            dtr_SelectedShouZhiFilterValue2[1] = "支";
             dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue2);
-            comboBox_LiuShui_ShouZhi.DataSource = dt_ShouZhiForFilter;
-            comboBox_LiuShui_ShouZhi.DisplayMember = "SHOUZHI";
-            comboBox_LiuShui_ShouZhi.ValueMember = "SHOUZHIID";
-            comboBox_LiuShui_ShouZhi.SelectedIndex = 0;
+            comboBox_LiuShuiZhang_ShouZhi.DataSource = dt_ShouZhiForFilter;
+            comboBox_LiuShuiZhang_ShouZhi.DisplayMember = "SHOUZHI";
+            comboBox_LiuShuiZhang_ShouZhi.ValueMember = "SHOUZHIID";
+            comboBox_LiuShuiZhang_ShouZhi.SelectedIndex = 0;
 
 
             #endregion
@@ -929,36 +982,36 @@ namespace LiuShuiZhang2._0
 
             #region Load JiaoYi
             dt_JiaoYi = DAL_jiaoYi.GetAllRecordByDate(dateTimePicker.Value);
-            dataGridView_LiuShui_Trans.DataSource = dt_JiaoYi;
-            dataGridView_LiuShui_Trans.ReadOnly = true;
-            dataGridView_LiuShui_Trans.Columns["JIAOYIID"].Visible = false;
-            dataGridView_LiuShui_Trans.Columns["JIAOYIDANID"].Visible = false;
-            dataGridView_LiuShui_Trans.Columns["RENYUANID"].Visible = false;
-            dataGridView_LiuShui_Trans.Columns["LIUSHUIID"].Visible = false;
-            dataGridView_LiuShui_Trans.Columns["BIZHONGID"].Visible = false;
-            dataGridView_LiuShui_Trans.Columns["QIANDANID"].Visible = false;
-            dataGridView_LiuShui_Trans.Columns["BIZHONG"].HeaderText = "币种";
+            dataGridView_LiuShuiZhang_Trans.DataSource = dt_JiaoYi;
+            dataGridView_LiuShuiZhang_Trans.ReadOnly = true;
+            dataGridView_LiuShuiZhang_Trans.Columns["JIAOYIID"].Visible = false;
+            dataGridView_LiuShuiZhang_Trans.Columns["JIAOYIDANID"].Visible = false;
+            dataGridView_LiuShuiZhang_Trans.Columns["RENYUANID"].Visible = false;
+            dataGridView_LiuShuiZhang_Trans.Columns["LIUSHUIID"].Visible = false;
+            dataGridView_LiuShuiZhang_Trans.Columns["BIZHONGID"].Visible = false;
+            dataGridView_LiuShuiZhang_Trans.Columns["QIANDANID"].Visible = false;
+            dataGridView_LiuShuiZhang_Trans.Columns["BIZHONG"].HeaderText = "币种";
 
-            dataGridView_LiuShui_Trans.Columns["LIANG"].HeaderText = "数量";
-            dataGridView_LiuShui_Trans.Columns["LIANG"].DefaultCellStyle.Format = "N2";
+            dataGridView_LiuShuiZhang_Trans.Columns["LIANG"].HeaderText = "数量";
+            dataGridView_LiuShuiZhang_Trans.Columns["LIANG"].DefaultCellStyle.Format = "N2";
 
-            dataGridView_LiuShui_Trans.Columns["JIA"].HeaderText = "价格";
-            dataGridView_LiuShui_Trans.Columns["JIA"].DefaultCellStyle.Format = "N2";
-            dataGridView_LiuShui_Trans.Columns["YIGONG"].HeaderText = "一共";
+            dataGridView_LiuShuiZhang_Trans.Columns["JIA"].HeaderText = "价格";
+            dataGridView_LiuShuiZhang_Trans.Columns["JIA"].DefaultCellStyle.Format = "N2";
+            dataGridView_LiuShuiZhang_Trans.Columns["YIGONG"].HeaderText = "一共";
 
-            dataGridView_LiuShui_Trans.Columns["YIGONG"].DefaultCellStyle.Format = "N2";
-            dataGridView_LiuShui_Trans.Columns["BEIZHU"].HeaderText = "备注";
+            dataGridView_LiuShuiZhang_Trans.Columns["YIGONG"].DefaultCellStyle.Format = "N2";
+            dataGridView_LiuShuiZhang_Trans.Columns["BEIZHU"].HeaderText = "备注";
 
-            dataGridView_LiuShui_Trans.Columns["SHIJIAN"].HeaderText = "时间";
-            dataGridView_LiuShui_Trans.Columns["SHIJIAN"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
+            dataGridView_LiuShuiZhang_Trans.Columns["SHIJIAN"].HeaderText = "时间";
+            dataGridView_LiuShuiZhang_Trans.Columns["SHIJIAN"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
 
-            foreach (DataGridViewRow row in dataGridView_LiuShui_Trans.Rows)
-            {
-                if ((decimal)row.Cells["LIANG"].Value < 0)
-                {
-                    row.DefaultCellStyle.BackColor = Color.Yellow;
-                }
-            }
+            //foreach (DataGridViewRow row in dataGridView_LiuShui_Trans.Rows)
+            //{
+            //    if ((decimal)row.Cells["LIANG"].Value < 0)
+            //    {
+            //        row.DefaultCellStyle.BackColor = Color.Yellow;
+            //    }
+            //}
             #endregion
         }
 
@@ -1086,38 +1139,5 @@ namespace LiuShuiZhang2._0
         }
 
         #endregion
-
-        private void FilterLiuShuiByBiZhongAndShouZhi(object sender, EventArgs e)
-        {
-            if (dt_JiaoYi != null)
-            {
-                string filterCommandBuilder = string.Format("{0} {1}",
-                                                                    comboBox_LiuShui_Type.SelectedIndex == 0
-                                                                    ? string.Empty
-                                                                    : string.Format("{0} = '{1}' ",
-                                                                                                comboBox_LiuShui_Type.Tag.ToString(),
-                                                                                                comboBox_LiuShui_Type.Text
-                                                                                   ),
-                                                                    comboBox_LiuShui_ShouZhi.SelectedIndex == 0
-                                                                    ? string.Empty
-                                                                    : string.Format("AND {0} {1} ",
-                                                                                                    comboBox_LiuShui_ShouZhi.Tag.ToString(),
-                                                                                                    Convert.ToDecimal(comboBox_LiuShui_ShouZhi.SelectedValue.ToString()) > 0
-                                                                                                    ? string.Format(" > 0")
-                                                                                                    : string.Format(" < 0")
-                                                                                   )
-                                                           );
-                if (filterCommandBuilder.Trim(' ') != string.Empty)
-                {
-                    if (filterCommandBuilder.Trim(' ').Substring(0, 3) == "AND")
-                    {
-                        filterCommandBuilder = filterCommandBuilder.Trim(' ').Remove(0, 3);
-                    }
-                }
-
-
-                dt_JiaoYi.DefaultView.RowFilter = filterCommandBuilder.ToString();
-            }
-        }
     }
 }
