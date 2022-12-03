@@ -12,6 +12,21 @@ namespace LiuShuiZhang2._0.DAL
 {
     public class DAL_BiZhong
     {
+        public DataTable GetBiZhongInLiuShuiZhang(DateTime date)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("select DISTINCT BIZHONG.BIZHONGID,BIZHONG.BIZHONG from JIAOYI,BIZHONG where JIAOYI.BIZHONGID = BIZHONG.BIZHONGID and (SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, JIAOYI.SHIJIAN))) = '{0}'",date);
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
         public DataTable GetAllBiZhong()
         {
             using (var con = new SqlConnection(Common.constr))

@@ -930,15 +930,10 @@ namespace LiuShuiZhang2._0
             comboBox_Transaction_Type.ValueMember = "BIZHONGID";
             comboBox_Transaction_Type.SelectedIndex = 0;
 
-            DataTable dt_BiZhongForFilter = DAL_biZhong.GetAllBiZhong();
+            DataTable dt_BiZhongForFilter = DAL_biZhong.GetBiZhongInLiuShuiZhang(dateTimePicker.Value.Date);
             DataRow dtr_SelectedLiuShuiFilterValue = dt_BiZhongForFilter.NewRow();
             dtr_SelectedLiuShuiFilterValue[0] = 0;
-            dtr_SelectedLiuShuiFilterValue[1] = "===请选择===";
-            dtr_SelectedLiuShuiFilterValue[2] = 0;
-            dtr_SelectedLiuShuiFilterValue[3] = 0;
-            dtr_SelectedLiuShuiFilterValue[4] = 0;
-            dtr_SelectedLiuShuiFilterValue[5] = 0;
-            dtr_SelectedLiuShuiFilterValue[6] = false;
+            dtr_SelectedLiuShuiFilterValue[1] = "全部";
             dt_BiZhongForFilter.Rows.InsertAt(dtr_SelectedLiuShuiFilterValue, 0);
             comboBox_LiuShuiZhang_Type.DataSource = dt_BiZhongForFilter;
             comboBox_LiuShuiZhang_Type.DisplayMember = "BIZHONG";
@@ -952,7 +947,7 @@ namespace LiuShuiZhang2._0
             });
             DataRow dtr_SelectedShouZhiFilterValue0 = dt_ShouZhiForFilter.NewRow();
             dtr_SelectedShouZhiFilterValue0[0] = "0";
-            dtr_SelectedShouZhiFilterValue0[1] = "===请选择===";
+            dtr_SelectedShouZhiFilterValue0[1] = "全部";
             dt_ShouZhiForFilter.Rows.Add(dtr_SelectedShouZhiFilterValue0);
             DataRow dtr_SelectedShouZhiFilterValue1 = dt_ShouZhiForFilter.NewRow();
             dtr_SelectedShouZhiFilterValue1[0] = "-1";
