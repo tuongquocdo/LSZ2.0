@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LiuShuiZhang2._0;
+using LiuShuiZhang2._0.BLL;
 
 namespace LiuShuiZhang2._0.DAL
 {
@@ -39,7 +41,7 @@ namespace LiuShuiZhang2._0.DAL
             }
         }
 
-        public void AddNewJiaoYi(LiuShuiZhang2._0.BLL.BLL_JiaoYi jy)
+        public void AddNewJiaoYi(BLL_JiaoYi jy)
         {
             using (var con = new SqlConnection(Common.constr))
             {
@@ -65,11 +67,11 @@ namespace LiuShuiZhang2._0.DAL
             }
         }
 
-        public void AddNewJiaoYis(BLL.BLL_JiaoYiDan jyd, BLL.BLL_LiuShui ls,  BLL.BLL_JiaoYi_BiZhong jysbzs)
+        public void AddNewJiaoYis(BLL_JiaoYiDan jyd, BLL_LiuShui ls,  BLL_JiaoYi_BiZhong jysbzs, int jiaoYiMode )
         {
             using (var con = new SqlConnection(Common.constr))
             {
-                long jiaoYiDanId;
+                long jiaoYiDanId=0;
                 SqlTransaction sqltran = null;
                 SqlCommand cmd = new SqlCommand();
                 try
@@ -79,20 +81,23 @@ namespace LiuShuiZhang2._0.DAL
                     cmd.Connection = con;
                     cmd.Transaction = sqltran;
 
-                    cmd.CommandText = string.Format("insert into JIAOYIDAN(SHIJIAN,ZONGE,_500000,_200000,_100000,_50000,_20000,_10000,_5000,_2000,_1000) output inserted.JIAOYIDANID" +
-                    " values (@JIAOYIDAN_SHIJIAN,@JIAOYIDAN_ZONGE,@JIAOYIDAN_500000,@JIAOYIDAN_200000,@JIAOYIDAN_100000,@JIAOYIDAN_50000,@JIAOYIDAN_20000,@JIAOYIDAN_10000,@JIAOYIDAN_5000,@JIAOYIDAN_2000,@JIAOYIDAN_1000)");
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_SHIJIAN", jyd.Time);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_ZONGE", jyd.TotalPrice);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_500000", jyd.__500);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_200000", jyd.__200);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_100000", jyd.__100);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_50000", jyd.__50);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_20000", jyd.__20);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_10000", jyd.__10);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_5000", jyd.__5);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_2000", jyd.__2);
-                    cmd.Parameters.AddWithValue("@JIAOYIDAN_1000", jyd.__1);
-                    jiaoYiDanId = (long) cmd.ExecuteScalar();
+                    if (jyd.JiaoYiDanID == 0)
+                    {
+                        cmd.CommandText = string.Format("insert into JIAOYIDAN(SHIJIAN,ZONGE,_500000,_200000,_100000,_50000,_20000,_10000,_5000,_2000,_1000) output inserted.JIAOYIDANID" +
+                        " values (@JIAOYIDAN_SHIJIAN,@JIAOYIDAN_ZONGE,@JIAOYIDAN_500000,@JIAOYIDAN_200000,@JIAOYIDAN_100000,@JIAOYIDAN_50000,@JIAOYIDAN_20000,@JIAOYIDAN_10000,@JIAOYIDAN_5000,@JIAOYIDAN_2000,@JIAOYIDAN_1000)");
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_SHIJIAN", jyd.Time);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_ZONGE", jyd.TotalPrice);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_500000", jyd.__500);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_200000", jyd.__200);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_100000", jyd.__100);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_50000", jyd.__50);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_20000", jyd.__20);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_10000", jyd.__10);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_5000", jyd.__5);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_2000", jyd.__2);
+                        cmd.Parameters.AddWithValue("@JIAOYIDAN_1000", jyd.__1);
+                        jiaoYiDanId = (long)cmd.ExecuteScalar();
+                    }
 
                     cmd.CommandText = string.Format("update LIUSHUI set XIANE=@LIUSHUI_XIANE, XIANGCHA=@LIUSHUI_XIANGCHA, DIANSUANJIEGUO=@LIUSHUI_DIANSUANJIEGUO, _500000=@LIUSHUI_500000," +
                         "_200000=@LIUSHUI_200000,_100000=@LIUSHUI_100000,_50000=@LIUSHUI_50000,_20000=@LIUSHUI_20000,_10000=@LIUSHUI_10000,_5000=@LIUSHUI_5000,_2000=@LIUSHUI_2000,_1000=@LIUSHUI_1000 Where LIUSHUIID = @LIUSHUI_LIUSHUIID");
@@ -150,12 +155,18 @@ namespace LiuShuiZhang2._0.DAL
                             bz.BiZhongID);
                         cmd.ExecuteNonQuery();
                     }
+
+                    if (jiaoYiMode == (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi)
+                    { 
+                    
+                    }
+
                     sqltran.Commit();
                 }
                 catch (Exception ex)
                 {
                     sqltran.Rollback();
-                    MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw ex;
                 }
                
             }

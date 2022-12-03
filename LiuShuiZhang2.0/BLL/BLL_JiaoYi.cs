@@ -63,5 +63,11 @@ namespace LiuShuiZhang2._0.BLL
             ByXianJin
         }
 
+        public enum Enum_JiaoYiMode
+        { 
+            InsertJiaoYis,
+            DeleteJiaoYi
+        }
+
     }
 }
