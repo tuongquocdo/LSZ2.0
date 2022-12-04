@@ -41,6 +41,8 @@ namespace LiuShuiZhang2._0
 
         List<DataGridViewRow> transactionRows;
 
+        DataGridView dgv_Temp;
+
         int JiaoYiMode;
 
         public Main()
@@ -208,6 +210,7 @@ namespace LiuShuiZhang2._0
             DAL_jiaoYi = new DAL_JiaoYi();
             BLL_jiaoYi = new BLL_JiaoYi();
             transactionRows = new List<DataGridViewRow>();
+            dgv_Temp = new DataGridView();
             FillDataToForm();
         }
 
@@ -230,18 +233,8 @@ namespace LiuShuiZhang2._0
         {
             dataGridView_CashStatus_CashDetails.EditingControl.KeyPress -= dataGridView_CashStatus_CashDetails_EditingControl_KeyPress;
             dataGridView_CashStatus_CashDetails.EditingControl.KeyPress += dataGridView_CashStatus_CashDetails_EditingControl_KeyPress;
-            //dataGridView_CashStatus_CashDetails.EditingControl.KeyDown -= dataGridView_CashStatus_CashDetails_EditingControl_KeyDown;
-            //dataGridView_CashStatus_CashDetails.EditingControl.KeyDown += dataGridView_CashStatus_CashDetails_EditingControl_KeyDown;
+            
         }
-
-        //private void dataGridView_CashStatus_CashDetails_EditingControl_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    e.SuppressKeyPress = true;
-        //    if (e.KeyCode == Keys.Enter)
-        //    {
-        //        MessageBox.Show("ok");
-        //    }
-        //}
 
         private void dataGridView_CashStatus_CashDetails_EditingControl_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -349,7 +342,9 @@ namespace LiuShuiZhang2._0
             if (MessageBox.Show("确认要进账？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 JiaoYiMode = (int)BLL_JiaoYi.Enum_JiaoYiMode.InsertJiaoYis;
-                transactionRows.AddRange(dataGridView_Transaction_MainTran.Rows.Cast<DataGridViewRow>());
+                //transactionRows.AddRange(dataGridView_Transaction_MainTran.Rows.Cast<DataGridViewRow>());
+                dgv_Temp = dataGridView_Transaction_MainTran;
+
                 numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
                 numericUpDown_CashCount_MainTotalAll.Value = numericUpDown_Transaction_MainTotalAll.Value;
                 // Pass to CashCounting
@@ -629,7 +624,7 @@ namespace LiuShuiZhang2._0
                     BLL_jiaoYiDan = CreateJiaoYiDan(JiaoYiMode);
 
                     //initialize JiaoYi List
-                    BLL_jiaoYi_biZhong = CreateJiaoYis(transactionRows);
+                    BLL_jiaoYi_biZhong = CreateJiaoYis(dgv_Temp);
 
                     DAL_jiaoYi.AddNewJiaoYis(BLL_jiaoYiDan, BLL_liuShui, BLL_jiaoYi_biZhong, JiaoYiMode);
 
@@ -663,6 +658,38 @@ namespace LiuShuiZhang2._0
             Viewing
         }
 
+        public DataGridView CloneDataGrid(DataGridView mainDataGridView)
+        {
+            DataGridView cloneDataGridView = new DataGridView();
+
+            if (cloneDataGridView.Columns.Count == 0)
+            {
+                foreach (DataGridViewColumn datagrid in mainDataGridView.Columns)
+                {
+                    cloneDataGridView.Columns.Add(datagrid.Clone() as DataGridViewColumn);
+                }
+            }
+
+            DataGridViewRow dataRow = new DataGridViewRow();
+
+            for (int i = 0; i < mainDataGridView.Rows.Count; i++)
+            {
+                dataRow = (DataGridViewRow)mainDataGridView.Rows[i].Clone();
+                int Index = 0;
+                foreach (DataGridViewCell cell in mainDataGridView.Rows[i].Cells)
+                {
+                    dataRow.Cells[Index].Value = cell.Value;
+                    Index++;
+                }
+                cloneDataGridView.Rows.Add(dataRow);
+            }
+            cloneDataGridView.AllowUserToAddRows = false;
+            cloneDataGridView.Refresh();
+
+
+            return cloneDataGridView;
+        }
+
         private void AddTran(int jym)
         {
             if (jym == (int)BLL_JiaoYi.Enum_JiaoYiMode.InsertJiaoYis)
@@ -688,14 +715,15 @@ namespace LiuShuiZhang2._0
                 BLL_jiaoYi.UserID,
                 BLL_jiaoYi.LiuShuiID.ToString(),
                 BLL_jiaoYi.BiZhongID,
-                0,
+                BLL_jiaoYi.JiaoYiDanID,
                 string.Empty,
                 BLL_jiaoYi.Quantity * -1,
                 BLL_jiaoYi.Value,
                 BLL_jiaoYi.Price * -1,
                 BLL_jiaoYi.Note
                 );
-                transactionRows.AddRange(dataGridView_Transaction_MainTran.Rows.Cast<DataGridViewRow>());
+                dgv_Temp = CloneDataGrid(dataGridView_Transaction_MainTran);
+                //transactionRows.AddRange(dataGridView_Transaction_MainTran.Rows.Cast<DataGridViewRow>());
                 dataGridView_Transaction_MainTran.Rows.Clear();
 
             }
@@ -1095,13 +1123,13 @@ namespace LiuShuiZhang2._0
             }
         }
 
-        private BLL_JiaoYi_BiZhong CreateJiaoYis(List<DataGridViewRow> dgvr)
+        private BLL_JiaoYi_BiZhong CreateJiaoYis(DataGridView dgv)
         {
             BLL_JiaoYi_BiZhong rs = new BLL_JiaoYi_BiZhong();
             List<BLL_JiaoYi> lstjy = new List<BLL_JiaoYi>();
             List<BLL_BiZhong> lstbz = new List<BLL_BiZhong>();
 
-            foreach (DataGridViewRow row in dgvr)
+            foreach (DataGridViewRow row in dgv.Rows)
             {
                 BLL_jiaoYi = new BLL_JiaoYi();
                 int lei = DAL_biZhong.GetLeiOfBiZhong(int.Parse(row.Cells["DataGridViewColumn_BIZHONGID"].Value.ToString()));
@@ -1226,8 +1254,8 @@ namespace LiuShuiZhang2._0
             if (MessageBox.Show("确认删除交易？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 JiaoYiMode = (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi;
-                numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
-                numericUpDown_CashCount_MainTotalAll.Value = numericUpDown_Transaction_MainTotalAll.Value;
+                numericUpDown_CashStatus_CurValue.Value += (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value *-1;
+                numericUpDown_CashCount_MainTotalAll.Value = (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value*-1;
                 // Pass to CashCounting
                 groupBox_CashCounting.Enabled = true;
                 groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = false;

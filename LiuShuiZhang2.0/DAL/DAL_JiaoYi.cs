@@ -98,6 +98,10 @@ namespace LiuShuiZhang2._0.DAL
                         cmd.Parameters.AddWithValue("@JIAOYIDAN_1000", jyd.__1);
                         jiaoYiDanId = (long)cmd.ExecuteScalar();
                     }
+                    else
+                    {
+                        jiaoYiDanId = jyd.JiaoYiDanID;
+                    }
 
                     cmd.CommandText = string.Format("update LIUSHUI set XIANE=@LIUSHUI_XIANE, XIANGCHA=@LIUSHUI_XIANGCHA, DIANSUANJIEGUO=@LIUSHUI_DIANSUANJIEGUO, _500000=@LIUSHUI_500000," +
                         "_200000=@LIUSHUI_200000,_100000=@LIUSHUI_100000,_50000=@LIUSHUI_50000,_20000=@LIUSHUI_20000,_10000=@LIUSHUI_10000,_5000=@LIUSHUI_5000,_2000=@LIUSHUI_2000,_1000=@LIUSHUI_1000 Where LIUSHUIID = @LIUSHUI_LIUSHUIID");
