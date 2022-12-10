@@ -26,3 +26,17 @@ D:\Projects\LIUSHUIZHANG2.0\LSZ2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csp
 D:\Projects\LIUSHUIZHANG2.0\LSZ2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csproj.CoreCompileInputs.cache
 D:\Projects\LIUSHUIZHANG2.0\LSZ2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.exe
 D:\Projects\LIUSHUIZHANG2.0\LSZ2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.pdb
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\bin\Debug\LiuShuiZhang2.0.exe.config
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\bin\Debug\LiuShuiZhang2.0.exe
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\bin\Debug\LiuShuiZhang2.0.pdb
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csproj.AssemblyReference.cache
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.Login.resources
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.Main.resources
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.Properties.Resources.resources
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.BiZhong.resources
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.Test.resources
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.User.resources
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csproj.GenerateResource.cache
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csproj.CoreCompileInputs.cache
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.exe
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.pdb

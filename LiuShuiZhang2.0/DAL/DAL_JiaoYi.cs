@@ -31,7 +31,7 @@ namespace LiuShuiZhang2._0.DAL
                                 "JIAOYI.YIGONG," +
                                 "JIAOYI.BEIZHU," +
                                 "JIAOYI.SHIJIAN" +
-                            " from JIAOYI,BIZHONG where JIAOYI.BIZHONGID = BIZHONG.BIZHONGID and (select dateadd(dd, 0, DATEDIFF(dd, 0, JIAOYI.SHIJIAN))) = '{0}'", date.Date);
+                            " from JIAOYI,BIZHONG where JIAOYI.BIZHONGID = BIZHONG.BIZHONGID and (select dateadd(dd, 0, DATEDIFF(dd, 0, JIAOYI.SHIJIAN))) = '{0}' and JIAOYI.QUEREN = 'true'", date.Date);
                 
                 cmd.Connection = con;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -161,8 +161,10 @@ namespace LiuShuiZhang2._0.DAL
                     }
 
                     if (jiaoYiMode == (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi)
-                    { 
-                    
+                    {
+                        cmd.CommandText = string.Format("update JIAOYI set QUEREN='false' where JIAOYIID={0}",
+                              jysbzs.Jys[0].JiaoYiID);
+                        cmd.ExecuteNonQuery();
                     }
 
                     sqltran.Commit();

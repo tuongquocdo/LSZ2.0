@@ -1316,7 +1316,6 @@ namespace LiuShuiZhang2._0
             this.dataGridView_LiuShuiZhang_Trans.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_LiuShuiZhang_Trans_CellMouseDown);
             this.dataGridView_LiuShuiZhang_Trans.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView_LiuShuiZhang_Trans_RowStateChanged);
             this.dataGridView_LiuShuiZhang_Trans.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
-            this.dataGridView_LiuShuiZhang_Trans.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_LiuShuiZhang_Trans_MouseClick);
             // 
             // panel9
             // 

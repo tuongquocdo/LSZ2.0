@@ -715,7 +715,7 @@ namespace LiuShuiZhang2._0
                 BLL_jiaoYi.UserID,
                 BLL_jiaoYi.LiuShuiID.ToString(),
                 BLL_jiaoYi.BiZhongID,
-                BLL_jiaoYi.JiaoYiDanID,
+                BLL_jiaoYi.QianDanID,
                 string.Empty,
                 BLL_jiaoYi.Quantity * -1,
                 BLL_jiaoYi.Value,
@@ -723,9 +723,9 @@ namespace LiuShuiZhang2._0
                 BLL_jiaoYi.Note
                 );
                 dgv_Temp = CloneDataGrid(dataGridView_Transaction_MainTran);
-                //transactionRows.AddRange(dataGridView_Transaction_MainTran.Rows.Cast<DataGridViewRow>());
+                dgv_Temp.Columns.Add("DataGridViewColumn_JIAOYIID", string.Empty);
+                dgv_Temp.Rows[0].Cells["DataGridViewColumn_JIAOYIID"].Value = BLL_jiaoYi.JiaoYiID;
                 dataGridView_Transaction_MainTran.Rows.Clear();
-
             }
         }
 
@@ -842,6 +842,7 @@ namespace LiuShuiZhang2._0
         {
             foreach (var c in Common.GetAllControlByType(panel_CashCountingTable, typeof(NumericUpDownEx)))
             {
+                ((NumericUpDownEx)c).Value = 1;
                 ((NumericUpDownEx)c).Value = 0;
             }
         }
@@ -1136,10 +1137,10 @@ namespace LiuShuiZhang2._0
                 long biZhongID = long.Parse(row.Cells["DataGridViewColumn_BIZHONGID"].Value.ToString());
 
                 BLL_jiaoYi.JiaoYiDanID = 0;
-                BLL_jiaoYi.UserID = int.Parse(row.Cells["DataGridViewColumn_REYUANID"].Value.ToString());
-                BLL_jiaoYi.LiuShuiID = int.Parse(row.Cells["DataGridViewColumn_LIUSHUIID"].Value.ToString());
-                BLL_jiaoYi.BiZhongID = int.Parse(row.Cells["DataGridViewColumn_BIZHONGID"].Value.ToString());
-                BLL_jiaoYi.QianDanID = int.Parse(row.Cells["DataGridViewColumn_QIANDANID"].Value.ToString());
+                BLL_jiaoYi.UserID = long.Parse(row.Cells["DataGridViewColumn_REYUANID"].Value.ToString());
+                BLL_jiaoYi.LiuShuiID = long.Parse(row.Cells["DataGridViewColumn_LIUSHUIID"].Value.ToString());
+                BLL_jiaoYi.BiZhongID = long.Parse(row.Cells["DataGridViewColumn_BIZHONGID"].Value.ToString());
+                BLL_jiaoYi.QianDanID = long.Parse(row.Cells["DataGridViewColumn_QIANDANID"].Value.ToString());
                 BLL_jiaoYi.Time = DateTime.Now;
                 BLL_jiaoYi.Quantity = (decimal)row.Cells["DataGridViewColumn_LIANG"].Value;
                 BLL_jiaoYi.Value = (decimal)row.Cells["DataGridViewColumn_JIA"].Value;
@@ -1147,7 +1148,12 @@ namespace LiuShuiZhang2._0
                 BLL_jiaoYi.Cogs = 0;
                 BLL_jiaoYi.Profit = 0;
                 BLL_jiaoYi.Note = row.Cells["DataGridViewColumn_BEIZHU"].Value.ToString();
-                BLL_jiaoYi.Confirmed = true;
+                BLL_jiaoYi.Confirmed = dgv.Columns.Cast<DataGridViewColumn>().Any(i => i.Name == "DataGridViewColumn_JIAOYIID")
+                                      ? false
+                                      : true;
+                BLL_jiaoYi.JiaoYiID = dgv.Columns.Cast<DataGridViewColumn>().Any(i => i.Name == "DataGridViewColumn_JIAOYIID") 
+                                      ? long.Parse(row.Cells["DataGridViewColumn_JIAOYIID"].Value.ToString())
+                                      : 0;
 
                 //qian dan
                 if (lei == (int)BLL_BiZhong.BiZhongLei.KeRenQian || lei == (int)BLL_BiZhong.BiZhongLei.QianKeRen)
@@ -1208,18 +1214,10 @@ namespace LiuShuiZhang2._0
 
         #endregion
 
-        private void dataGridView_LiuShuiZhang_Trans_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                contextMenuStrip__LiuShuiZhang.Show(Cursor.Position.X, Cursor.Position.Y);
-            }
-        }
-
         private void dataGridView_LiuShuiZhang_Trans_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridView drv = sender as DataGridView;
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 try
                 {
@@ -1246,7 +1244,9 @@ namespace LiuShuiZhang2._0
                 {
                     MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                contextMenuStrip__LiuShuiZhang.Show(Cursor.Position.X, Cursor.Position.Y);
             }
+            
         }
 
         private void toolStripMenuItem_DeleteJiaoYi_Click(object sender, EventArgs e)
