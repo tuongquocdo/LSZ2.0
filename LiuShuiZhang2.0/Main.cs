@@ -608,6 +608,65 @@ namespace LiuShuiZhang2._0
             }
         }
 
+        private void dataGridView_LiuShuiZhang_Trans_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView drv = sender as DataGridView;
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                try
+                {
+                    drv.CurrentCell = drv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    drv.Rows[e.RowIndex].Selected = true;
+                    drv.Focus();
+
+                    BLL_jiaoYi.JiaoYiID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["JIAOYIID"].Value);
+                    BLL_jiaoYi.JiaoYiDanID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["JIAOYIDANID"].Value);
+                    BLL_jiaoYi.UserID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["RENYUANID"].Value);
+                    BLL_jiaoYi.LiuShuiID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["LIUSHUIID"].Value);
+                    BLL_jiaoYi.BiZhongID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["BIZHONGID"].Value);
+                    BLL_jiaoYi.Time = DateTime.Now;
+                    BLL_jiaoYi.Quantity = (decimal)drv.Rows[e.RowIndex].Cells["LIANG"].Value;
+                    BLL_jiaoYi.Value = (decimal)drv.Rows[e.RowIndex].Cells["JIA"].Value;
+                    BLL_jiaoYi.Price = (decimal)drv.Rows[e.RowIndex].Cells["YIGONG"].Value;
+                    BLL_jiaoYi.Cogs = 0;
+                    BLL_jiaoYi.Profit = 0;
+                    BLL_jiaoYi.Note = drv.Rows[e.RowIndex].Cells["BEIZHU"].Value.ToString();
+                    BLL_jiaoYi.Confirmed = false;
+                    BLL_jiaoYi.BiZhong = drv.Rows[e.RowIndex].Cells["BIZHONG"].Value.ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                contextMenuStrip__LiuShuiZhang.Show(Cursor.Position.X, Cursor.Position.Y);
+            }
+
+        }
+
+        private void toolStripMenuItem_DeleteJiaoYi_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确认删除交易？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                AddTran((int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi);
+                JiaoYiMode = (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi;
+                numericUpDown_CashStatus_CurValue.Value += (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value * -1;
+                numericUpDown_CashCount_MainTotalAll.Value = (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value * -1;
+                // Pass to CashCounting
+                groupBox_CashCounting.Enabled = true;
+                groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = false;
+                numericUpDown_CashCounting_500000.Value = 1;
+                numericUpDown_CashCounting_500000.Value = 0;
+                numericUpDown_CashCounting_500000.Focus();
+            }
+        }
+
+        private void toolStripMenuItem_CloneJiaoYi_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确认再次交易？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                AddTran((int)BLL_JiaoYi.Enum_JiaoYiMode.CloneJiaoYi);
+            }
+        }
         #endregion
 
         #region Cash Counting
@@ -707,7 +766,7 @@ namespace LiuShuiZhang2._0
                 );
                 ClearTransactionData();
             }
-            else
+            else if (jym == (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi)
             {
                 dataGridView_Transaction_MainTran.Rows.Clear();
 
@@ -726,6 +785,21 @@ namespace LiuShuiZhang2._0
                 dgv_Temp.Columns.Add("DataGridViewColumn_JIAOYIID", string.Empty);
                 dgv_Temp.Rows[0].Cells["DataGridViewColumn_JIAOYIID"].Value = BLL_jiaoYi.JiaoYiID;
                 dataGridView_Transaction_MainTran.Rows.Clear();
+            }
+            else if (jym == (int)BLL_JiaoYi.Enum_JiaoYiMode.CloneJiaoYi)
+            {
+                ClearTransactionData();
+                dataGridView_Transaction_MainTran.Rows.Add(
+                    BLL_jiaoYi.UserID,
+                    BLL_jiaoYi.LiuShuiID.ToString(),
+                    BLL_jiaoYi.BiZhongID,
+                    0,
+                    BLL_jiaoYi.BiZhong,
+                    BLL_jiaoYi.Quantity,
+                    BLL_jiaoYi.Value,
+                    BLL_jiaoYi.Price,
+                    BLL_jiaoYi.Note
+                );
             }
         }
 
@@ -1212,57 +1286,7 @@ namespace LiuShuiZhang2._0
             return rs;
         }
 
+
         #endregion
-
-        private void dataGridView_LiuShuiZhang_Trans_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DataGridView drv = sender as DataGridView;
-            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                try
-                {
-                    drv.CurrentCell = drv.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    drv.Rows[e.RowIndex].Selected = true;
-                    drv.Focus();
-
-                    BLL_jiaoYi.JiaoYiID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["JIAOYIID"].Value);
-                    BLL_jiaoYi.JiaoYiDanID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["JIAOYIDANID"].Value);
-                    BLL_jiaoYi.UserID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["RENYUANID"].Value);
-                    BLL_jiaoYi.LiuShuiID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["LIUSHUIID"].Value);
-                    BLL_jiaoYi.BiZhongID = Convert.ToInt64(drv.Rows[e.RowIndex].Cells["BIZHONGID"].Value);
-                    BLL_jiaoYi.Time = DateTime.Now;
-                    BLL_jiaoYi.Quantity = (decimal)drv.Rows[e.RowIndex].Cells["LIANG"].Value;
-                    BLL_jiaoYi.Value = (decimal)drv.Rows[e.RowIndex].Cells["JIA"].Value;
-                    BLL_jiaoYi.Price = (decimal)drv.Rows[e.RowIndex].Cells["YIGONG"].Value;
-                    BLL_jiaoYi.Cogs = 0;
-                    BLL_jiaoYi.Profit = 0;
-                    BLL_jiaoYi.Note = drv.Rows[e.RowIndex].Cells["BEIZHU"].Value.ToString();
-                    BLL_jiaoYi.Confirmed = false;
-                    AddTran((int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "温卿提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                contextMenuStrip__LiuShuiZhang.Show(Cursor.Position.X, Cursor.Position.Y);
-            }
-            
-        }
-
-        private void toolStripMenuItem_DeleteJiaoYi_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("确认删除交易？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                JiaoYiMode = (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi;
-                numericUpDown_CashStatus_CurValue.Value += (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value *-1;
-                numericUpDown_CashCount_MainTotalAll.Value = (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value*-1;
-                // Pass to CashCounting
-                groupBox_CashCounting.Enabled = true;
-                groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = false;
-                numericUpDown_CashCounting_500000.Value = 1;
-                numericUpDown_CashCounting_500000.Value = 0;
-                numericUpDown_CashCounting_500000.Focus();
-            }
-        }
     }
 }

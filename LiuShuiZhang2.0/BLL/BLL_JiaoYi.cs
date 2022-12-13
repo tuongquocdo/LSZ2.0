@@ -25,6 +25,7 @@ namespace LiuShuiZhang2._0.BLL
         private bool confirmed;
         private DataTable feeTypes;
         private BLL_QianDan qianDan;
+        private string biZhong;
 
         public long JiaoYiID { get => jiaoYiID; set => jiaoYiID = value; }
         public long JiaoYiDanID { get => jiaoYiDanID; set => jiaoYiDanID = value; }
@@ -42,6 +43,7 @@ namespace LiuShuiZhang2._0.BLL
         public bool Confirmed { get => confirmed; set => confirmed = value; }
         public DataTable FeeTypes { get => feeTypes; set => feeTypes = value; }
         public BLL_QianDan QianDan { get => qianDan; set => qianDan = value; }
+        public string BiZhong { get => biZhong; set => biZhong = value; }
 
         public BLL_JiaoYi()
         {
@@ -66,7 +68,8 @@ namespace LiuShuiZhang2._0.BLL
         public enum Enum_JiaoYiMode
         { 
             InsertJiaoYis,
-            DeleteJiaoYi
+            DeleteJiaoYi,
+            CloneJiaoYi
         }
 
     }
