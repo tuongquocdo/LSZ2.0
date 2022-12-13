@@ -40,3 +40,4 @@ D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csproj.Ge
 D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.csproj.CoreCompileInputs.cache
 D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.exe
 D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2.0.pdb
+D:\MYPROJECT\LiuShuiZhang2.0\LiuShuiZhang2.0\obj\Debug\LiuShuiZhang2._0.JiaoYiDanViewing.resources

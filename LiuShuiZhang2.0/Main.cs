@@ -662,10 +662,19 @@ namespace LiuShuiZhang2._0
 
         private void toolStripMenuItem_CloneJiaoYi_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("确认再次交易？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                AddTran((int)BLL_JiaoYi.Enum_JiaoYiMode.CloneJiaoYi);
-            }
+            AddTran((int)BLL_JiaoYi.Enum_JiaoYiMode.CloneJiaoYi);
+        }
+
+        private void ToolStripMenuItem_ViewJiaoYiDan_Click(object sender, EventArgs e)
+        {
+            JiaoYiDanViewing jydv = new JiaoYiDanViewing(BLL_jiaoYi);
+            jydv.ShowDialog();
+        }
+
+        private void linkLabel_ViewJiaoYiDan_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            JiaoYiDanViewing jydv = new JiaoYiDanViewing(dateTimePicker.Value.Date);
+            jydv.ShowDialog();
         }
         #endregion
 

@@ -249,7 +249,7 @@ namespace LiuShuiZhang2._0
             this.MinimizeBox = false;
             this.Name = "BiZhong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "人员";
+            this.Text = "币种";
             this.Load += new System.EventHandler(this.BiZhong_Load);
             this.panel_BiZhong.ResumeLayout(false);
             this.panel_BiZhong.PerformLayout();

@@ -62,6 +62,12 @@
     <Compile Include="DAL\DAL_BiZhong.cs" />
     <Compile Include="DAL\DAL_QianDan.cs" />
     <Compile Include="DAL\DAL_User.cs" />
+    <Compile Include="JiaoYiDanViewing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JiaoYiDanViewing.Designer.cs">
+      <DependentUpon>JiaoYiDanViewing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="User.Designer.cs">
       <DependentUpon>User.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="JiaoYiDanViewing.resx">
+      <DependentUpon>JiaoYiDanViewing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
