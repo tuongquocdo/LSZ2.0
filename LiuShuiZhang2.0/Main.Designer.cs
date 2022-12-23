@@ -134,6 +134,7 @@ namespace LiuShuiZhang2._0
             this.groupBox_LiuShui = new System.Windows.Forms.GroupBox();
             this.dataGridView_LiuShuiZhang_Trans = new System.Windows.Forms.DataGridView();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.linkLabel_ViewJiaoYiDan = new System.Windows.Forms.LinkLabel();
             this.comboBox_LiuShuiZhang_ShouZhi = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.comboBox_LiuShuiZhang_Type = new System.Windows.Forms.ComboBox();
@@ -172,7 +173,6 @@ namespace LiuShuiZhang2._0
             this.numericUpDown_CashStatus_DeltaValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.numericUpDown_CashStatus_CurValue = new LiuShuiZhang2._0.NumericUpDownEx();
             this.numericUpDown_CashStatus_PreValue = new LiuShuiZhang2._0.NumericUpDownEx();
-            this.linkLabel_ViewJiaoYiDan = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox_CashCounting.SuspendLayout();
@@ -1315,8 +1315,8 @@ namespace LiuShuiZhang2._0
             this.dataGridView_LiuShuiZhang_Trans.Name = "dataGridView_LiuShuiZhang_Trans";
             this.dataGridView_LiuShuiZhang_Trans.Size = new System.Drawing.Size(748, 531);
             this.dataGridView_LiuShuiZhang_Trans.TabIndex = 0;
+            this.dataGridView_LiuShuiZhang_Trans.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_LiuShuiZhang_Trans_CellFormatting);
             this.dataGridView_LiuShuiZhang_Trans.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_LiuShuiZhang_Trans_CellMouseDown);
-            this.dataGridView_LiuShuiZhang_Trans.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView_LiuShuiZhang_Trans_RowStateChanged);
             this.dataGridView_LiuShuiZhang_Trans.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged_QuickSumValue);
             // 
             // panel9
@@ -1333,6 +1333,17 @@ namespace LiuShuiZhang2._0
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(742, 38);
             this.panel9.TabIndex = 5;
+            // 
+            // linkLabel_ViewJiaoYiDan
+            // 
+            this.linkLabel_ViewJiaoYiDan.AutoSize = true;
+            this.linkLabel_ViewJiaoYiDan.Location = new System.Drawing.Point(650, 7);
+            this.linkLabel_ViewJiaoYiDan.Name = "linkLabel_ViewJiaoYiDan";
+            this.linkLabel_ViewJiaoYiDan.Size = new System.Drawing.Size(82, 23);
+            this.linkLabel_ViewJiaoYiDan.TabIndex = 1;
+            this.linkLabel_ViewJiaoYiDan.TabStop = true;
+            this.linkLabel_ViewJiaoYiDan.Text = "看交易单";
+            this.linkLabel_ViewJiaoYiDan.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_ViewJiaoYiDan_LinkClicked);
             // 
             // comboBox_LiuShuiZhang_ShouZhi
             // 
@@ -2331,17 +2342,6 @@ namespace LiuShuiZhang2._0
             0,
             0,
             0});
-            // 
-            // linkLabel_ViewJiaoYiDan
-            // 
-            this.linkLabel_ViewJiaoYiDan.AutoSize = true;
-            this.linkLabel_ViewJiaoYiDan.Location = new System.Drawing.Point(650, 7);
-            this.linkLabel_ViewJiaoYiDan.Name = "linkLabel_ViewJiaoYiDan";
-            this.linkLabel_ViewJiaoYiDan.Size = new System.Drawing.Size(82, 23);
-            this.linkLabel_ViewJiaoYiDan.TabIndex = 1;
-            this.linkLabel_ViewJiaoYiDan.TabStop = true;
-            this.linkLabel_ViewJiaoYiDan.Text = "看交易单";
-            this.linkLabel_ViewJiaoYiDan.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_ViewJiaoYiDan_LinkClicked);
             // 
             // Main
             // 

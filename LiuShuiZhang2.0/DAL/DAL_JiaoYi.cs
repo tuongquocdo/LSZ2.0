@@ -101,6 +101,8 @@ namespace LiuShuiZhang2._0.DAL
                     else
                     {
                         jiaoYiDanId = jyd.JiaoYiDanID;
+                        cmd.CommandText = string.Format("update JIAOYIDAN set ZONGE = {0} where JIAOYIDANID = {1}", jyd.TotalPrice, jiaoYiDanId);
+                        cmd.ExecuteNonQuery();
                     }
 
                     cmd.CommandText = string.Format("update LIUSHUI set XIANE=@LIUSHUI_XIANE, XIANGCHA=@LIUSHUI_XIANGCHA, DIANSUANJIEGUO=@LIUSHUI_DIANSUANJIEGUO, _500000=@LIUSHUI_500000," +

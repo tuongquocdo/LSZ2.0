@@ -342,7 +342,7 @@ namespace LiuShuiZhang2._0
             if (MessageBox.Show("确认要进账？", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 JiaoYiMode = (int)BLL_JiaoYi.Enum_JiaoYiMode.InsertJiaoYis;
-                //transactionRows.AddRange(dataGridView_Transaction_MainTran.Rows.Cast<DataGridViewRow>());
+                
                 dgv_Temp = dataGridView_Transaction_MainTran;
 
                 numericUpDown_CashStatus_CurValue.Value += numericUpDown_Transaction_MainTotalAll.Value;
@@ -471,7 +471,7 @@ namespace LiuShuiZhang2._0
             if (e.Row.Index >=0)
             {
                 DataGridView d = sender as DataGridView;
-                if ((decimal)d.Rows[e.Row.Index].Cells[7].Value < 0)
+                if ((decimal)d.Rows[e.Row.Index].Cells[7].Value > 0)
                 {
                     d.Rows[e.Row.Index].DefaultCellStyle.BackColor = Color.Yellow;
                 }
@@ -484,7 +484,7 @@ namespace LiuShuiZhang2._0
             DataGridView d = sender as DataGridView;
             if (d.Rows.Count > 0)
             {
-                if ((decimal)d.Rows[e.RowIndex].Cells[7].Value < 0)
+                if ((decimal)d.Rows[e.RowIndex].Cells[7].Value > 0)
                 {
                     d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
                 }
@@ -501,8 +501,8 @@ namespace LiuShuiZhang2._0
                     if (MessageBox.Show("是否要修改合共额，修改后你在交易单上所选择的交易价格会自动地调整至对应的修改额", "温卿提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         selectedRow.Cells["DataGridViewColumn_YIGONG"].Value =
-                        (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG"].Value +
-                        numericUpDown_Transaction_MainTotalAll.Value -
+                        (decimal)selectedRow.Cells["DataGridViewColumn_YIGONG"].Value -
+                        numericUpDown_Transaction_MainTotalAll.Value +
                         numericUpDown_Transaction_FixValue.Value;
 
                         if ((decimal)selectedRow.Cells["DataGridViewColumn_YIGONG"].Value /
@@ -596,14 +596,14 @@ namespace LiuShuiZhang2._0
             }
         }
 
-        private void dataGridView_LiuShuiZhang_Trans_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void dataGridView_LiuShuiZhang_Trans_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.Row.Index >= 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridView d = sender as DataGridView;
-                if ((decimal)d.Rows[e.Row.Index].Cells["LIANG"].Value < 0)
+                if ((decimal)d.Rows[e.RowIndex].Cells["LIANG"].Value < 0)
                 {
-                    d.Rows[e.Row.Index].DefaultCellStyle.BackColor = Color.Yellow;
+                    d.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Yellow;
                 }
             }
         }
@@ -649,8 +649,8 @@ namespace LiuShuiZhang2._0
             {
                 AddTran((int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi);
                 JiaoYiMode = (int)BLL_JiaoYi.Enum_JiaoYiMode.DeleteJiaoYi;
-                numericUpDown_CashStatus_CurValue.Value += (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value * -1;
-                numericUpDown_CashCount_MainTotalAll.Value = (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value * -1;
+                numericUpDown_CashStatus_CurValue.Value += (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value;
+                numericUpDown_CashCount_MainTotalAll.Value = (decimal)dgv_Temp.Rows[0].Cells["DataGridViewColumn_YIGONG"].Value;
                 // Pass to CashCounting
                 groupBox_CashCounting.Enabled = true;
                 groupBox_Transaction.Enabled = groupBox_LiuShui.Enabled = groupBox_CashStatus.Enabled = false;
@@ -667,13 +667,15 @@ namespace LiuShuiZhang2._0
 
         private void ToolStripMenuItem_ViewJiaoYiDan_Click(object sender, EventArgs e)
         {
-            JiaoYiDanViewing jydv = new JiaoYiDanViewing(BLL_jiaoYi);
+            JiaoYiDanViewing jydv = new JiaoYiDanViewing();
+            jydv.JiaoYi = BLL_jiaoYi;
             jydv.ShowDialog();
         }
 
         private void linkLabel_ViewJiaoYiDan_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            JiaoYiDanViewing jydv = new JiaoYiDanViewing(dateTimePicker.Value.Date);
+            JiaoYiDanViewing jydv = new JiaoYiDanViewing();
+            jydv.Date = dateTimePicker.Value.Date;
             jydv.ShowDialog();
         }
         #endregion
@@ -725,7 +727,6 @@ namespace LiuShuiZhang2._0
             Working,
             Viewing
         }
-
         public DataGridView CloneDataGrid(DataGridView mainDataGridView)
         {
             DataGridView cloneDataGridView = new DataGridView();
@@ -757,7 +758,6 @@ namespace LiuShuiZhang2._0
 
             return cloneDataGridView;
         }
-
         private void AddTran(int jym)
         {
             if (jym == (int)BLL_JiaoYi.Enum_JiaoYiMode.InsertJiaoYis)
@@ -770,7 +770,7 @@ namespace LiuShuiZhang2._0
                 comboBox_Transaction_Type.Text,
                 numericUpDown_Transaction_Quan.Value,
                 Math.Round(Math.Abs(numericUpDownEx_Transaction_AfterFee.Value / numericUpDown_Transaction_Quan.Value), 2),
-                numericUpDownEx_Transaction_AfterFee.Value,
+                numericUpDownEx_Transaction_AfterFee.Value * -1,
                 textBox_Transaction_Note.Text
                 );
                 ClearTransactionData();
@@ -811,7 +811,6 @@ namespace LiuShuiZhang2._0
                 );
             }
         }
-
         private void CalcCountValueAndDeltaValue()
         {
             long sum = 0;
@@ -828,13 +827,11 @@ namespace LiuShuiZhang2._0
             numericUpDown_CashStatus_DeltaValue.Value = numericUpDown_CashStatus_CountValue.Value - numericUpDown_CashStatus_CurValue.Value;
 
         }
-
         private void ClearTransactionTable()
         {
             dataGridView_Transaction_MainTran.Rows.Clear();
             numericUpDown_Transaction_MainTotalAll.Value = 0;
         }
-
         private void ClearTransactionData()
         {
             comboBox_Transaction_Type.SelectedIndex = 0;
@@ -846,7 +843,6 @@ namespace LiuShuiZhang2._0
             numericUpDown_Transaction_FixValue.Value = 0;
             comboBox_Transaction_Type.Focus();
         }
-
         private void CalcAfterFee()
         {
             if ((int)comboBox_Transaction_FeeType.SelectedValue == (int)BLL_JiaoYi.Enum_FeeTypes.Free)
@@ -872,7 +868,6 @@ namespace LiuShuiZhang2._0
                                                             numericUpDownEx_Transaction_Fee.Value;
             }
         }
-
         private void CalcTotallAll(object sender)
         {
             decimal rs = 0;
@@ -883,9 +878,8 @@ namespace LiuShuiZhang2._0
 
             List<Control> ls = Common.GetAllControlByName(this, (sender as DataGridView).Tag.ToString()).ToList();
             if (ls != null && ls.Count > 0)
-                (ls[0] as NumericUpDownEx).Value = rs * -1;
+                (ls[0] as NumericUpDownEx).Value = rs;
         }
-
         private bool CheckTranInfo()
         {
             bool checkingResult;
@@ -920,7 +914,6 @@ namespace LiuShuiZhang2._0
             }
             return checkingResult;
         }
-
         private void ClearCashCountingTable()
         {
             foreach (var c in Common.GetAllControlByType(panel_CashCountingTable, typeof(NumericUpDownEx)))
@@ -929,7 +922,6 @@ namespace LiuShuiZhang2._0
                 ((NumericUpDownEx)c).Value = 0;
             }
         }
-
         private void ChangeWorkingMode(int mode)
         {
             if (mode == 0) // Working mode
@@ -947,7 +939,6 @@ namespace LiuShuiZhang2._0
                 groupBox_LiuShui.Enabled = true;
             }
         }
-
         private void FillDataToForm()
         {
             #region Load Cash Details
@@ -1156,7 +1147,6 @@ namespace LiuShuiZhang2._0
 
             #endregion
         }
-
         private BLL_LiuShui CreateLiuShui(DataTable ls)
         {
             return new BLL_LiuShui()
@@ -1178,7 +1168,6 @@ namespace LiuShuiZhang2._0
                 __1 = ls == null ? long.Parse(dataGridView_CashStatus_CashDetails.Rows[0].Cells["_1000"].Value.ToString()) : Convert.ToInt64(ls.Rows[0]["_1000"].ToString()),
             };
         }
-
         private BLL_JiaoYiDan CreateJiaoYiDan(int jym)
         {
             if (jym == (int)BLL_JiaoYi.Enum_JiaoYiMode.InsertJiaoYis)
@@ -1202,11 +1191,11 @@ namespace LiuShuiZhang2._0
             {
                 return new BLL_JiaoYiDan()
                 {
-                    JiaoYiDanID = BLL_jiaoYi.JiaoYiDanID
+                    JiaoYiDanID = BLL_jiaoYi.JiaoYiDanID,
+                    TotalPrice = 0
                 };
             }
         }
-
         private BLL_JiaoYi_BiZhong CreateJiaoYis(DataGridView dgv)
         {
             BLL_JiaoYi_BiZhong rs = new BLL_JiaoYi_BiZhong();
@@ -1295,7 +1284,8 @@ namespace LiuShuiZhang2._0
             return rs;
         }
 
-
         #endregion
+
+       
     }
 }

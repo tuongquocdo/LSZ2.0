@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,21 @@ namespace LiuShuiZhang2._0.DAL
                 cmd.Parameters.AddWithValue("@_100", jyd.__1);
                 cmd.Connection = con;
                 return (long) cmd.ExecuteScalar();
+            }
+        }
+
+        public DataTable GetJiaoYiDanByTime(DateTime date)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("select * from JIAOYIDAN where SHIJIAN = '{0}' and  ZONGE != 0",date);
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
             }
         }
     }
