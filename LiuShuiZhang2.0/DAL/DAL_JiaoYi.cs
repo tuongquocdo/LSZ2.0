@@ -41,6 +41,34 @@ namespace LiuShuiZhang2._0.DAL
             }
         }
 
+        public DataTable GetAllRecordByJiaoYiDanId(long jiaoYiDanID)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("select JIAOYI.JIAOYIID," +
+                                "JIAOYI.JIAOYIDANID," +
+                                "JIAOYI.RENYUANID," +
+                                "JIAOYI.LIUSHUIID," +
+                                "JIAOYI.BIZHONGID," +
+                                "JIAOYI.QIANDANID," +
+                                "BIZHONG.BIZHONG," +
+                                "JIAOYI.LIANG," +
+                                "JIAOYI.JIA," +
+                                "JIAOYI.YIGONG," +
+                                "JIAOYI.BEIZHU," +
+                                "JIAOYI.SHIJIAN" +
+                            " from JIAOYI,BIZHONG where JIAOYI.BIZHONGID = BIZHONG.BIZHONGID and JIAOYI.JIAOYIDANID = {0}", jiaoYiDanID);
+
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
         public void AddNewJiaoYi(BLL_JiaoYi jy)
         {
             using (var con = new SqlConnection(Common.constr))

@@ -17,14 +17,13 @@ namespace LiuShuiZhang2._0
         private BLL_JiaoYi jiaoYi;
         public BLL_JiaoYi JiaoYi { get => jiaoYi; set => jiaoYi = value; }
 
-        private DateTime date;
-        public DateTime Date { get => date; set => date = value; }
-
         DAL_JiaoYiDan DAL_jiaoYiDan;
+        DAL_JiaoYi DAL_jiaoYi;
         private void JiaoYiDanViewing_Load(object sender, EventArgs e)
         {
             DAL_jiaoYiDan = new DAL_JiaoYiDan();
-            LoadData(date, jiaoYi);
+            DAL_jiaoYi = new DAL_JiaoYi();
+            LoadData(jiaoYi);
         }
 
         public JiaoYiDanViewing()
@@ -32,9 +31,20 @@ namespace LiuShuiZhang2._0
             InitializeComponent();
         }
 
-        private void LoadData(DateTime date, BLL_JiaoYi jiaoYi)
+        private void LoadData(BLL_JiaoYi jiaoYi)
         {
-            DataTable dt_jiaoYiDan = DAL_jiaoYiDan.GetJiaoYiDanByTime(date);
+            dateTimePicker.Value = jiaoYi.Time;
+
+            DataTable dt_jiaoYiDan;
+            if (jiaoYi.JiaoYiDanID == 0)
+            {
+                dt_jiaoYiDan = DAL_jiaoYiDan.GetJiaoYiDanByTime(jiaoYi.Time);
+            }
+            else
+            {
+                dt_jiaoYiDan = DAL_jiaoYiDan.GetJiaoYiDanByJiaoYiDanId(jiaoYi.JiaoYiDanID);
+            }
+
             dataGridView_JiaoYiDan.DataSource = dt_jiaoYiDan;
             dataGridView_JiaoYiDan.Columns["JIAOYIDANID"].HeaderText = "交易单码";
             dataGridView_JiaoYiDan.Columns["SHIJIAN"].HeaderText = "时间";
@@ -56,14 +66,23 @@ namespace LiuShuiZhang2._0
                     row.DefaultCellStyle.BackColor = Color.Yellow;
                 }
             }
+
+            if (jiaoYi.JiaoYiDanID != 0)
+            {
+                ShowJiaoYi(0);
+            }
         }
 
         private void dataGridView_JiaoYiDan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView d = sender as DataGridView;
-            label_JiaoYiDanID.Text = d.Rows[e.RowIndex].Cells["JIAOYIDANID"].Value.ToString();
-            label_Time.Text = string.Format("{0:yyyy/MM/dd}", (DateTime)d.Rows[e.RowIndex].Cells["SHIJIAN"].Value);
-            label_ToltalValue.Text = string.Format("{0:n0}", (decimal)d.Rows[e.RowIndex].Cells["ZONGE"].Value);
+            ShowJiaoYi(e.RowIndex);
+        }
+
+        private void ShowJiaoYi(int index)
+        {
+            label_JiaoYiDanID.Text = dataGridView_JiaoYiDan.Rows[index].Cells["JIAOYIDANID"].Value.ToString();
+            label_Time.Text = string.Format("{0:yyyy/MM/dd}", (DateTime)dataGridView_JiaoYiDan.Rows[index].Cells["SHIJIAN"].Value);
+            label_ToltalValue.Text = string.Format("{0:n0}", (decimal)dataGridView_JiaoYiDan.Rows[index].Cells["ZONGE"].Value);
 
             DataTable dt = new DataTable();
             dt.Columns.AddRange(new DataColumn[]{
@@ -78,10 +97,10 @@ namespace LiuShuiZhang2._0
                 new DataColumn("_1000")
             });
             DataRow row = dt.NewRow();
-            foreach (DataGridViewColumn cl in d.Columns)
+            foreach (DataGridViewColumn cl in dataGridView_JiaoYiDan.Columns)
             {
                 if (cl.Name.StartsWith("_"))
-                    row[cl.Name] = int.Parse(d.Rows[e.RowIndex].Cells[cl.Name].Value.ToString());
+                    row[cl.Name] = int.Parse(dataGridView_JiaoYiDan.Rows[index].Cells[cl.Name].Value.ToString());
             }
             dt.Rows.Add(row);
             dataGridView_CashDetails.DataSource = dt;
@@ -95,6 +114,28 @@ namespace LiuShuiZhang2._0
             dataGridView_CashDetails.Columns["_2000"].HeaderText = "2K";
             dataGridView_CashDetails.Columns["_1000"].HeaderText = "1K";
 
+            dataGridView_JiaoYi.DataSource = DAL_jiaoYi.GetAllRecordByJiaoYiDanId((long)dataGridView_JiaoYiDan.Rows[index].Cells["JIAOYIDANID"].Value);
+            dataGridView_JiaoYi.ReadOnly = true;
+            dataGridView_JiaoYi.Columns["JIAOYIID"].Visible = false;
+            dataGridView_JiaoYi.Columns["JIAOYIDANID"].Visible = false;
+            dataGridView_JiaoYi.Columns["RENYUANID"].Visible = false;
+            dataGridView_JiaoYi.Columns["LIUSHUIID"].Visible = false;
+            dataGridView_JiaoYi.Columns["BIZHONGID"].Visible = false;
+            dataGridView_JiaoYi.Columns["QIANDANID"].Visible = false;
+            dataGridView_JiaoYi.Columns["BIZHONG"].HeaderText = "币种";
+
+            dataGridView_JiaoYi.Columns["LIANG"].HeaderText = "数量";
+            dataGridView_JiaoYi.Columns["LIANG"].DefaultCellStyle.Format = "N2";
+
+            dataGridView_JiaoYi.Columns["JIA"].HeaderText = "价格";
+            dataGridView_JiaoYi.Columns["JIA"].DefaultCellStyle.Format = "N2";
+            dataGridView_JiaoYi.Columns["YIGONG"].HeaderText = "一共";
+
+            dataGridView_JiaoYi.Columns["YIGONG"].DefaultCellStyle.Format = "N2";
+            dataGridView_JiaoYi.Columns["BEIZHU"].HeaderText = "备注";
+
+            dataGridView_JiaoYi.Columns["SHIJIAN"].HeaderText = "时间";
+            dataGridView_JiaoYi.Columns["SHIJIAN"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
 
         }
     }

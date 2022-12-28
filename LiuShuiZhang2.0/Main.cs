@@ -675,7 +675,7 @@ namespace LiuShuiZhang2._0
         private void linkLabel_ViewJiaoYiDan_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             JiaoYiDanViewing jydv = new JiaoYiDanViewing();
-            jydv.Date = dateTimePicker.Value.Date;
+            jydv.JiaoYi = new BLL_JiaoYi() { Time= dateTimePicker.Value.Date};
             jydv.ShowDialog();
         }
         #endregion

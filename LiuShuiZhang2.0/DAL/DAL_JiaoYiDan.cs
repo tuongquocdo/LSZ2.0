@@ -48,5 +48,20 @@ namespace LiuShuiZhang2._0.DAL
                 return dt;
             }
         }
+
+        public DataTable GetJiaoYiDanByJiaoYiDanId(long JiaoYiDanId)
+        {
+            using (var con = new SqlConnection(Common.constr))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = string.Format("select * from JIAOYIDAN where JIAOYIDANID = '{0}' and  ZONGE != 0", JiaoYiDanId);
+                cmd.Connection = con;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
     }
 }
