@@ -258,6 +258,7 @@ namespace LiuShuiZhang2._0
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(214, 29);
             this.dateTimePicker.TabIndex = 8;
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // JiaoYiDanViewing
             // 

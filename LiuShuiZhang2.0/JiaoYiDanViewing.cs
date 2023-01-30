@@ -43,6 +43,7 @@ namespace LiuShuiZhang2._0
             else
             {
                 dt_jiaoYiDan = DAL_jiaoYiDan.GetJiaoYiDanByJiaoYiDanId(jiaoYi.JiaoYiDanID);
+                dateTimePicker.Enabled = false;
             }
 
             dataGridView_JiaoYiDan.DataSource = dt_jiaoYiDan;
@@ -80,6 +81,9 @@ namespace LiuShuiZhang2._0
 
         private void ShowJiaoYi(int index)
         {
+            if (index < 0)
+                return;
+
             label_JiaoYiDanID.Text = dataGridView_JiaoYiDan.Rows[index].Cells["JIAOYIDANID"].Value.ToString();
             label_Time.Text = string.Format("{0:yyyy/MM/dd}", (DateTime)dataGridView_JiaoYiDan.Rows[index].Cells["SHIJIAN"].Value);
             label_ToltalValue.Text = string.Format("{0:n0}", (decimal)dataGridView_JiaoYiDan.Rows[index].Cells["ZONGE"].Value);
@@ -137,6 +141,12 @@ namespace LiuShuiZhang2._0
             dataGridView_JiaoYi.Columns["SHIJIAN"].HeaderText = "时间";
             dataGridView_JiaoYi.Columns["SHIJIAN"].DefaultCellStyle.Format = "yyyy/MM/dd HH:mm:ss";
 
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            jiaoYi.Time = dateTimePicker.Value;
+            LoadData(jiaoYi);
         }
     }
 }
